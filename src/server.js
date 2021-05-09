@@ -33,4 +33,6 @@ app
   .use('/api/v1', router.APIv1Router)
 
 const port = process.env.PORT || 3001
-app.listen(port, () => console.log(`You and eye ${version} is waiting on port ${port}`))
+app.listen(port, () =>
+  console.log(`VP EXPO MAIN CONSOLE ${version} is waiting on port ${port}`)
+)
