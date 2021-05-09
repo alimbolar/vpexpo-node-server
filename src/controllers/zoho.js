@@ -95,29 +95,31 @@ const sendToZoho = async uri => {
   }
 }
 
-// An optician has a valid token
-const getUserRole = async token => {
-  if (!token) return 'consumer'
+// // USED IN YE FOR OPTICIAN AND CUSTOMER
 
-  const employees = await sendToZoho(`/${ZOHO_CONSOLE}/report/All_Employees`)
-  const employee = employees.data.filter(e => e.ID === token)[0]
-  if (!employee) return null // Wrong token!
-  return 'optician'
-}
+// // An optician has a valid token
+// const getUserRole = async token => {
+//   if (!token) return 'consumer'
 
-const getSetting = async (country, setting) => {
-  const settings = await sendToZoho(
-    `/${ZOHO_CONSOLE}/report/${country}_Store_Settings`
-  )
-  return settings.data[0][setting]
-}
+//   const employees = await sendToZoho(`/${ZOHO_CONSOLE}/report/All_Employees`)
+//   const employee = employees.data.filter(e => e.ID === token)[0]
+//   if (!employee) return null // Wrong token!
+//   return 'optician'
+// }
+
+// const getSetting = async (country, setting) => {
+//   const settings = await sendToZoho(
+//     `/${ZOHO_CONSOLE}/report/${country}_Store_Settings`
+//   )
+//   return settings.data[0][setting]
+// }
 
 const clearCache = () => (cache = {})
 
 module.exports = {
   sendToZoho,
   clearCache,
-  getSetting,
-  getUserRole,
+  // getSetting,
+  // getUserRole,
   ZOHO_CONSOLE,
 }

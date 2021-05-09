@@ -14,7 +14,8 @@ router.get('/*', async (req, res) => {
   let uri = req.url;
   if (uri.indexOf('?') > -1) uri = uri.substring(0, uri.indexOf('?')); // Remove query string
 
-  const userRole = await getUserRole(req.query.token);
+  // USED IN YE FOR GETTING USER ROLE OF OPTICIAN AND CONSUMER
+  // const userRole = await getUserRole(req.query.token);
 
   const jsonResult = await sendToZoho(uri);
   if (jsonResult.code === 3000) {
