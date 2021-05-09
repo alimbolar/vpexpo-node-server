@@ -1,0 +1,3 @@
+{"_id":{"$oid":"5de6a4caad943c9c98567e07"},"name":"Store_Base_Currency","value":"AED","createdAt":{"$date":{"$numberLong":"1575396556066"}},"updatedAt":{"$date":{"$numberLong":"1575396556066"}},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5de6a513ad943c9c98567e08"},"name":"Admin_Email","value":"admin@email.com","createdAt":{"$date":{"$numberLong":"1575396627340"}},"updatedAt":{"$date":{"$numberLong":"1575396627340"}},"__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"5de6a51ead943c9c98567e09"},"name":"Support_Email","value":"support@email.com","createdAt":{"$date":{"$numberLong":"1575396638743"}},"updatedAt":{"$date":{"$numberLong":"1575396638743"}},"__v":{"$numberInt":"0"}}

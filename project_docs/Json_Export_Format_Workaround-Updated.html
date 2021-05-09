@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body>
+  <style> 
+  label{
+    width:190px;
+    float: left; 
+    word-wrap: break-word;
+  }
+  input,textarea{
+    margin-left: 30px;
+  }
+  input{
+    width:245px;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #4CAF50;
+  }
+  textarea{
+    width:250px;
+    height:150px;
+  }
+  button{
+    width:120px;
+    height: 30px;
+    margin-left: 250px;
+
+  }
+  </style>
+
+
+<label> ReportLinkName : </label><input type="text" name="reportname" id="reportname"><br><br>
+<label>  Give all multiselect fields label names with comma separator: </label><textarea name="fields" id="fields"></textarea><br><br>
+<label> Exported JSON : </label><textarea name="exportdata" id="exportdata"></textarea><br><br>
+<button onclick="formatExportedJson()">Format</button><br><br><br>
+<label style="display:none;" id="outputLabel"> Formatted Output: </label><textarea name="output" id="output" style="display:none;"></textarea>
+
+
+<script>
+  function formatExportedJson() {
+    var reportLinkName = document.getElementById('reportname').value;
+    var fieldNames = "["+document.getElementById('fields').value+"]";
+    var data = document.getElementById('exportdata').value;
+    
+    var recData = JSON.parse(data)[reportLinkName];
+    var finalJsonArr = {};
+    var dataConstruct = [];
+    for (var i = 0; i < recData.length; i++) {
+      var eachRowConstruct = {};
+    	var eachRow = recData[i];
+    	for (var k in eachRow) {
+          value = eachRow[k];
+          if (eachRow.hasOwnProperty(k) && (fieldNames.includes(k))) {
+            if(value.includes("[") || value.includes("]")){
+              value = value.replace("[","");
+              value = value.replace("]","");  
+              value = value.replace(", ",","); 
+            }
+            value = value!="" ? value.split(","):[];
+          }
+         eachRowConstruct[k] = value;
+      }
+        dataConstruct.push(eachRowConstruct);
+    }
+    finalJsonArr[reportLinkName] = dataConstruct;
+    document.getElementById("output").value = JSON.stringify(finalJsonArr);
+     document.getElementById("outputLabel").style.display  = "block";
+    document.getElementById("output").style.display  = "block";
+  }
+</script>
+
+
+</body></html>
