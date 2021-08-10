@@ -126,8 +126,8 @@ module.exports = (err, req, res, next) => {
 
 ## Catching Errors on Async Functions
 
-**Create function in ./utils/catchSync.js to return Async functions and then use
-.catch for Errors**
+**Create function in ./utils/catchASync.js to return Async functions and then
+use .catch for Errors**
 
 ```
 module.exports = fn =>{
@@ -239,7 +239,7 @@ const handleDuplicateFieldsDB = function(err) {
 other code**
 
 ```
-process.on('unhandledRejection,()=>{
+process.on('unhandledRejection,(err)=>{
   console.log('UNHANDLED REJECTION 💥 : ',err.name,err.message );
   console.log('STACK :',err.stack);
   console.log('Shutting down server...');
@@ -256,7 +256,7 @@ process.on('unhandledRejection,()=>{
 possible before any other code**
 
 ```
-process.on('unhandledException',()=>{
+process.on('unhandledException',(err)=>{
   console.log('UNHANDLED EXCEPTION 💥 : ', err.name, err.message);
   console.log('Shutting down server...');
   process.exit(1);

@@ -35,7 +35,7 @@ class APIFeatures {
     let queryStr = JSON.stringify(queryObj);
 
     // update the new string to update it for gte, lte, lt and lt variables
-    queryStr = queryStr.replace(/\b(gte|lte|gt|lt)\b/g, match => `$${match}`);
+    queryStr = queryStr.replace(/\b(gte|lte|gt|lt)/\b/g, match => `$${match}`);
 
 
     // The argument object, which is the Mongoose Query, is then assigned the find method which used the parsed queryStr object
@@ -91,8 +91,8 @@ module.exports = APIFeatures;
 **Create an instance of the APIFeatures class before a query in the controller**
 
 ```
-const query = new APIFeatures(User.find(),req.query).filter().sort().limitFields().paginate();
+const features = new APIFeatures(User.find(),req.query).filter().sort().limitFields().paginate();
 
-const users = await query;
+const users = await features.query;
 
 ```
