@@ -1,25 +1,88 @@
-# vpexpo-node-server
+# VP Expo Visitors App
 
-Zoho configuration : Client ID/Secret needs to be created in zoho console
-Zoho refresh token needs to be generated using postman (do not generate a new one if not needed, after 20 generations, oldest refresh token will be revoked)
-# To generate a refresh token : Go to this URL in your browser, log in and get the authorization code from the URL : https://accounts.zoho.com/oauth/v2/auth?response_type=code&client_id=xxxx&scope=ZohoCreator.report.READ&redirect_uri=https://vpexpodubai.com/redirect-uri&access_type=offline&prompt=consent
-# Then POST to this URL : https://accounts.zoho.com/oauth/v2/token?grant_type=authorization_code&client_id=xxxx&client_secret=xxxxx&redirect_uri=https://vpexpodubai.com/redirect-uri&code=xxxxx
+> An app for VP Expo Dubai
+>
+> <!-- If you have the project hosted somewhere, include the link here. -->
 
-Use this in your env file :
+## Table of Contents
 
-```
-# Zoho configuration
-ZOHO_CLIENT_ID=xxxx
-ZOHO_CLIENT_SECRET=xxxxx
-ZOHO_REFRESH_TOKEN=xxxxx
-ZOHO_CREATOR_URL=https://creator.zoho.com/api/v2/fourplusindia
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Screenshots](#screenshots)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Project Status](#project-status)
+- [Room for Improvement](#room-for-improvement)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
-# Mailgun configuration
-MAILGUN_API_KEY=xxxxx
-MAILGUN_DOMAIN=mg.youandeyemag.com
+## General Information
 
-#In dev environment, if you don't want to send real emails, activate this variable and use your own email address
-#MAILGUN_TESTMODE=xxx@xxxx.com
-```
+- This application will be used by all visitors to VP Expo
+- It would allow visitors to have access to information about the exhibiton, its events and about the exhibitors
+- Navigation tool for visitors and to showcase technology expertise of FourPlus
+- It would allow FourPlus to showcase its technology capabilities as the application would be used by visitors and exhibitors.
 
-Other configuration is done in src/config.js
+## Technologies Used
+
+- Nodejs - version x.0
+- Express - version x.0
+- Mongoose - version x.0
+- MongoDB
+- HTML & CSS
+- Vanilla JS
+
+## Features
+
+List the ready features here:
+
+- List Exhibitors
+- Check Exhibitor Details
+- Mark Exhibitors as Favourites
+- Mark Exhibitors as Visited
+- Visit and Vote for VP Awards
+- Visit VP Academy
+- Vote for Exhibitors
+
+## Screenshots
+
+![Example screenshot](./img/screenshot.png)
+
+## Setup
+
+What are the project requirements/dependencies? Where are they listed? A
+requirements.txt or a Pipfile.lock file perhaps? Where is it located?
+
+Proceed to describe how to install / setup one's local environment / get started
+with the project.
+
+## Usage
+
+`npm start`
+
+## Project Status
+
+Project is: _in progress_
+
+## Room for Improvement
+
+Room for improvement:
+
+- Should be PWA
+- Should have its own Hybrid App
+
+To do:
+
+- Explore options for PWA
+- Explore outsourcing options for Hybrid App
+
+## Acknowledgements
+
+- This project was inspired by Node Bootcamp by Jonas Schmedtmann
+- This project was based on [this tutorial](https://github.com/jonasschmedtmann/complete-node-bootcamp).
+- Many thanks to Olivier Menuel
+
+## Contact
+
+Created by [@alimbolar](https://alimbolar.com) - feel free to contact me!

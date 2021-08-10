@@ -1,44 +1,34 @@
 {
-	"name": "youandeye-api",
-	"version": "0.2.0",
-	"description": "Codeable project",
-	"main": "index.js",
-	"scripts": {
-		"production": "node src/server.js",
-		"dev": "nodemon src/server.js",
-		"test": "npm t"
-	},
-	"keywords": [],
-	"author": "Paul",
-	"private": true,
-	"repository": {
-		"type": "git",
-		"url": "git@bitbucket.org:thePaulCEO/youandeye-react-server.git"
-	},
-	"dependencies": {
-		"body-parser": "^1.19.0",
-		"compression": "^1.7.4",
-		"cors": "^2.8.5",
-		"dotenv": "^8.2.0",
-		"express": "^4.17.1",
-		"helmet": "^3.21.1",
-		"husky": "^3.0.9",
-		"koa": "^2.10.0",
-		"lint-staged": "^9.4.2",
-		"lodash": "^4.17.15",
-		"mailgun-js": "^0.22.0",
-		"node-fetch": "^2.6.0",
-		"pluralize": "^8.0.0",
-		"prettier": "^1.18.2"
-	},
-	"devDependencies": {
-		"chai": "^4.2.0",
-		"chai-as-promised": "^7.1.1",
-		"chai-fs": "^2.0.0",
-		"chai-http": "^4.3.0",
-		"mocha": "^6.0.1",
-		"mocha-steps": "^1.3.0",
-		"nodemon": "^1.19.4",
-		"palin": "^2.2.0"
-	}
+  "name": "vp-expo",
+  "version": "1.0.0",
+  "description": "VP Expo Dubai",
+  "main": "app.js",
+  "scripts": {
+    "start": "NODE_ENV=development nodemon app",
+    "start:prod": "NODE_ENV=production nodemon app"
+  },
+  "keywords": [],
+  "author": "Alim",
+  "private": true,
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "mongoose": "^5.13.6",
+    "nodemon": "^2.0.12",
+    "prettier": "^1.17.0"
+  },
+  "engines": {
+    "node": ">10.0.0"
+  }
 }
