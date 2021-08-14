@@ -122,7 +122,48 @@ router.route('/resetPassword').patch(authController.resetPassword);
 5. Log in the user by sending the JWT Token
 
 ```
+exports.resetPassword = catchAsync(async function(req, res, next) {
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(req.params.token)
+    .digest("hex");
 
+  console.log(hashedToken);
+
+  // 1. Get User based on token
+
+  const user = await User.findOne({
+    passwordResetToken: hashedToken,
+    // passwordResetExpires: { $gt: Date.now() },
+  });
+
+  console.log(user);
+  // 2. Check that there's a user and that the token has not expired
+
+  if (!user)
+    return next(new AppError("User with this token does not exist", 400));
+
+  // 3. Set New Password
+
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  user.passwordResetToken = undefined;
+  user.passwordResetExpires = undefined;
+  await user.save();
+
+  // 4. Update passwordChangedAt property for the user
+
+  // 5. Log in the user by sending the JWT Token
+
+  const token = signToken(user._id);
+  res.status(200).json({
+    status: "success",
+    token: token,
+    data: {
+      user: user,
+    },
+  });
+});
 
 ```
 
@@ -130,8 +171,9 @@ router.route('/resetPassword').patch(authController.resetPassword);
 
 ```
 userSchema.pre("save", function(next) {
-  if (this.isModified("password") || this.isNew) return next();
+  if (!this.isModified("password") || this.isNew) return next();
 
   this.passwordChangedAt = Date.now() - 1000;
 });
+
 ```
