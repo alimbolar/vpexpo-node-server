@@ -2,6 +2,7 @@ const express = require("express");
 const User = require("./../models/userModel");
 const APIFeatures = require("./../utils/APIFeatures");
 const catchAsync = require("./../utils/catchAsync");
+const AppError = require("./../utils/AppError");
 
 exports.getAllUsers = catchAsync(async function(req, res, next) {
   const features = new APIFeatures(User.find(), req.query)
@@ -20,7 +21,7 @@ exports.getAllUsers = catchAsync(async function(req, res, next) {
 exports.createOneUser = catchAsync(async function(req, res, next) {
   const data = await User.create(req.body);
 
-  res.status(200).json({
+  res.status(201).json({
     status: "success",
     result: data.length,
     data,
@@ -31,7 +32,7 @@ exports.getOneUser = catchAsync(async function(req, res, next) {
   const data = await User.findById(req.params.id);
 
   if (!data) {
-    return next(new AppError("User witht his ID does not exist", 400));
+    return next(new AppError("User with this ID does not exist", 400));
   }
 
   res.status(200).json({
@@ -42,7 +43,10 @@ exports.getOneUser = catchAsync(async function(req, res, next) {
 });
 
 exports.updateOneUser = catchAsync(async function(req, res, next) {
-  const data = await User.findByIdAndUpdate(req.params.id, req.body);
+  const data = await User.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    runValidators: true,
+  });
 
   if (!data) {
     return next(new AppError("User with this ID does not exist", 400));
