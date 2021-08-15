@@ -12,6 +12,15 @@ signToken = function(id) {
   });
 };
 
+const createSendToken = function(user, statusCode, res) {
+  const token = signToken(user._id);
+  res.status(statusCode).json({
+    status: "success",
+    token,
+    user,
+  });
+};
+
 exports.signup = catchAsync(async function(req, res, next) {
   const newUser = await User.create(req.body);
 
@@ -44,7 +53,6 @@ exports.login = catchAsync(async function(req, res, next) {
   // sign JWT
 
   const token = signToken(user._id);
-
   res.status(200).json({
     status: "success",
     token: token,
@@ -182,4 +190,29 @@ exports.resetPassword = catchAsync(async function(req, res, next) {
       user: user,
     },
   });
+});
+
+exports.updateMyPassword = catchAsync(async function(req, res, next) {
+  // **Get user from collection and ensure .select('+password)**
+
+  const user = await User.findById(req.user._id).select("+password");
+
+  if (!user) return next(new AppError("User with this ID does not exist", 401));
+
+  // **Check if POSTed password is correct**
+
+  console.log(user);
+
+  if (!(await user.correctPassword(req.body.passwordCurrent, user.password)))
+    return next(new AppError("Current Password is not right", 401));
+
+  // **If so, update the password**
+
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  await user.save();
+
+  // **Create And Send Token**
+
+  createSendToken(user, 200, res);
 });

@@ -10,12 +10,20 @@ router.route("/forgotPassword").post(authController.forgotPassword);
 router.route("/resetPassword/:token").patch(authController.resetPassword);
 
 router
+  .route("/updateMyPassword")
+  .patch(authController.protect, authController.updateMyPassword);
+
+router
+  .route("/updateMe")
+  .patch(authController.protect, userController.updateMe);
+
+router
+  .route("/deleteMe")
+  .delete(authController.protect, userController.deleteMe);
+
+router
   .route("/")
-  .get(
-    authController.protect,
-    authController.restrictTo(),
-    userController.getAllUsers
-  )
+  .get(userController.getAllUsers)
   .post(authController.protect, userController.createOneUser);
 
 router
