@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["admin", "visitor", "exhibitor", "user"],
+    enum: ["admin", "exhibitor", "user"],
     default: "user",
   },
   photo: String,
@@ -23,6 +23,18 @@ const userSchema = new mongoose.Schema({
     required: true,
     minlength: 8,
   },
+  visits: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "user",
+    },
+  ],
+  favourites: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: "user",
+    },
+  ],
   passwordConfirm: {
     type: String,
     validate: {
