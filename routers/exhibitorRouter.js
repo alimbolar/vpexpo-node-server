@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const boothController = require("./../controllers/boothController");
+const exhibitorController = require("./../controllers/exhibitorController");
 
 router
   .route("/")
-  .get(boothController.getAllBooths)
-  .post(boothController.createOneBooth);
+  .get(exhibitorController.getAllExhibitors)
+  .post(exhibitorController.createOneExhibitor);
 
 // router
 //   .route("/:id")

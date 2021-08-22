@@ -1,5 +1,5 @@
-const Organisation = require("./../models/organisationModel");
-const catchAsync = require("./../utils/catchAsync");
+const Organisation = require("../models/XXXX organisationModel");
+const catchAsync = require("../utils/catchAsync");
 
 exports.getAllOrganisations = catchAsync(async function(req, res, next) {
   const organisations = await Organisation.find();

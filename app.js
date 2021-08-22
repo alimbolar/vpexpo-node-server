@@ -9,8 +9,9 @@ const dotenv = require("dotenv");
 const userRouter = require("./routers/userRouter");
 const AppError = require("./utils/AppError");
 const globalErrorController = require("./controllers/errorController");
-const organisationRouter = require("./routers/organisationRouter");
-const boothRouter = require("./routers/boothRouter");
+// const organisationRouter = require("./routers/organisationRouter");
+const exhibitorRouter = require("./routers/exhibitorRouter");
+const zohoRouter = require("./routers/zohoRouter");
 
 const app = express();
 
@@ -40,9 +41,11 @@ app.use(xss());
 app.use(express.static(`${__dirname}/public`));
 
 // ROUTES
+app.use("/api/v1/zoho", zohoRouter);
 app.use("/api/v1/users", userRouter);
-app.use("/api/v1/organisations", organisationRouter);
-app.use("/api/v1/booths", boothRouter);
+// app.use("/api/v1/organisations", organisationRouter);
+app.use("/api/v1/exhibitor", exhibitorRouter);
+
 app.all("*", (req, res, next) => {
   const err = new AppError(`This route ${req.originalUrl} does not exist`, 404);
   next(err);

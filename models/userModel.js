@@ -3,51 +3,75 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
-  name: {
+  firstName: {
     type: String,
-    required: [true, "Name is required"],
+    required: [true, "First Name is required"],
+  },
+  lastName: {
+    type: String,
+    required: [true, "Last Name is Required"],
   },
   email: {
     type: String,
     required: true,
     unique: true,
+    lowercase: true,
   },
   role: {
     type: String,
-    enum: ["admin", "exhibitor", "user"],
+    enum: ["admin", "exhibitor", "user", "jury"],
     default: "user",
   },
-  photo: String,
-  password: {
-    type: String,
-    required: true,
-    minlength: 8,
+  // Only if role is exhibitor
+  exhibitorOrganisation: {
+    type: mongoose.Schema.ObjectId,
+    ref: "Exhibitor",
   },
+  // Only if role is user or jury
+  company: String,
+  address: String,
+  city: String,
+  country: String,
+  mobile: String,
+  photo: String,
   visits: [
     {
+      // List of all booths that the user has visited
       type: mongoose.Schema.ObjectId,
-      ref: "user",
+      ref: "Booth",
     },
   ],
   favourites: [
+    // List of all booths that the user likes
     {
       type: mongoose.Schema.ObjectId,
-      ref: "user",
+      ref: "Booth",
     },
   ],
+  password: {
+    type: String,
+    // required: true,
+    minlength: 8,
+  },
   passwordConfirm: {
     type: String,
-    validate: {
-      validator: function(el) {
-        return el === this.password;
-      },
-      message: "Passwords don't match. Please try again",
-    },
+    // validate: {
+    //   validator: function(el) {
+    //     return el === this.password;
+    //   },
+    //   message: "Passwords don't match. Please try again",
+    // },
     select: false,
   },
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
+  isActive: Boolean,
+  preferredLanguage: String,
+  profile: String,
+  interestedIn: Array,
+  creatorID: String,
+  qrImage: String,
   active: {
     type: Boolean,
     default: true,
@@ -63,7 +87,6 @@ userSchema.pre("save", async function(next) {
 
 userSchema.pre("save", async function(next) {
   if (!this.isModified("password") || this.isNew) return next();
-
   this.passwordChangedAt = Date.now() - 1000;
 });
 
