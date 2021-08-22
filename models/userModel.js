@@ -50,17 +50,19 @@ const userSchema = new mongoose.Schema({
   ],
   password: {
     type: String,
-    // required: true,
+    default: "4plus+++",
+    required: true,
     minlength: 8,
   },
   passwordConfirm: {
     type: String,
-    // validate: {
-    //   validator: function(el) {
-    //     return el === this.password;
-    //   },
-    //   message: "Passwords don't match. Please try again",
-    // },
+    default: "4plus+++",
+    validate: {
+      validator: function(el) {
+        return el === this.password;
+      },
+      message: "Passwords don't match. Please try again",
+    },
     select: false,
   },
   passwordChangedAt: Date,

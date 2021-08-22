@@ -44,7 +44,7 @@ app.use(express.static(`${__dirname}/public`));
 app.use("/api/v1/zoho", zohoRouter);
 app.use("/api/v1/users", userRouter);
 // app.use("/api/v1/organisations", organisationRouter);
-app.use("/api/v1/exhibitor", exhibitorRouter);
+app.use("/api/v1/exhibitors", exhibitorRouter);
 
 app.all("*", (req, res, next) => {
   const err = new AppError(`This route ${req.originalUrl} does not exist`, 404);

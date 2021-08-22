@@ -8,7 +8,7 @@ exports.getAllExhibitors = catchAsync(async function(req, res, next) {
     status: "success",
     result: exhibitors.length,
     data: {
-      booths,
+      exhibitors,
     },
   });
 });
