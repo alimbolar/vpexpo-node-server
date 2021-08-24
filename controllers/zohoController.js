@@ -47,7 +47,7 @@ const importExhibitors = catchAsync(async function(data) {
     exhibitor.website = item.Website;
     exhibitor.shortName = item.Short_Name;
     exhibitor.category = item.Exhibitor_Category;
-    // exhibitor.booth = item.Exhibitor_Booth;
+    exhibitor.booth = item.Exhibitor_Stall_Details;
     exhibitor.creatorID = item.ID;
     exhibitor.isActive = item.isActive;
     return exhibitor;

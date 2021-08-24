@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const slugify = require("slugify");
 // const Organisation = require("./organisationModel");
 
 const exhibitorSchema = new mongoose.Schema({
@@ -18,6 +19,9 @@ const exhibitorSchema = new mongoose.Schema({
   name: {
     type: String,
     // required: [true, "Organisation Name is required"],
+  },
+  slug: {
+    type: String,
   },
   address: {
     type: String,
@@ -54,6 +58,10 @@ const exhibitorSchema = new mongoose.Schema({
   },
 });
 
+exhibitorSchema.index({ category: 1 });
+// exhibitorSchema.index({ name: 1 });
+exhibitorSchema.index({ slug: 1 });
+
 // boothSchema.pre("save", async function(next) {
 //   const organisationPromises = await this.organisation.map(
 //     async (id) => await Organisation.findById(id)
@@ -61,6 +69,15 @@ const exhibitorSchema = new mongoose.Schema({
 //   this.organisation = await Promise.all(organisationPromises);
 //   next();
 // });
+
+exhibitorSchema.pre("save", function(next) {
+  this.slug = slugify(this.name, {
+    lowercase: true,
+    strict: true,
+    remove: undefined,
+  });
+  next();
+});
 
 const Exhibitor = mongoose.model("exhibitor", exhibitorSchema);
 

@@ -1,26 +1,9 @@
 const Exhibitor = require("../models/exhibitorModel");
 const catchAsync = require("../utils/catchAsync");
+const factory = require("./handlerController");
 
-exports.getAllExhibitors = catchAsync(async function(req, res, next) {
-  const exhibitors = await Exhibitor.find();
-
-  res.status(200).json({
-    status: "success",
-    result: exhibitors.length,
-    data: {
-      exhibitors,
-    },
-  });
-});
-
-exports.createOneExhibitor = catchAsync(async function(req, res, next) {
-  const newExhibitor = await Exhbitor.create(req.body);
-
-  res.status(200).json({
-    status: "success",
-    message: "Exhibitor created",
-    data: {
-      booth: newExhibitor,
-    },
-  });
-});
+exports.getAllExhibitors = factory.getAll(Exhibitor);
+exports.createOneExhibitor = factory.createOne(Exhibitor);
+exports.getOneExhibitor = factory.getOne(Exhibitor);
+exports.updateOneExhibitor = factory.updateOne(Exhibitor);
+exports.deleteOneExhibitor = factory.deleteOne(Exhibitor);

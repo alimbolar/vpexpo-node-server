@@ -9,27 +9,29 @@ router.route("/login").post(authController.login);
 router.route("/forgotPassword").post(authController.forgotPassword);
 router.route("/resetPassword/:token").patch(authController.resetPassword);
 
-router
-  .route("/updateMyPassword")
-  .patch(authController.protect, authController.updateMyPassword);
+// ALL ROUTES AFTER THSI ARE PROTECTED
+router.use(authController.protect);
 
-router
-  .route("/updateMe")
-  .patch(authController.protect, userController.updateMe);
+router.route("/updateMyPassword").patch(authController.updateMyPassword);
 
-router
-  .route("/deleteMe")
-  .delete(authController.protect, userController.deleteMe);
+router.route("/me").get(userController.getMe, userController.getOneUser);
+
+router.route("/updateMe").patch(userController.updateMe);
+
+router.route("/deleteMe").delete(userController.deleteMe);
+
+// ALL ROUTES AFTER THIS ARE RESTRICTED
+router.use(authController.restrictTo("admin"));
 
 router
   .route("/")
   .get(userController.getAllUsers)
-  .post(authController.protect, userController.createOneUser);
+  .post(userController.createOneUser);
 
 router
   .route("/:id")
   .get(userController.getOneUser)
-  .patch(authController.protect, userController.updateOneUser)
-  .delete(authController.protect, userController.deleteOneUser);
+  .patch(userController.updateOneUser)
+  .delete(userController.deleteOneUser);
 
 module.exports = router;
