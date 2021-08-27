@@ -9,13 +9,6 @@ const exhibitorSchema = new mongoose.Schema({
   booth: {
     type: String,
   },
-  visits: [
-    {
-      // List of all visitors that the booth has received
-      type: mongoose.Schema.ObjectId,
-      ref: "user",
-    },
-  ],
   name: {
     type: String,
     // required: [true, "Organisation Name is required"],
@@ -56,6 +49,15 @@ const exhibitorSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
+  visits: Array,
+  // visits : [
+  //   {
+  //     // List of all visitors that the booth has received
+  //     type: mongoose.Schema.ObjectId,
+  //     ref: "user",
+  //   },
+  // ],
+  orgEmployee: Array,
 });
 
 exhibitorSchema.index({ category: 1 });

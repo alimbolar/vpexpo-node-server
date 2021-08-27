@@ -50,6 +50,8 @@ const importExhibitors = catchAsync(async function(data) {
     exhibitor.booth = item.Exhibitor_Stall_Details;
     exhibitor.creatorID = item.ID;
     exhibitor.isActive = item.isActive;
+    exhibitor.visits = item.Visits;
+    exhibitor.orgEmployee = item.OrgEmployee;
     return exhibitor;
   });
 
@@ -156,10 +158,15 @@ exports.getAllData = catchAsync(async (req, res) => {
     let data = jsonResult.data;
 
     if (uri === "/All_Data") {
-      importVisitors(data);
+      await User.deleteMany();
+      console.log("Users Deleted");
+
+      // importVisitors(data);
     }
 
     if (uri === "/Exhibitor_Report") {
+      await Exhibitor.deleteMany();
+      console.log("Exhibitors Deleted");
       importExhibitors(data);
     }
 

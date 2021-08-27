@@ -34,13 +34,6 @@ const userSchema = new mongoose.Schema({
   country: String,
   mobile: String,
   photo: String,
-  visits: [
-    {
-      // List of all booths that the user has visited
-      type: mongoose.Schema.ObjectId,
-      ref: "Booth",
-    },
-  ],
   favourites: [
     // List of all booths that the user likes
     {
