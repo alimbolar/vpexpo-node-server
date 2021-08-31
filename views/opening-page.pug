@@ -1,0 +1,21 @@
+extends base
+
+block content
+    section.opening-page 
+        .about
+            picture.hero-image 
+                source(media="(max-width:799px )", srcset="/images/vp-expo-hero-image-mobile.jpg")
+                source(media="(min-width:800px )", srcset="/images/vp-expo-hero-image-desktop.jpg")
+                img(src="./images/vp-expo-hero-image-mobile.jpg", alt="")
+
+            //- <section class="opening-page">
+                
+            //-     <div class="about">
+            //-         <picture class="hero-image">
+            //-             <source media="(max-width:799px)" srcset="./images/vp-expo-hero-image-mobile.jpg">
+            //-             <source media="(min-width:800px)" srcset="./images/vp-expo-hero-image-desktop.jpg">
+            //-             <img src="./images/vp-expo-hero-image-mobile.jpg" alt="" >
+            //-         </picture>
+            //-     </div>
+
+            //- </section>

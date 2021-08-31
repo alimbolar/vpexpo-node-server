@@ -7,13 +7,17 @@ html(lang="en")
 
         script(defer src="https://kit.fontawesome.com/48411cf139.js" crossorigin="anonymous")
         link(rel="stylesheet", href="/css/main.css")
-        //<script defer src="script.js"></script>
+        <script defer src="/js/controller.js" type="module"></script>
 
         title VP Expo 2021
     body 
+        
     include _header
 
-    block content
+    main.main 
+        .content 
+            block content
+                h1 Hello Hell
 
 
 
