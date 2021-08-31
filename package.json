@@ -4,8 +4,9 @@
   "description": "VP Expo Dubai",
   "main": "app.js",
   "scripts": {
-    "start": "NODE_ENV=development nodemon server",
-    "start:prod": "NODE_ENV=production nodemon server"
+    "start": "node server",
+    "dev": "NODE_ENV=development nodemon server",
+    "prod": "NODE_ENV=production nodemon server"
   },
   "keywords": [],
   "author": "Alim",
