@@ -12,8 +12,17 @@ const globalErrorController = require("./controllers/errorController");
 // const organisationRouter = require("./routers/organisationRouter");
 const exhibitorRouter = require("./routers/exhibitorRouter");
 const zohoRouter = require("./routers/zohoRouter");
+const viewRouter = require("././routers/viewRouter");
 
 const app = express();
+
+app.set("view engine", "pug");
+app.set("views", "./views");
+
+app.use("/", viewRouter);
+
+//Serve Static Files
+app.use(express.static(`${__dirname}/public`));
 
 dotenv.config({ path: `${__dirname}/config.env` });
 
@@ -37,10 +46,8 @@ app.use(express.json());
 app.use(mongoSanitize());
 app.use(xss());
 
-//Serve Static Files
-app.use(express.static(`${__dirname}/public`));
-
 // ROUTES
+
 app.use("/api/v1/zoho", zohoRouter);
 app.use("/api/v1/users", userRouter);
 // app.use("/api/v1/organisations", organisationRouter);

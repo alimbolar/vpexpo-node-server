@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true,
+    // unique: true,
     lowercase: true,
   },
   role: {
@@ -22,11 +22,11 @@ const userSchema = new mongoose.Schema({
     enum: ["admin", "exhibitor", "user", "jury"],
     default: "user",
   },
-  // Only if role is exhibitor
-  exhibitorOrganisation: {
-    type: mongoose.Schema.ObjectId,
-    ref: "Exhibitor",
-  },
+  // // Only if role is exhibitor
+  // exhibitorOrganisation: {
+  //   type: mongoose.Schema.ObjectId,
+  //   ref: "Exhibitor",
+  // },
   // Only if role is user or jury
   company: String,
   address: String,
@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
     // List of all booths that the user likes
     {
       type: mongoose.Schema.ObjectId,
-      ref: "Booth",
+      ref: "Exhibitor",
     },
   ],
   password: {

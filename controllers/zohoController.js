@@ -27,6 +27,8 @@ const importVisitors = catchAsync(async function(data) {
     visitor.creatorID = item.ID;
     visitor.qrImage = item.QR_Image;
     visitor.isActive = item.isActive;
+    // visitor.password = item.Mobile;
+    // visitor.passwordConfirm = item.Mobile;
     return visitor;
   });
 
@@ -158,10 +160,9 @@ exports.getAllData = catchAsync(async (req, res) => {
     let data = jsonResult.data;
 
     if (uri === "/All_Data") {
-      await User.deleteMany();
+      // await User.deleteMany();
       console.log("Users Deleted");
-
-      // importVisitors(data);
+      importVisitors(data);
     }
 
     if (uri === "/Exhibitor_Report") {

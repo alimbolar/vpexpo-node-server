@@ -22,6 +22,7 @@ const filterObj = function(obj, ...allowedFields) {
 
 exports.getMe = function(req, res, next) {
   req.params.id = req.user.id;
+  next();
 };
 
 exports.updateMe = catchAsync(async function(req, res, next) {
@@ -29,15 +30,12 @@ exports.updateMe = catchAsync(async function(req, res, next) {
 
   if (req.body.password || req.body.passwordConfirm)
     return next(
-      new AppError(
-        "This is the wrong route. Please user /updateMyPassword",
-        401
-      )
+      new AppError("This is the wrong route. Please use /updateMyPassword", 401)
     );
 
   // **Filter out unwanted fields to ensure only needed fields and its data exist**
 
-  const filteredBody = filterObj(req.body, "name", "email");
+  const filteredBody = filterObj(req.body, "firstName", "email");
 
   // **Update Data**
   const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, {

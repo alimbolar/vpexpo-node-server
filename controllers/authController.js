@@ -41,18 +41,20 @@ exports.login = catchAsync(async function(req, res, next) {
       new AppError("Email or password not provided. Please try again", 401)
     );
 
+  console.log(req.body.email);
   // check if user exists and password matches
-  const user = await User.findOne({ email: req.body.email });
+  const user = await User.findOne({ email }).select("+password");
 
-  console.log(await user.correctPassword(password, user.password));
-  if (!user && !(await user.correctPassword(password, user.password)))
+  if (!user || !(await user.correctPassword(password, user.password))) {
     return next(
       new AppError("User or Password does not match. Please try again", 401)
     );
+  }
 
   // sign JWT
 
   const token = signToken(user._id);
+
   res.status(200).json({
     status: "success",
     token: token,
@@ -156,6 +158,7 @@ exports.resetPassword = catchAsync(async function(req, res, next) {
     .digest("hex");
 
   console.log(hashedToken);
+  console.log(req.params);
 
   // 1. Get User based on token
 

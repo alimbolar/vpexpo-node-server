@@ -35,7 +35,13 @@ exports.createOne = (Model) =>
 
 exports.getOne = (Model) =>
   catchAsync(async function(req, res, next) {
-    const doc = await Model.findById(req.params.id);
+    const features = new APIFeatures(
+      Model.findById(req.params.id),
+      req.query
+    ).limitFields();
+    const doc = await features.query;
+
+    // const doc = await Model.findById(req.params.id);
 
     if (!doc) {
       return next(new AppError("A document with this ID does not exist", 404));

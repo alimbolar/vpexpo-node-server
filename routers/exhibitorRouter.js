@@ -12,10 +12,10 @@ router
     exhibitorController.createOneExhibitor
   );
 
-// router
-//   .route("/:id")
-//   .get(boothController.getOneBooth)
-//   .patch(boothController.updateOneBooth)
-//   .delete(boothController.deleteOneBooth);
+router
+  .route("/:id")
+  .get(exhibitorController.getOneExhibitor)
+  .patch(exhibitorController.updateOneExhibitor)
+  .delete(exhibitorController.deleteOneExhibitor);
 
 module.exports = router;
