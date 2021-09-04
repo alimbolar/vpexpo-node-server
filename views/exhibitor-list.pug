@@ -1,0 +1,35 @@
+extends base
+
+block content
+    section.exhibitor-list
+        .all-exhibitors
+            ul.table.theader
+                li.trow
+                    //- .number #
+                    .name Exhibitor Name
+                    .location Location
+                    .shortlisted
+                        i.fas.fa-heart
+                    .visited
+                        i.fas.fa-handshake
+            each exhibitor in exhibitors
+                ul.exhibitor.table.trows
+                    li.exhibitor__info.trow(data-id=`${exhibitor._id}`)
+                        //- .number 1
+                        .name= exhibitor.name
+                        .location= exhibitor.booth
+                        .shortlisted 
+                            i.far.fa-heart
+                        .visited 
+                        i.far.fa-handshake
+
+                    li.exhibitor__data.hidden
+                        .exhibitor__data--flex
+                            .exhibitor__data--logo
+                                img(src="https://source.unsplash.com/branding/200x200" alt="")
+                            .exhibitor__data--info
+                                h4 About Exhibitor
+                                p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate odio aperiam enim distinctio beatae fugit delectus maxime cum ad officia aut recusandae ducimus unde cumque voluptatem soluta, neque a explicabo.
+                                button.know-more Know More
+
+                            

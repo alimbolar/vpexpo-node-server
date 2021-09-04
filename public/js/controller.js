@@ -36,23 +36,23 @@ document.querySelector(".close").addEventListener("click", function() {
 
 // TO EXPAND THE EXHIBITOR ROW
 
-// allExhibitors.addEventListener("click", function(e) {
-//   e.preventDefault();
+allExhibitors.addEventListener("click", function(e) {
+  e.preventDefault();
 
-//   const exhibitorInfo = e.target.closest(".exhibitor__info");
+  const exhibitorInfo = e.target.closest(".exhibitor__info");
 
-//   console.log(e.target);
-//   console.log(exhibitorInfo);
-//   console.log(exhibitorInfo.nextElementSibling);
+  console.log(e.target);
+  console.log(exhibitorInfo);
+  console.log(exhibitorInfo.nextElementSibling);
 
-//   if (exhibitorInfo) {
-//     allExhibitorData.forEach((exhibitorData) =>
-//       exhibitorData.classList.add("hidden")
-//     );
-//     exhibitorInfo.nextElementSibling.classList.toggle("hidden");
-//     console.log("in");
-//   }
-// });
+  if (exhibitorInfo) {
+    allExhibitorData.forEach((exhibitorData) =>
+      exhibitorData.classList.add("hidden")
+    );
+    exhibitorInfo.nextElementSibling.classList.toggle("hidden");
+    console.log("in");
+  }
+});
 
 // TO HIDE AND UNHIDE THE EXHIBITOR LIST VIEW
 
