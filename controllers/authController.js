@@ -12,8 +12,21 @@ signToken = function(id) {
   });
 };
 
+const cookieOptions = {
+  expires: new Date(
+    Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+  ),
+  httpOnly: true,
+};
+if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
+
 const createSendToken = function(user, statusCode, res) {
   const token = signToken(user._id);
+
+  res.cookie("jwt", token, cookieOptions);
+
+  user.password = undefined;
+
   res.status(statusCode).json({
     status: "success",
     token,
@@ -24,12 +37,13 @@ const createSendToken = function(user, statusCode, res) {
 exports.signup = catchAsync(async function(req, res, next) {
   const newUser = await User.create(req.body);
 
-  const token = signToken(newUser._id);
+  createSendToken(newUser, 201, res);
+  // const token = signToken(newUser._id);
 
-  res.status(200).json({
-    status: "success",
-    token: token,
-  });
+  // res.status(200).json({
+  //   status: "success",
+  //   token: token,
+  // });
 });
 
 exports.login = catchAsync(async function(req, res, next) {
@@ -53,17 +67,49 @@ exports.login = catchAsync(async function(req, res, next) {
 
   // sign JWT
 
-  const token = signToken(user._id);
-
-  res.status(200).json({
-    status: "success",
-    token: token,
-    data: {
-      user: user,
-    },
-  });
+  createSendToken(user, 200, res);
 });
 
+exports.logout = function(req, res, next) {
+  res.cookie("jwt", "loggedout", {
+    expires: new Date(Date.now() + 10 * 1000),
+    httpOnly: true,
+  });
+  res.status(200).json({
+    status: "success",
+  });
+};
+
+// 'IS LOGGED IN' MIDDLEWARE
+
+exports.isLoggedIn = async function(req, res, next) {
+  if (req.cookies.jwt) {
+    try {
+      const decoded = await promisify(jwt.verify)(
+        req.cookies.jwt,
+        process.env.JWT_SECRET_KEY
+      );
+      // check if user exists
+      const user = await User.findById(decoded.id);
+
+      if (!user) return next();
+
+      // check if password was changed after JWT Token was issued
+
+      if (user.changedPasswordAfter(decoded.iat)) return next();
+
+      // Grant Access
+      res.locals.user = user;
+      return next();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  next();
+};
+
+// PROTECT MIDDLEWARE
 exports.protect = catchAsync(async function(req, res, next) {
   let token;
   if (
@@ -71,6 +117,8 @@ exports.protect = catchAsync(async function(req, res, next) {
     req.headers.authorization.startsWith("Bearer")
   ) {
     token = req.headers.authorization.split(" ")[1];
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
   }
 
   if (!token) return next(new AppError("Token does not exist", 401));
@@ -95,6 +143,7 @@ exports.protect = catchAsync(async function(req, res, next) {
 
   // Grant Access
   req.user = user;
+  res.locals.user = user;
   next();
 });
 
@@ -185,14 +234,15 @@ exports.resetPassword = catchAsync(async function(req, res, next) {
 
   // 5. Log in the user by sending the JWT Token
 
-  const token = signToken(user._id);
-  res.status(200).json({
-    status: "success",
-    token: token,
-    data: {
-      user: user,
-    },
-  });
+  createSendToken(user, 201, res);
+  // const token = signToken(user._id);
+  // res.status(200).json({
+  //   status: "success",
+  //   token: token,
+  //   data: {
+  //     user: user,
+  //   },
+  // });
 });
 
 exports.updateMyPassword = catchAsync(async function(req, res, next) {

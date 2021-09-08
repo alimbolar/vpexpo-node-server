@@ -1,0 +1,8 @@
+extends base
+
+block content 
+    section.exhibitor 
+        .logo  
+            img(src="/images/vp-expo-logo.png", alt=`Logo of ${exhibitor.name}`)
+        .name= exhibitor.name 
+        .description= exhibitor.address

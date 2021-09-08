@@ -26,10 +26,12 @@ block content
                     li.exhibitor__data.hidden
                         .exhibitor__data--flex
                             .exhibitor__data--logo
-                                img(src="https://source.unsplash.com/branding/200x200" alt="")
+                                img(src="/images/vp-expo-logo.png" alt="")
                             .exhibitor__data--info
                                 h4 About Exhibitor
                                 p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate odio aperiam enim distinctio beatae fugit delectus maxime cum ad officia aut recusandae ducimus unde cumque voluptatem soluta, neque a explicabo.
-                                button.know-more Know More
+                                a.know-more(href=`/exhibitor/${exhibitor.slug}`) Know More
 
+block scripts 
+    script(src="/js/exhibitorList.js") 
                             

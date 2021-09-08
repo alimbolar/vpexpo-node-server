@@ -4,6 +4,7 @@ const rateLimit = require("express-rate-limit");
 const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
+const cookieParser = require("cookie-parser");
 
 const dotenv = require("dotenv");
 const userRouter = require("./routers/userRouter");
@@ -18,8 +19,6 @@ const app = express();
 
 app.set("view engine", "pug");
 app.set("views", "./views");
-
-app.use("/", viewRouter);
 
 //Serve Static Files
 app.use(express.static(`${__dirname}/public`));
@@ -42,12 +41,21 @@ app.use("/api", limiter);
 // Body Parser
 app.use(express.json());
 
+//Cookie Parser
+app.use(cookieParser());
+
 //Data Sanitization
 app.use(mongoSanitize());
 app.use(xss());
 
-// ROUTES
+// Test Middleware
+app.use((req, res, next) => {
+  console.log(req.cookies.jwt);
+  next();
+});
 
+// ROUTES
+app.use("/", viewRouter);
 app.use("/api/v1/zoho", zohoRouter);
 app.use("/api/v1/users", userRouter);
 // app.use("/api/v1/organisations", organisationRouter);

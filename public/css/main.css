@@ -500,3 +500,10 @@ button {
   flex-grow: 1;
 }
 /*# sourceMappingURL=main.css.map */
+
+a.know-more {
+  background-color: var(--secondary-color);
+  /* padding: 0.7em; */
+  border: none;
+  /* margin-top: 1em; */
+}
