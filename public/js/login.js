@@ -16,9 +16,10 @@ const login = async function(email, password) {
       window.setTimeout(() => location.assign("/exhibitors"), 1500);
     }
   } catch (err) {
-    console.log(err.response.data.message);
-    // console.log(err);s
-    showAlert("error", err.response.data.message);
+    // console.log(err.response.data.message);
+    // console.log(err);
+    // showAlert("error", err.response.data.message);
+    showAlert("error", "placeholder error");
   }
 };
 
