@@ -24,7 +24,6 @@ if (menuButton) {
 }
 
 const logoutBtn = document.querySelector(".logout");
-console.log(logoutBtn);
 
 if (logoutBtn) {
   logoutBtn.addEventListener("click", logout);

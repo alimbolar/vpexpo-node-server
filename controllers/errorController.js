@@ -19,27 +19,60 @@ const handleDuplicateFieldsDB = function(err) {
   return new AppError(message, 400);
 };
 
-const sendErrorDev = function(err, res) {
-  res.status(err.statusCode).json({
-    status: err.status,
-    error: err,
+const sendErrorDev = function(err, req, res) {
+  console.log(err);
+  console.log(err.message);
+
+  // A) API URLs
+  if (req.originalUrl.startsWith("api")) {
+    return res.status(err.statusCode).json({
+      status: err.status,
+      error: err,
+      message: err.message,
+      stack: err.stack,
+    });
+  }
+  // B) RENDERED WEBSITE URLs
+  // return res.status(err.statusCode).json({
+  //   status: err.status,
+  //   error: err,
+  //   message: err.message,
+  //   stack: err.stack,
+  // });
+  return res.status(err.statusCode).render("error", {
+    title: "Something went wrong",
     message: err.message,
-    stack: err.stack,
   });
 };
 
-const sendErrorProd = function(err, res) {
-  if (err.isOperational) {
-    res.status(err.statusCode).json({
-      status: err.status,
-      message: err.message,
-    });
-  } else {
-    res.status(500).json({
+const sendErrorProd = function(err, req, res) {
+  // A) API URLs
+  if (req.originalUrl.startsWith("api")) {
+    if (err.isOperational) {
+      return res.status(err.statusCode).json({
+        status: err.status,
+        message: err.message,
+      });
+    }
+
+    return res.status(500).json({
       status: "error",
       message: "Something went wrong",
     });
   }
+  // B) RENDERED WEBSITE URLs
+  if (err.isOperational) {
+    return res.status(err.statusCode).render("error", {
+      title: "Something went wrong",
+      msg: err.message,
+    });
+  }
+
+  return res.status(err.statusCode).render("error", {
+    title: "Something went wrong",
+    msg:
+      "Something went wrong. Please bang your head against the wall a minimum or 5 times before trying again!",
+  });
 };
 
 module.exports = (err, req, res, next) => {
@@ -47,9 +80,10 @@ module.exports = (err, req, res, next) => {
   err.status = err.status || "error";
 
   if (process.env.NODE_ENV === "development") {
-    sendErrorDev(err, res);
+    sendErrorDev(err, req, res);
   } else if (process.env.NODE_ENV === "production") {
     let error = Object.assign(err);
+    // error.message = err.message;
 
     if (error.name === "CastError") {
       error = handleCastErrorDB(error);
@@ -60,6 +94,6 @@ module.exports = (err, req, res, next) => {
     if (error.code === 11000) {
       error = handleDuplicateFieldsDB(error);
     }
-    sendErrorProd(error, res);
+    sendErrorProd(error, req, res);
   }
 };
