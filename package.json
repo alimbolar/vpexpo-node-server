@@ -4,7 +4,7 @@
   "description": "VP Expo Dubai",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server",
+    "start": "node server",
     "dev": "NODE_ENV=development nodemon server",
     "prod": "NODE_ENV=production nodemon server",
     "watch:js": "parcel watch ./public/js/index.js --out-dir ./public/js --out-file bundle.js"
