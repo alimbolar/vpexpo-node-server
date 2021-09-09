@@ -27,7 +27,11 @@ dotenv.config({ path: `${__dirname}/config.env` });
 
 // GLOBAL MIDDLEWARES
 //Security Headers
-// app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 
 // Limit Requests
 const limiter = rateLimit({
