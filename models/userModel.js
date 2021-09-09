@@ -1,6 +1,7 @@
 const crypto = require("crypto");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
+const validator = require("validator");
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -14,6 +15,7 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    validate: [validator.isEmail, "Email is not valid"],
     // unique: true,
     lowercase: true,
   },

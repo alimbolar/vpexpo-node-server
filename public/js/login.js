@@ -44,10 +44,10 @@ export const logout = async function() {
   }
 };
 
-const form = document.querySelector(".form");
+const loginForm = document.querySelector(".form--login");
 
-if (form) {
-  form.addEventListener("submit", function(e) {
+if (loginForm) {
+  loginForm.addEventListener("submit", function(e) {
     e.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;

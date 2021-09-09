@@ -35,7 +35,7 @@ exports.updateMe = catchAsync(async function(req, res, next) {
 
   // **Filter out unwanted fields to ensure only needed fields and its data exist**
 
-  const filteredBody = filterObj(req.body, "firstName", "email");
+  const filteredBody = filterObj(req.body, "firstName", "lastName", "email");
 
   // **Update Data**
   const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, {

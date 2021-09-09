@@ -1,6 +1,8 @@
 const Exhibitor = require("./../models/exhibitorModel");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/AppError");
+const { findById } = require("./../models/exhibitorModel");
+const User = require("./../models/userModel");
 
 exports.getOverview = function(req, res) {
   res.status(200).render("opening-page");
@@ -32,5 +34,14 @@ exports.displayExhibitor = catchAsync(async function(req, res, next) {
   res.status(200).render("exhibitor", {
     title: `${exhibitor.name}`,
     exhibitor,
+  });
+});
+
+exports.getAccount = catchAsync(async function(req, res, next) {
+  const user = await User.findById(req.user.id);
+
+  res.status(200).render("account", {
+    title: "My Account",
+    user,
   });
 });
