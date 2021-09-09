@@ -20,11 +20,8 @@ const handleDuplicateFieldsDB = function(err) {
 };
 
 const sendErrorDev = function(err, req, res) {
-  console.log(err);
-  console.log(err.message);
-
   // A) API URLs
-  if (req.originalUrl.startsWith("api")) {
+  if (req.originalUrl.startsWith("/api")) {
     return res.status(err.statusCode).json({
       status: err.status,
       error: err,
@@ -33,12 +30,7 @@ const sendErrorDev = function(err, req, res) {
     });
   }
   // B) RENDERED WEBSITE URLs
-  // return res.status(err.statusCode).json({
-  //   status: err.status,
-  //   error: err,
-  //   message: err.message,
-  //   stack: err.stack,
-  // });
+
   return res.status(err.statusCode).render("error", {
     title: "Something went wrong",
     message: err.message,
@@ -47,7 +39,7 @@ const sendErrorDev = function(err, req, res) {
 
 const sendErrorProd = function(err, req, res) {
   // A) API URLs
-  if (req.originalUrl.startsWith("api")) {
+  if (req.originalUrl.startsWith("/api")) {
     if (err.isOperational) {
       return res.status(err.statusCode).json({
         status: err.status,

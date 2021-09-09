@@ -18,8 +18,8 @@ const login = async function(email, password) {
   } catch (err) {
     // console.log(err.response.data.message);
     // console.log(err);
-    // showAlert("error", err.response.data.message);
-    showAlert("error", "placeholder error");
+    showAlert("error", err.response.data.message);
+    // showAlert("error", "placeholder error");
   }
 };
 
