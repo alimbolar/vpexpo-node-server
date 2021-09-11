@@ -1,0 +1,39 @@
+.main{
+
+    margin-top:75px;
+    margin-bottom:75px;
+;
+
+    overflow:scroll;
+
+}
+
+.content{
+    width:100%;
+
+    .opening-page{
+        width:100%;
+        margin:auto;
+    }
+
+}
+
+.display-list{
+
+    margin: 2em;
+    
+}
+
+
+@media (min-width:800px) {
+
+    .flex{
+        display: flex;
+    }
+
+     .sidebar{
+        width:300px;
+        background-color:darkslategrey;
+    } 
+    
+}

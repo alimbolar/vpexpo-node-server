@@ -1,0 +1,40 @@
+.all-exhibitors{
+    // display: block;
+    width:100%;
+    margin-top:15px;
+    // background-color: red;
+}
+
+
+.exhibitor{
+
+    &__data{
+
+        &--flex{
+            display: flex;
+            padding: 0.5em;
+            gap:1em;
+
+
+
+        }
+
+        &--logo{
+
+            width:30%;
+            max-width:150px;
+
+        }
+
+        &--info{
+
+            width:70%;
+            // background-color: red;
+            flex-grow:1;
+            // padding: 1em;
+
+        }
+
+
+    }
+}

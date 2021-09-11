@@ -1,0 +1,36 @@
+.exhibitor-card{
+    border-radius:10px;
+    border: yellowgreen 1px solid;
+    padding:2em;
+    margin: 1em auto;
+    display: flex;
+    justify-content: space-between;
+
+    h2{
+        color: darkslategrey;
+    }
+}
+
+.exhibitor-details{
+    // width:50%;
+
+    margin:2em;
+
+}
+
+.exhibitor-icons{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+
+
+    i{
+        margin-bottom: 1rem;
+        width:4rem;
+    }
+
+ };
+
+
+

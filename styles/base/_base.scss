@@ -1,0 +1,42 @@
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root{
+  --primary-color: darkslategray;
+  --secondary-color:yellowgreen; 
+  --accent-color:rgba(128,186,39,0.5);
+  --text:rgba(0,0,0,0.6);
+  --grey:rgba(0,0,0,0.3);
+}
+
+body{
+    // margin:5px;
+    // padding:5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:var(--text);
+    // position: relative;
+    // background-color: pink;
+}
+
+img{
+    width:100%;
+}
+
+svg{
+  width: 1.5em;
+  height:1.5em;
+}
+
+ul{
+  list-style : none;
+}
+
+.hidden{
+  display:none;
+}

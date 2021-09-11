@@ -1,0 +1,37 @@
+.login{
+    width:100%;
+    height:calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+   &__form{
+
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       
+       label, input, button{
+           margin-top:1em;
+           text-align: center;
+       }
+           input{
+           flex-basis: 50px;
+           width:300px;
+       }
+       button{
+           margin-top: 2em;
+           padding:0.75em 3em;
+       }
+
+   }
+   &__text{
+
+       // flex-basis:80%;
+       // max-width:400px;
+       // margin-top:2em;
+
+       text-align: center;
+   }
+}
