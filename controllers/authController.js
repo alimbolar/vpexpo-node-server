@@ -12,16 +12,19 @@ signToken = function(id) {
   });
 };
 
-const cookieOptions = {
-  expires: new Date(
-    Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-  ),
-  httpOnly: true,
-};
-if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
-
-const createSendToken = function(user, statusCode, res) {
+const createSendToken = function(user, statusCode, req, res) {
   const token = signToken(user._id);
+
+  const cookieOptions = {
+    expires: new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+  };
+  // if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
+
+  if (req.secure || req.header("x-forwarded-proto") === "https")
+    cookieOptions.secure = true;
 
   res.cookie("jwt", token, cookieOptions);
 
@@ -37,7 +40,7 @@ const createSendToken = function(user, statusCode, res) {
 exports.signup = catchAsync(async function(req, res, next) {
   const newUser = await User.create(req.body);
 
-  createSendToken(newUser, 201, res);
+  createSendToken(newUser, 201, req, res);
   // const token = signToken(newUser._id);
 
   // res.status(200).json({
@@ -67,7 +70,7 @@ exports.login = catchAsync(async function(req, res, next) {
 
   // sign JWT
 
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });
 
 exports.logout = function(req, res, next) {
@@ -235,7 +238,7 @@ exports.resetPassword = catchAsync(async function(req, res, next) {
 
   // 5. Log in the user by sending the JWT Token
 
-  createSendToken(user, 201, res);
+  createSendToken(user, 201, req, res);
   // const token = signToken(user._id);
   // res.status(200).json({
   //   status: "success",
@@ -266,5 +269,5 @@ exports.updateMyPassword = catchAsync(async function(req, res, next) {
 
   // **Create And Send Token**
 
-  createSendToken(user, 200, res);
+  createSendToken(user, 200, req, res);
 });

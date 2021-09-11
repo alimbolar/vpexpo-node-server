@@ -17,6 +17,9 @@ const viewRouter = require("././routers/viewRouter");
 
 const app = express();
 
+// Connected to the headers part in createSendToken function. It's purpose is to help it for heroku's x-forwarded-proto option
+app.enable("trust proxy");
+
 app.set("view engine", "pug");
 app.set("views", "./views");
 
