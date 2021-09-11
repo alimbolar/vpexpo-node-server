@@ -2,7 +2,7 @@
 
 
 
-In the package.json, it's need that you mention this line below
+In the package.json, it's need that you mention this line below based on the node version you are using
 
 ```
 
@@ -11,3 +11,12 @@ In the package.json, it's need that you mention this line below
   }
 
 ```
+
+It's mandatory to listen the process.env.PORT in the app.js or server.js
+
+```
+
+port = process.env_PORT
+
+```
+
