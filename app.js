@@ -5,6 +5,8 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
+const compression = require("compression");
 
 const dotenv = require("dotenv");
 const userRouter = require("./routers/userRouter");
@@ -30,6 +32,10 @@ dotenv.config({ path: `${__dirname}/config.env` });
 
 // GLOBAL MIDDLEWARES
 //Security Headers
+app.use(cors());
+
+app.options("*", cors());
+
 app.use(
   helmet({
     contentSecurityPolicy: false,
@@ -60,6 +66,8 @@ app.use((req, res, next) => {
   console.log(req.cookies.jwt);
   next();
 });
+
+app.use(compression());
 
 // ROUTES
 app.use("/", viewRouter);

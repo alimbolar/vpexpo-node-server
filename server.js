@@ -37,3 +37,9 @@ process.on("unhandledRejection", (err) => {
   console.log("Shutting down server....");
   server.close(() => process.exit(1));
 });
+
+// ADDED FOR HEROKU'S SIGTERM ISSUE
+process.on("SIGTERM", () => {
+  console.log("SIGTERM received. Shutting downn gracefully...");
+  server.close(() => console.log("process terminated"));
+});

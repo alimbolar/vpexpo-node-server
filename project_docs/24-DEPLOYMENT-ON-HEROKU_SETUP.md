@@ -1,12 +1,20 @@
 # Deployment On Heroku
 
+Install compression
+
+```
+
+app.use(compression());
+
+```
+
 In the package.json, it's need that you mention this line below based on the
 node version you are using
 
 ```
 
 "engines": {
-    "node": "^12.0.0"
+    "node": "^12"
   }
 
 ```
@@ -56,6 +64,16 @@ console.log('SIGTERM received. Shutting downn gracefully...');
 server.close(()=>console.log('process terminated'))
 
 })
+
+
+```
+
+Install cors and add in app.js
+
+```
+app.use(cors());
+
+app.options("*", cors());
 
 
 ```
