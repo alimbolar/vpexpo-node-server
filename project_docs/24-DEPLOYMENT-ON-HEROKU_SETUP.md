@@ -20,3 +20,10 @@ port = process.env_PORT
 
 ```
 
+Update all the config vars with this command below or directly on the server
+
+```
+
+heroku config:set -a vp-expo-node-server EMAIL_PASSWORD=fcd88378ac0031
+
+```
