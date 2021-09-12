@@ -8,7 +8,8 @@
     "dev": "NODE_ENV=development nodemon server",
     "prod": "NODE_ENV=production nodemon server",
     "watch:css": "node-sass --watch ./styles/main.scss --output ./public/css/",
-    "build:css": "node-sass --output-style compressed ./styles/main.scss --output ./public/css/"
+    "build:css": "node-sass --output-style compressed ./styles/main.scss --output ./public/css/",
+    "watch:js": "webpack --watch ./frontend/scripts/index.js -o ./public/js"
   },
   "keywords": [],
   "author": "Alim",
@@ -37,6 +38,8 @@
     "pug": "^3.0.2",
     "slugify": "^1.6.0",
     "validator": "^13.6.0",
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0",
     "xss-clean": "^0.1.1"
   },
   "devDependencies": {

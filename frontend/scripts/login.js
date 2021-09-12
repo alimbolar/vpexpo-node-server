@@ -1,6 +1,7 @@
 import { showAlert } from "./alert.js";
+import axios from "axios";
 
-const login = async function(email, password) {
+export const login = async function(email, password) {
   try {
     const res = await axios({
       method: "POST",
@@ -44,13 +45,14 @@ export const logout = async function() {
   }
 };
 
-const loginForm = document.querySelector(".form--login");
+// testing
+// const loginForm = document.querySelector(".form--login");
 
-if (loginForm) {
-  loginForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    login(email, password);
-  });
-}
+// if (loginForm) {
+//   loginForm.addEventListener("submit", function(e) {
+//     e.preventDefault();
+//     const email = document.getElementById("email").value;
+//     const password = document.getElementById("password").value;
+//     login(email, password);
+//   });
+// }
