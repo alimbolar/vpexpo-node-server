@@ -7,7 +7,7 @@
     "start": "node server",
     "dev": "NODE_ENV=development nodemon server",
     "prod": "NODE_ENV=production nodemon server",
-    "watch:css": "node-sass --watch ./styles/main.scss --output ./public/css/",
+    "watch:css": "node-sass --watch ./frontend/styles/main.scss --output ./public/css/",
     "build:css": "node-sass --output-style compressed ./styles/main.scss --output ./public/css/",
     "watch:js": "webpack --watch ./frontend/scripts/index.js -o ./public/js"
   },

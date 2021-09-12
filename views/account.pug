@@ -11,12 +11,12 @@ mixin navItem(link, text,icon,active)
 
 block content
     main.main
-        .user-view
-            nav.user-view__menu
-                ul.side-nav
+        section.my-account
+            nav.my-account__menu
+                ul.my-account__nav
                     +navItem('#','My Profile','settings',true)
-                    +navItem('#','My Organisation','briefcase',true)
-                    +navItem('#','My Reviews','star',true)
+                    +navItem('#','My Organisation','briefcase')
+                    +navItem('#','Security','star')
                     //- +navItem('#','Billing','credit-card',true)
 
 
@@ -30,17 +30,23 @@ block content
                 //-             +navItem('#','Manage Bookings','briefcase')
 
 
-            .user-view__content
-                .user-view__form-container
-                    h2.heading-secondary.ma-bt-md Your account settings
+            .my-account_info
+                .my-account__form-container
+                    //- h2.heading-secondary.ma-bt-md Your account settings
                     //- form.form.form-user-data(action="/submit-user-data" method="POST")
 
                     form.form.form-user-data
                         .form__group
-                            label.form__label(for='name') First Name
-                            input#firstName.form__input(type='text', value=`${user.firstName}`, required, name="name")
-                            label.form__label(for='name') Last Name
-                            input#lastName.form__input(type='text', value=`${user.lastName}`, required, name="name")
+                            label.form__label(for='firstName') First Name
+                            input#firstName.form__input(type='text', value=`${user.firstName}`, required, name="firstName")
+                            label.form__label(for='lastName') Last Name
+                            input#lastName.form__input(type='text', value=`${user.lastName}`, required, name="lastName")
+                        .form__group
+                            label.form__label(for='profile') Designation
+                            input#profile.form__input(type='text', value=`${user.firstName}`, required, name="profile")
+                        .form__group
+                            label.form__label(for='name') Mobile
+                            input#mobile.form__input(type='text', value=`${user.mobile}`, required, name="mobile")
                         .form__group.ma-bt-md
                             label.form__label(for='email') Email address
                             input#email.form__input(type='email', value=`${user.email}`, required,name="email")
@@ -50,7 +56,7 @@ block content
                         .form__group.right
                             button.btn.btn--small.btn--green.update-data Save settings
                 .line &nbsp;
-                .user-view__form-container
+                .my-account__form-container
                     h2.heading-secondary.ma-bt-md Password change
                     form.form.form-user-password
                         .form__group
@@ -67,5 +73,3 @@ block content
 
 
 
-//- block scripts 
-//-     script(src="/js/updateSettings.js") 

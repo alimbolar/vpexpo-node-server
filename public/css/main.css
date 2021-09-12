@@ -51,20 +51,27 @@ ul {
   flex-direction: column;
   justify-content: center;
   align-items: center; }
-  .login__form {
+  .login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; }
-    .login__form label, .login__form input, .login__form button {
+    .login-form label,
+    .login-form input,
+    .login-form button {
       margin-top: 1em;
       text-align: center; }
-    .login__form input {
+    .login-form label {
+      text-transform: uppercase; }
+    .login-form input {
       flex-basis: 50px;
       width: 300px; }
-    .login__form button {
+    .login-form button {
       margin-top: 2em;
       padding: 0.75em 3em; }
+    .login-form .form__group {
+      display: flex;
+      flex-direction: column; }
   .login__text {
     text-align: center; }
 
@@ -342,6 +349,36 @@ button {
   transform: rotate(45deg);
   top: 0;
   transition: top 0.2s, transform 0.2s 0.14s; }
+
+.my-account {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .my-account__nav {
+    display: flex;
+    margin-bottom: 1em; }
+  .my-account form.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .my-account form.form label,
+    .my-account form.form input,
+    .my-account form.form button {
+      margin-top: 1em;
+      text-align: center; }
+    .my-account form.form label {
+      text-transform: uppercase; }
+    .my-account form.form input {
+      flex-basis: 50px;
+      width: 300px; }
+    .my-account form.form button {
+      margin-top: 2em;
+      padding: 0.75em 3em; }
+    .my-account form.form .form__group {
+      display: flex;
+      flex-direction: column; }
 
 .about {
   width: 100%;

@@ -1,11 +1,15 @@
-.login {
-  width: 100%;
-  height: calc(100vh - 80px);
+.my-account {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  &-form {
+
+  &__nav {
+    display: flex;
+    margin-bottom: 1em;
+  }
+
+  form.form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -33,11 +37,5 @@
       flex-direction: column;
     }
   }
-  &__text {
-    // flex-basis:80%;
-    // max-width:400px;
-    // margin-top:2em;
-
-    text-align: center;
-  }
 }
+// fsdkfslk
