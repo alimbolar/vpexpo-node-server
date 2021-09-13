@@ -1,40 +1,56 @@
-.all-exhibitors{
-    // display: block;
-    width:100%;
-    margin-top:15px;
-    // background-color: red;
+.exhibitor-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  //   align-items: flex-end;
+  height: 100%;
+  //   background-color: red;
 }
 
+.all-exhibitors {
+  // display: block;
+  width: 100%;
+  margin-top: 15px;
+  //   background-color: yellow;
+}
 
-.exhibitor{
-
-    &__data{
-
-        &--flex{
-            display: flex;
-            padding: 0.5em;
-            gap:1em;
-
-
-
-        }
-
-        &--logo{
-
-            width:30%;
-            max-width:150px;
-
-        }
-
-        &--info{
-
-            width:70%;
-            // background-color: red;
-            flex-grow:1;
-            // padding: 1em;
-
-        }
-
-
+.exhibitor {
+  &__data {
+    &--flex {
+      display: flex;
+      padding: 0.5em;
+      gap: 1em;
     }
+
+    &--logo {
+      width: 30%;
+      max-width: 150px;
+    }
+
+    &--info {
+      width: 70%;
+      // background-color: red;
+      flex-grow: 1;
+      // padding: 1em;
+    }
+  }
+}
+
+// sdfsd
+
+.pagination {
+  width: 90%;
+  //   margin: auto;
+  padding: 1em;
+  margin: 0 auto;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  //   background-color: var(--secondary-color);
+  font-size: 1em;
+
+  i {
+    color: var(--secondary-color);
+  }
 }

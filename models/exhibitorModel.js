@@ -4,29 +4,44 @@ const slugify = require("slugify");
 
 const exhibitorSchema = new mongoose.Schema({
   category: {
-    type: Array,
+    type: String,
+    enum: [
+      "Spectacles And Sunglasses",
+      "Ophthalmic Lenses",
+      "Contact Lens Products",
+      "Instruments, Equipment And Machinery",
+      "Eyewear Accessories",
+      "Optical Tech",
+      "Eye Care Products",
+      "Optical Store Display And Decoration",
+      "Private Label Manufacturing",
+      "Raw Material Supplies",
+    ],
+    required: true,
   },
   booth: {
     type: String,
+    required: true,
   },
   name: {
     type: String,
-    // required: [true, "Organisation Name is required"],
+    required: [true, "Organisation Name is required"],
   },
   slug: {
     type: String,
+    required: true,
   },
   address: {
     type: String,
-    // required: [true, "Org Address is required"],
+    required: [true, "Org Address is required"],
   },
   city: {
     type: String,
-    // required: [true, "City is required"],
+    required: [true, "City is required"],
   },
   country: {
     type: String,
-    // required: [true, "Country is needed"],
+    required: [true, "Country is needed"],
   },
   latitude: String,
   longitude: String,
@@ -36,33 +51,30 @@ const exhibitorSchema = new mongoose.Schema({
   email: {
     type: String,
   },
+  logo: {
+    type: String,
+    default: "default-logo.jpg",
+  },
   profile: {
     type: String,
     default: function() {
       return `We are ${this.name} from ${this.country} and we specialise in${this.category}. We are located at ${this.booth}.`;
     },
   },
-  creatorID: String,
+  creatorId: { type: String, required: true },
   website: String,
-  shortName: String,
   isActive: {
     type: Boolean,
     default: true,
   },
   visits: Array,
-  // visits : [
-  //   {
-  //     // List of all visitors that the booth has received
-  //     type: mongoose.Schema.ObjectId,
-  //     ref: "user",
-  //   },
-  // ],
   orgEmployee: Array,
 });
 
 exhibitorSchema.index({ category: 1 });
 // exhibitorSchema.index({ name: 1 });
 exhibitorSchema.index({ slug: 1 });
+exhibitorSchema.index({ creatorId: 1 });
 
 // boothSchema.pre("save", async function(next) {
 //   const organisationPromises = await this.organisation.map(
@@ -72,14 +84,14 @@ exhibitorSchema.index({ slug: 1 });
 //   next();
 // });
 
-exhibitorSchema.pre("save", function(next) {
-  this.slug = slugify(this.name, {
-    lowercase: true,
-    strict: true,
-    remove: undefined,
-  });
-  next();
-});
+// exhibitorSchema.pre("save", function(next) {
+//   this.slug = slugify(this.name, {
+//     lowercase: true,
+//     strict: true,
+//     remove: undefined,
+//   });
+//   next();
+// });
 
 const Exhibitor = mongoose.model("exhibitor", exhibitorSchema);
 

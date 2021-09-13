@@ -44,37 +44,6 @@ ul {
 .footer {
   position: relative; }
 
-.login {
-  width: 100%;
-  height: calc(100vh - 80px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; }
-  .login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; }
-    .login-form label,
-    .login-form input,
-    .login-form button {
-      margin-top: 1em;
-      text-align: center; }
-    .login-form label {
-      text-transform: uppercase; }
-    .login-form input {
-      flex-basis: 50px;
-      width: 300px; }
-    .login-form button {
-      margin-top: 2em;
-      padding: 0.75em 3em; }
-    .login-form .form__group {
-      display: flex;
-      flex-direction: column; }
-  .login__text {
-    text-align: center; }
-
 header {
   border-bottom: 1px solid var(--grey);
   background-color: #fff;
@@ -90,10 +59,12 @@ header {
 .main {
   margin-top: 75px;
   margin-bottom: 75px;
-  overflow: scroll; }
+  overflow: scroll;
+  height: calc(100vh - 150px); }
 
 .content {
-  width: 100%; }
+  width: 100%;
+  height: 100%; }
   .content .opening-page {
     width: 100%;
     margin: auto; }
@@ -160,107 +131,6 @@ header {
       .tabs > .nav ul li.nav__item i {
         font-size: 2rem;
         color: var(--primary-color); }
-
-.table {
-  width: 90%;
-  margin: auto;
-  font-size: 0.875rem; }
-  .table .number {
-    width: 10%;
-    text-align: left; }
-  .table .name {
-    width: 40%;
-    text-align: left;
-    height: auto;
-    max-height: 50px;
-    overflow: scroll; }
-  .table .location {
-    width: 20%;
-    text-align: left;
-    height: auto;
-    max-height: 50px;
-    overflow: scroll; }
-  .table .shortlisted {
-    width: 15%;
-    text-align: center; }
-  .table .visited {
-    width: 15%;
-    text-align: center; }
-  .table .trow {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 0.5rem;
-    margin-bottom: 0.2rem; }
-    .table .trow > * {
-      padding: .3rem; }
-  .table.trows {
-    border-bottom: 1px solid var(--grey); }
-  .table.theader {
-    background-color: var(--primary-color);
-    color: #fff;
-    text-transform: uppercase;
-    color: var(--secondary-color); }
-
-.modal {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 70%;
-  border-radius: 5%;
-  box-shadow: 10px 10px 30px var(--grey);
-  z-index: 10;
-  background-color: #fff; }
-  .modal .close {
-    position: absolute;
-    width: 3rem;
-    height: 3rem;
-    right: 2%;
-    top: 2%;
-    border-radius: 50%; }
-  .modal .submit {
-    position: relative;
-    width: auto;
-    padding: 0.5rem;
-    text-transform: uppercase;
-    text-align: center; }
-  .modal__content {
-    width: 80%;
-    margin: auto;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    height: 400px; }
-    .modal__content .notice {
-      text-align: center;
-      font-size: 1.5rem;
-      line-height: 1.3rem;
-      margin-bottom: 2rem; }
-    .modal__content form {
-      text-align: center;
-      height: auto;
-      width: 70%; }
-      .modal__content form input {
-        border: 1px solid var(--secondary-color);
-        height: 2rem;
-        width: 90%;
-        text-align: center; }
-      .modal__content form label {
-        font-size: 0.75rem;
-        margin-top: 1rem;
-        margin-bottom: 0.25rem; }
-
-.overlay {
-  z-index: 5;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.8;
-  background-color: var(--primary-color);
-  backdrop-filter: blur(10px); }
 
 button {
   background-color: var(--secondary-color);
@@ -350,6 +220,135 @@ button {
   top: 0;
   transition: top 0.2s, transform 0.2s 0.14s; }
 
+.table {
+  width: 90%;
+  margin: auto;
+  font-size: 0.875rem; }
+  .table .name {
+    width: 40%;
+    text-align: left;
+    height: auto;
+    max-height: 50px;
+    overflow: scroll; }
+  .table .location {
+    width: 20%;
+    text-align: center;
+    height: auto;
+    max-height: 50px;
+    overflow: scroll; }
+  .table .shortlisted {
+    width: 15%;
+    text-align: center; }
+  .table .visited {
+    width: 15%;
+    text-align: center; }
+  .table .trow {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem; }
+    .table .trow > * {
+      padding: 0.3rem; }
+  .table.trows {
+    border-bottom: 1px solid var(--grey); }
+  .table.theader {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-transform: uppercase;
+    color: var(--secondary-color); }
+
+.login {
+  width: 100%;
+  height: calc(100vh - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .login-form label,
+    .login-form input,
+    .login-form button {
+      margin-top: 1em;
+      text-align: center; }
+    .login-form label {
+      text-transform: uppercase; }
+    .login-form input {
+      flex-basis: 50px;
+      width: 300px; }
+    .login-form button {
+      margin-top: 2em;
+      padding: 0.75em 3em; }
+    .login-form .form__group {
+      display: flex;
+      flex-direction: column; }
+  .login__text {
+    text-align: center; }
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  border-radius: 5%;
+  box-shadow: 10px 10px 30px var(--grey);
+  z-index: 10;
+  background-color: #fff; }
+  .modal .close {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    right: 2%;
+    top: 2%;
+    border-radius: 50%; }
+  .modal .submit {
+    position: relative;
+    width: auto;
+    padding: 0.5rem;
+    text-transform: uppercase;
+    text-align: center; }
+  .modal__content {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 400px; }
+    .modal__content .notice {
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 1.3rem;
+      margin-bottom: 2rem; }
+    .modal__content form {
+      text-align: center;
+      height: auto;
+      width: 70%; }
+      .modal__content form input {
+        border: 1px solid var(--secondary-color);
+        height: 2rem;
+        width: 90%;
+        text-align: center; }
+      .modal__content form label {
+        font-size: 0.75rem;
+        margin-top: 1rem;
+        margin-bottom: 0.25rem; }
+
+.overlay {
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+  background-color: var(--primary-color);
+  backdrop-filter: blur(10px); }
+
 .my-account {
   display: flex;
   flex-direction: column;
@@ -386,6 +385,12 @@ button {
   display: flex;
   justify-content: center; }
 
+.exhibitor-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; }
+
 .all-exhibitors {
   width: 100%;
   margin-top: 15px; }
@@ -402,3 +407,15 @@ button {
 .exhibitor__data--info {
   width: 70%;
   flex-grow: 1; }
+
+.pagination {
+  width: 90%;
+  padding: 1em;
+  margin: 0 auto;
+  font-size: 0.875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-size: 1em; }
+  .pagination i {
+    color: var(--secondary-color); }

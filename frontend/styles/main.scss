@@ -4,16 +4,16 @@
 @import "./layouts/aside";
 @import "./layouts/container";
 @import "./layouts/footer";
-@import "./layouts/form";
 @import "./layouts/header";
 @import "./layouts/main";
 @import "./layouts/nav";
-@import "./layouts/table";
-@import "./layouts/modal";
 
 @import "./components/buttons";
 @import "./components/card";
 @import "./components/menu";
+@import "./components/table";
+@import "./components/form";
+@import "./components/modal";
 
 @import "./pages/my-account";
 @import "./pages/landing-page";

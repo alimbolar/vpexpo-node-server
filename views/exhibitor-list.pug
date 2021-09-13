@@ -21,7 +21,7 @@ block content
                         .shortlisted 
                             i.far.fa-heart
                         .visited 
-                        i.far.fa-handshake
+                            i.far.fa-handshake
 
                     li.exhibitor__data.hidden
                         .exhibitor__data--flex
@@ -31,6 +31,14 @@ block content
                                 h4 About Exhibitor
                                 p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate odio aperiam enim distinctio beatae fugit delectus maxime cum ad officia aut recusandae ducimus unde cumque voluptatem soluta, neque a explicabo.
                                 a.know-more(href=`/exhibitor/${exhibitor.slug}`) Know More
+
+
+        .pagination 
+            .prev
+                i.fas.fa-arrow-alt-circle-left.fa-2x
+            .current Page 2 of 10
+            .next
+                i.fas.fa-arrow-alt-circle-right.fa-2x
 
 //- block scripts 
 //-     script(src="/js/exhibitorList.js") 

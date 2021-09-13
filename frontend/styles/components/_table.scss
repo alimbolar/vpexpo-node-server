@@ -1,0 +1,60 @@
+.table {
+  width: 90%;
+  margin: auto;
+  font-size: 0.875rem;
+
+  //   .number {
+  //     width: 10%;
+  //     text-align: left;
+  //   }
+
+  .name {
+    width: 40%;
+    text-align: left;
+    height: auto;
+    max-height: 50px;
+    overflow: scroll;
+  }
+
+  .location {
+    width: 20%;
+    text-align: center;
+    height: auto;
+    max-height: 50px;
+    overflow: scroll;
+  }
+  .shortlisted {
+    width: 15%;
+    text-align: center;
+  }
+  .visited {
+    width: 15%;
+    text-align: center;
+  }
+
+  .trow {
+    display: flex;
+    justify-content: space-evenly;
+
+    > * {
+      // border: 1px solid red;
+      padding: 0.3rem;
+    }
+    margin-top: 0.5rem;
+    margin-bottom: 0.2rem;
+    // border-bottom: 1px solid var(--grey);
+  }
+
+  &.trows {
+    // width:100%;
+    border-bottom: 1px solid var(--grey);
+  }
+
+  &.theader {
+    background-color: var(--primary-color);
+    color: #fff;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    // margin-top:2rem;
+  }
+}
