@@ -36,8 +36,6 @@
   }
 }
 
-// sdfsd
-
 .pagination {
   width: 90%;
   //   margin: auto;
@@ -53,4 +51,27 @@
   i {
     color: var(--secondary-color);
   }
+}
+
+.search {
+  width: 90%;
+  margin: 0 auto;
+  //   background-color: red;
+  font-size: 0.7em;
+  position: relative;
+  i {
+    position: absolute;
+    top: 0.4em;
+    right: 0.4em;
+    color: var(--grey);
+  }
+
+  input.keyword {
+    width: 100%;
+    height: 3em;
+    border: 2px solid var(--secondary-color);
+    padding: 0.3em;
+    border-radius: 1em;
+  }
+  //   width: 2em;
 }
