@@ -22,7 +22,7 @@ router.route("/updateMe").patch(userController.updateMe);
 router.route("/deleteMe").delete(userController.deleteMe);
 
 // ALL ROUTES AFTER THIS ARE RESTRICTED
-router.use(authController.restrictTo("admin"));
+// router.use(authController.restrictTo("admin"));
 
 router
   .route("/")
