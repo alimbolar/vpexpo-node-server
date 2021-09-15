@@ -117,7 +117,7 @@ exports.isLoggedIn = async function(req, res, next) {
 exports.protect = catchAsync(async function(req, res, next) {
   console.log(req.headers.secret);
   // bypass PROTECT if request is coming from ZOHO with Secret-Key header
-  if (req.headers.secret === "sbrawisagiwmyt") {
+  if (req.headers.secret === "123456") {
     console.log("inside");
     return next();
   }
@@ -161,7 +161,7 @@ exports.protect = catchAsync(async function(req, res, next) {
 exports.restrictTo = function(...roles) {
   return function(req, res, next) {
     // bypass PROTECT if request is coming from ZOHO with Secret-Key header
-    if (req.headers.secret === "sbrawisagiwmyt") {
+    if (req.headers.secret === "123456") {
       return next();
     }
     if (!roles.includes(req.user.role))
