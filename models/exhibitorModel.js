@@ -3,22 +3,23 @@ const slugify = require("slugify");
 // const Organisation = require("./organisationModel");
 
 const exhibitorSchema = new mongoose.Schema({
-  category: {
-    type: String,
-    enum: [
-      "Spectacles And Sunglasses",
-      "Ophthalmic Lenses",
-      "Contact Lens Products",
-      "Instruments, Equipment And Machinery",
-      "Eyewear Accessories",
-      "Optical Tech",
-      "Eye Care Products",
-      "Optical Store Display And Decoration",
-      "Private Label Manufacturing",
-      "Raw Material Supplies",
-    ],
-    required: true,
-  },
+  // category: {
+  //   type: String,
+  //   enum: [
+  //     "Spectacles And Sunglasses",
+  //     "Ophthalmic Lenses",
+  //     "Contact Lens Products",
+  //     "Instruments, Equipment And Machinery",
+  //     "Eyewear Accessories",
+  //     "Optical Tech",
+  //     "Eye Care Products",
+  //     "Optical Store Display And Decoration",
+  //     "Private Label Manufacturing",
+  //     "Raw Material Supplies",
+  //   ],
+  //   required: true,
+  // },
+  category: Array,
   booth: {
     type: String,
     required: true,
@@ -37,7 +38,7 @@ const exhibitorSchema = new mongoose.Schema({
   },
   city: {
     type: String,
-    required: [true, "City is required"],
+    // required: [true, "City is required"],
   },
   country: {
     type: String,
@@ -67,7 +68,7 @@ const exhibitorSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  visits: Array,
+  potential: Array,
   orgEmployee: Array,
 });
 
