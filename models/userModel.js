@@ -24,18 +24,15 @@ const userSchema = new mongoose.Schema({
     enum: ["admin", "exhibitor", "user", "jury"],
     default: "user",
   },
-  // // Only if role is exhibitor
-  // exhibitorOrganisation: {
-  //   type: mongoose.Schema.ObjectId,
-  //   ref: "Exhibitor",
-  // },
-  // Only if role is user or jury
   company: String,
   address: String,
   city: String,
   country: String,
   mobile: String,
-  photo: String,
+  photo: {
+    type: String,
+    default: "default.jpg",
+  },
   favourites: [
     // List of all booths that the user likes
     {
@@ -68,7 +65,9 @@ const userSchema = new mongoose.Schema({
   profile: String,
   interestedIn: Array,
   creatorID: String,
-  qrImage: String,
+  ecommerceEnquiry: Array,
+  nationality: String,
+  residenceCountry: String,
   active: {
     type: Boolean,
     default: true,
