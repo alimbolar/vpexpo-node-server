@@ -53,7 +53,7 @@ const exhibitorSchema = new mongoose.Schema({
   },
   logo: {
     type: String,
-    default: "default-logo.jpg",
+    default: "logo.jpg",
   },
   profile: {
     type: String,

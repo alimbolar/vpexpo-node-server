@@ -115,6 +115,13 @@ exports.isLoggedIn = async function(req, res, next) {
 
 // PROTECT MIDDLEWARE
 exports.protect = catchAsync(async function(req, res, next) {
+  console.log(req.headers.secret);
+  // bypass PROTECT if request is coming from ZOHO with Secret-Key header
+  if (req.headers.secret === "sbrawisagiwmyt") {
+    console.log("inside");
+    return next();
+  }
+
   let token;
   if (
     req.headers.authorization &&
@@ -153,6 +160,10 @@ exports.protect = catchAsync(async function(req, res, next) {
 
 exports.restrictTo = function(...roles) {
   return function(req, res, next) {
+    // bypass PROTECT if request is coming from ZOHO with Secret-Key header
+    if (req.headers.secret === "sbrawisagiwmyt") {
+      return next();
+    }
     if (!roles.includes(req.user.role))
       return next(new AppError("Not Authorised", 401));
     next();

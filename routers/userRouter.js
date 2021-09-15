@@ -11,7 +11,7 @@ router.route("/forgotPassword").post(authController.forgotPassword);
 router.route("/resetPassword/:token").patch(authController.resetPassword);
 
 // ALL ROUTES AFTER THSI ARE PROTECTED
-// router.use(authController.protect);
+router.use(authController.protect);
 
 router.route("/updateMyPassword").patch(authController.updateMyPassword);
 
@@ -22,7 +22,7 @@ router.route("/updateMe").patch(userController.updateMe);
 router.route("/deleteMe").delete(userController.deleteMe);
 
 // ALL ROUTES AFTER THIS ARE RESTRICTED
-// router.use(authController.restrictTo("admin"));
+router.use(authController.restrictTo("admin"));
 
 router
   .route("/")

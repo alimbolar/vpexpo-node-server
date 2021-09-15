@@ -68,6 +68,7 @@ const userSchema = new mongoose.Schema({
   ecommerceEnquiry: Array,
   nationality: String,
   residenceCountry: String,
+  barcode: String,
   active: {
     type: Boolean,
     default: true,
