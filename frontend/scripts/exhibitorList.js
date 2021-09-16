@@ -13,3 +13,4 @@ export const displayExhibitorData = function(e) {
     exhibitorInfo.nextElementSibling.classList.toggle("hidden");
   }
 };
+// sfsdlk

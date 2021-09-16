@@ -1,5 +1,6 @@
 import { login, logout } from "./login";
 import { displayExhibitorData } from "./exhibitorList";
+import { showPopup, hidePopup } from "./alert";
 
 const loginForm = document.querySelector(".form--login");
 
@@ -50,9 +51,9 @@ const allExhibitors = document.querySelector(".exhibitor-list");
 // const allExhibitorData = document.querySelectorAll(".exhibitor__data");
 
 // TO EXPAND THE EXHIBITOR ROW
-if (allExhibitors) {
-  allExhibitors.addEventListener("click", displayExhibitorData);
-}
+// if (allExhibitors) {
+//   allExhibitors.addEventListener("click", displayExhibitorData);
+// }
 
 // UPDATE SETTINGS
 const userDataBtn = document.querySelector(".form-user-data");
@@ -90,3 +91,21 @@ if (userPasswordBtn) {
     document.getElementById("password-confirm").value = "";
   });
 }
+
+// MENU
+
+const popupLinks = document.querySelectorAll(".popup-link");
+const btnClose = document.querySelector(".close");
+const overlayClose = document.querySelector(".overlay");
+
+popupLinks.forEach((popupLink) => {
+  popupLink.addEventListener("click", function() {
+    showPopup(
+      "Coming Soon",
+      "See you at VP Expo. We are as excited as you are!"
+    );
+  });
+});
+
+btnClose.addEventListener("click", hidePopup);
+overlayClose.addEventListener("click", hidePopup);
