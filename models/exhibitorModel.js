@@ -3,27 +3,6 @@ const slugify = require("slugify");
 // const Organisation = require("./organisationModel");
 
 const exhibitorSchema = new mongoose.Schema({
-  // category: {
-  //   type: String,
-  //   enum: [
-  //     "Spectacles And Sunglasses",
-  //     "Ophthalmic Lenses",
-  //     "Contact Lens Products",
-  //     "Instruments, Equipment And Machinery",
-  //     "Eyewear Accessories",
-  //     "Optical Tech",
-  //     "Eye Care Products",
-  //     "Optical Store Display And Decoration",
-  //     "Private Label Manufacturing",
-  //     "Raw Material Supplies",
-  //   ],
-  //   required: true,
-  // },
-  category: Array,
-  booth: {
-    type: String,
-    required: true,
-  },
   name: {
     type: String,
     required: [true, "Organisation Name is required"],
@@ -62,6 +41,11 @@ const exhibitorSchema = new mongoose.Schema({
       return `We are ${this.name} from ${this.country} and we specialise in${this.category}. We are located at ${this.booth}.`;
     },
   },
+  category: Array,
+  booth: {
+    type: String,
+    required: true,
+  },
   creatorId: { type: String, required: true },
   website: String,
   isActive: {
@@ -97,3 +81,20 @@ exhibitorSchema.index({ creatorId: 1 });
 const Exhibitor = mongoose.model("exhibitor", exhibitorSchema);
 
 module.exports = Exhibitor;
+
+// category: {
+//   type: String,
+//   enum: [
+//     "Spectacles And Sunglasses",
+//     "Ophthalmic Lenses",
+//     "Contact Lens Products",
+//     "Instruments, Equipment And Machinery",
+//     "Eyewear Accessories",
+//     "Optical Tech",
+//     "Eye Care Products",
+//     "Optical Store Display And Decoration",
+//     "Private Label Manufacturing",
+//     "Raw Material Supplies",
+//   ],
+//   required: true,
+// },
