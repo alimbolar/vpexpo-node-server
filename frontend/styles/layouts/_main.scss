@@ -1,8 +1,16 @@
 .main {
-  margin-top: 75px;
-  margin-bottom: 75px;
+  position: fixed;
+  top: 75px;
+  z-index: -1;
+  // left: 0;
+
+  width: 100%;
+  // margin-top: 75px;
+  // margin-bottom: 75px;
   overflow: scroll;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 75px);
+
+  // height: calc(100vh - 150px);
   //   background-color: paleturquoise;
 }
 
@@ -21,13 +29,13 @@
   margin: 2em;
 }
 
-@media (min-width: 800px) {
-  .flex {
-    display: flex;
-  }
+// @media (min-width: 800px) {
+//   .flex {
+//     display: flex;
+//   }
 
-  .sidebar {
-    width: 300px;
-    background-color: darkslategrey;
-  }
-}
+//   .sidebar {
+//     width: 300px;
+//     background-color: darkslategrey;
+//   }
+// }

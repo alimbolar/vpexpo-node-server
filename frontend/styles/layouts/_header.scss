@@ -1,22 +1,23 @@
-header{
-    // display: flex;
-    border-bottom: 1px solid var(--grey);;
-    background-color:#fff;
-    // justify-content: space-between;
-    // align-items: center;
-    height:75px;
-    width:100%;
-    position:fixed;
-    top:0;  
-    // overflow: hidden;
-    // padding:0.2em;
+header {
+  // display: flex;
+  z-index: 1;
+  border-bottom: 1px solid var(--grey);
+  background-color: #fff;
+  // justify-content: space-between;
+  // align-items: center;
+  height: 75px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  // overflow: hidden;
+  // padding:0.2em;
 }
 
-.logo{
-    width:200px;
-    max-width: 50%;
-    // padding:0.2rem;
-    // background-color:green;
+.logo {
+  width: 200px;
+  max-width: 50%;
+  // padding:0.2rem;
+  // background-color:green;
 }
 
 // .top-menu{

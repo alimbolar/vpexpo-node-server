@@ -42,9 +42,15 @@ ul {
   /* border:1px solid black; */ }
 
 .footer {
-  position: relative; }
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 75px; }
 
 header {
+  z-index: 1;
   border-bottom: 1px solid var(--grey);
   background-color: #fff;
   height: 75px;
@@ -57,10 +63,12 @@ header {
   max-width: 50%; }
 
 .main {
-  margin-top: 75px;
-  margin-bottom: 75px;
+  position: fixed;
+  top: 75px;
+  z-index: -1;
+  width: 100%;
   overflow: scroll;
-  height: calc(100vh - 150px); }
+  height: calc(100vh - 75px); }
 
 .content {
   width: 100%;
@@ -72,18 +80,14 @@ header {
 .display-list {
   margin: 2em; }
 
-@media (min-width: 800px) {
-  .flex {
-    display: flex; }
-  .sidebar {
-    width: 300px;
-    background-color: darkslategrey; } }
-
 .navigation {
+  z-index: 1;
+  position: fixed;
+  top: 75px;
   width: 100%;
   margin: 0 auto;
-  background-color: #fff;
-  height: calc(100vh - 150px); }
+  background-color: white;
+  height: calc(100vh - 75px); }
 
 .nav {
   display: flex;
@@ -115,9 +119,6 @@ header {
       height: 100%; }
 
 .tabs > .nav {
-  position: fixed;
-  bottom: 0;
-  right: 0;
   width: 100%;
   height: 75px;
   background-image: linear-gradient(#fff, var(--secondary-color)); }
@@ -291,7 +292,8 @@ button {
     text-align: center; }
 
 .modal {
-  position: absolute;
+  position: fixed;
+  z-index: 1;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -300,7 +302,8 @@ button {
   border-radius: 5%;
   box-shadow: 10px 10px 30px var(--grey);
   z-index: 10;
-  background-color: #fff; }
+  background-color: #fff;
+  text-align: center; }
   .modal .close {
     position: absolute;
     width: 3rem;
@@ -326,9 +329,10 @@ button {
     color: var(--grey); }
 
 .overlay {
+  z-index: 1;
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   opacity: 0.8;
