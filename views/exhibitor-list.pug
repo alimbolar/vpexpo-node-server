@@ -34,13 +34,14 @@ block content
 
 
         .pagination 
-            .prev
-                i.fas.fa-arrow-alt-circle-left.fa-2x
-            .current Page 2 of 10
-            .next
-                i.fas.fa-arrow-alt-circle-right.fa-2x
+            .pagination__content
+                .prev
+                    i.fas.fa-arrow-alt-circle-left.fa-2x
+                .current Page 2 of 10
+                .next
+                    i.fas.fa-arrow-alt-circle-right.fa-2x
 
-        .search 
+        .search.hidden
             i.fas.fa-search.fa-2x
             input#keyword.keyword(type="text", placeholder="Type keyword ...",name="keyword")
 

@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   &__nav {
     display: flex;
@@ -37,5 +38,27 @@
       flex-direction: column;
     }
   }
+
+  &__content {
+    display: grid;
+    gap: 20em;
+  }
 }
+
 // fsdkfslk
+
+#settings {
+  margin-bottom: 90px;
+}
+
+.me {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  &__photo {
+    width: 50%;
+    border-radius: 100%;
+    margin: 0 auto;
+  }
+}

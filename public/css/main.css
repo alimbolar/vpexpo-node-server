@@ -8,13 +8,13 @@
 
 :root {
   --primary-color: darkslategray;
-  --secondary-color:yellowgreen;
-  --accent-color:rgba(128,186,39,0.5);
-  --text:rgba(0,0,0,0.6);
-  --grey:rgba(0,0,0,0.3); }
+  --secondary-color: yellowgreen;
+  --accent-color: rgba(128, 186, 39, 0.5);
+  --text: rgba(0, 0, 0, 0.6);
+  --grey: rgba(0, 0, 0, 0.3); }
 
 body {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: var(--text); }
 
 img {
@@ -29,6 +29,10 @@ ul {
 
 .hidden {
   display: none; }
+
+.overflow {
+  height: 100%;
+  overflow: scroll; }
 
 .container {
   display: flex;
@@ -343,7 +347,8 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  text-align: center; }
   .my-account__nav {
     display: flex;
     margin-bottom: 1em; }
@@ -368,6 +373,21 @@ button {
     .my-account form.form .form__group {
       display: flex;
       flex-direction: column; }
+  .my-account__content {
+    display: grid;
+    gap: 20em; }
+
+#settings {
+  margin-bottom: 90px; }
+
+.me {
+  display: flex;
+  flex-direction: column;
+  gap: 1em; }
+  .me__photo {
+    width: 50%;
+    border-radius: 100%;
+    margin: 0 auto; }
 
 .about {
   width: 100%;
@@ -376,10 +396,8 @@ button {
   justify-content: center; }
 
 .exhibitor-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%; }
+  height: 100%;
+  position: relative; }
 
 .all-exhibitors {
   width: 100%;
@@ -399,14 +417,19 @@ button {
   flex-grow: 1; }
 
 .pagination {
-  width: 90%;
-  padding: 1em;
-  margin: 0 auto;
-  font-size: 0.875rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  font-size: 1em; }
+  position: absolute;
+  bottom: 90px;
+  left: 0;
+  width: 100%; }
+  .pagination__content {
+    width: 90%;
+    padding: 1em;
+    margin: auto;
+    font-size: 0.875rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 1em; }
   .pagination i {
     color: var(--secondary-color); }
 

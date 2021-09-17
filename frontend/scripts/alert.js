@@ -32,6 +32,7 @@ export const hidePopup = function() {
   overlay.classList.add("hidden");
 };
 
+//  kjkjsdkj
 // document.querySelector(".modal-link").addEventListener("click", function() {
 //   document.querySelector(".modal").classList.remove("hidden");
 //   document.querySelector(".overlay").classList.remove("hidden");
