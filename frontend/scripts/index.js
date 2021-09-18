@@ -102,7 +102,7 @@ const overlayClose = document.querySelector(".overlay");
 
 popupLinks.forEach((popupLink) => {
   popupLink.addEventListener("click", function() {
-    showPopup(
+    showMessage(
       "Coming Soon",
       "See you at VP Expo. We are as excited as you are!"
     );
