@@ -64,3 +64,28 @@ exports.deleteMe = catchAsync(async function(req, res, next) {
     },
   });
 });
+
+exports.printMe = catchAsync(async function(req, res, next) {
+  // console.log(req.params);
+  const user = await User.findById(req.params.id);
+
+  const ticketMarkup = `<div class="ticket">
+  <div class="ticket__logo"> <img src="/images/vp-expo-logo.png"> </div>
+  <div class="ticket__data"><div class="ticket__name">${user.firstName} ${user.lastName}</div><div class="ticket__company">${user.company}</div>
+  <div class="ticket__country">${user.country}</div>
+  <div class="ticket__profile">${user.profile}</div>
+ </div>
+   <div class="ticket__code" ><img src="https://qrtag.net/api/qr_6.svg?url=https://vp-expo-node-server.herokuapp.com/api/v1/users/${user.id}" alt="qrtag">
+  </br> ${user._id}</div>
+  <button class="btn ticket__print-ticket"> Print Ticket </button>
+  </div>`;
+
+  // https://www.npmjs.com/package/html-pdf-node
+
+  const options = { format: "A4" };
+  const ticket = { content: ticketMarkup };
+
+  const pdfBuffer = await html_to_pdf.generatePdf(ticket, options);
+
+  console.log(pdfBuffer);
+});

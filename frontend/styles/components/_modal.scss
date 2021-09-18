@@ -19,8 +19,15 @@
     height: 3rem;
     right: 2%;
     top: 2%;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    border: none;
+
     border-radius: 50%;
   }
 
@@ -29,6 +36,7 @@
     margin: auto;
     display: grid;
     place-items: center;
+    align-content: center;
     height: 100%;
     // display: flex;
     // flex-flow: column;
@@ -39,13 +47,13 @@
   &__headline {
     font-size: 2em;
     text-transform: uppercase;
-    color: darkslategrey;
-    padding: 2em;
+    color: var(--primary-color);
+    // padding: 2em;
     // text-align: center;
   }
   &__body {
-    font-size: 1.5em;
-    color: var(--grey);
+    font-size: 1.2em;
+    color: var(--secondary-color);
   }
 }
 .overlay {

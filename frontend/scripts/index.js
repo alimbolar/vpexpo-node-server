@@ -2,6 +2,7 @@ import { login, logout } from "./login";
 import { displayExhibitorData } from "./exhibitorList";
 import { showPopup, hidePopup } from "./alert";
 import { showTicket } from "./printTicket";
+import { printTicket } from "./printTicket";
 
 const loginForm = document.querySelector(".form--login");
 
@@ -114,7 +115,26 @@ overlayClose.addEventListener("click", hidePopup);
 // PRINT TICKET
 
 const showTicketBtn = document.querySelector(".show-ticket");
+const modalContent = document.querySelector(".modal__content");
 
 if (showTicketBtn) {
   showTicketBtn.addEventListener("click", showTicket);
+}
+
+if (modalContent) {
+  modalContent.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    if (e.target.closest(".ticket__print-ticket")) {
+      const printTicketBtn = e.target;
+      const id = printTicketBtn.dataset.id;
+
+      printTicket(id);
+    }
+
+    // if(e.target)
+
+    // alert("hello hell");
+    // console.log(printTicketBtn);
+  });
 }
