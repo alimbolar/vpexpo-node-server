@@ -1,6 +1,6 @@
 import { login, logout } from "./login";
 import { displayExhibitorData } from "./exhibitorList";
-import { showPopup, hidePopup } from "./alert";
+import { showMessage, hidePopup } from "./alert";
 import { showTicket } from "./printTicket";
 import { printTicket } from "./printTicket";
 
