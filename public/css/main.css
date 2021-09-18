@@ -142,10 +142,19 @@ header {
         font-size: 2rem;
         color: var(--primary-color); }
 
-button {
+.btn {
   background-color: var(--secondary-color);
-  padding: 0.7em;
-  border: none; }
+  width: fit-content;
+  padding: 1em 2em;
+  border: none;
+  border-radius: 1em;
+  margin: auto;
+  text-decoration: none;
+  cursor: pointer;
+  text-transform: uppercase; }
+  .btn:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color); }
 
 .exhibitor-card {
   border-radius: 10px;
@@ -310,15 +319,15 @@ button {
     height: 3rem;
     right: 2%;
     top: 2%;
+    display: grid;
+    place-items: center;
     border-radius: 50%; }
   .modal__content {
     width: 80%;
     margin: auto;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    height: 400px; }
+    display: grid;
+    place-items: center;
+    height: 100%; }
   .modal__headline {
     font-size: 2em;
     text-transform: uppercase;
@@ -338,6 +347,30 @@ button {
   opacity: 0.8;
   background-color: var(--primary-color);
   backdrop-filter: blur(10px); }
+
+.ticket {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  justify-items: center;
+  align-items: center;
+  grid-template-areas: ". . logo logo logo logo logo . ." ". . code code code code code . ." ". . . . . . . . . " ". . . data data data . . . " ". . . data data data . . ." ". . printTicket printTicket printTicket printTicket printTicket . ."; }
+  @media (min-width: 700px) {
+    .ticket {
+      grid-template-areas: ". . . logo logo logo  . . . " "code code code code . data data data ." "code code code code  . data data data ." "code code code code  . data data data ." "code code code code  . printTicket printTicket printTicket ." ". . . . . . . . ."; } }
+  .ticket__logo {
+    grid-area: logo; }
+  .ticket__data {
+    grid-area: data;
+    padding: 1em 0; }
+    .ticket__data * {
+      margin-bottom: 0.5em; }
+  .ticket__code {
+    grid-area: code; }
+  .ticket__name {
+    font-size: 1.5em; }
+  .ticket__print-ticket {
+    grid-area: printTicket; }
 
 .my-account {
   display: flex;

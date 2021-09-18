@@ -1,0 +1,53 @@
+.ticket {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: minmax(100px, auto);
+  justify-items: center;
+  align-items: center;
+  //   height: 100%;
+
+  grid-template-areas:
+    ". . logo logo logo logo logo . ."
+    ". . code code code code code . ."
+    ". . . . . . . . . "
+    ". . . data data data . . . "
+    ". . . data data data . . ."
+    ". . printTicket printTicket printTicket printTicket printTicket . .";
+  @media (min-width: 700px) {
+    grid-template-areas:
+      ". . . logo logo logo  . . . "
+      "code code code code . data data data ."
+      "code code code code  . data data data ."
+      "code code code code  . data data data ."
+      "code code code code  . printTicket printTicket printTicket ."
+      ". . . . . . . . .";
+  }
+
+  &__logo {
+    grid-area: logo;
+  }
+  &__data {
+    grid-area: data;
+    padding: 1em 0;
+
+    * {
+      margin-bottom: 0.5em;
+    }
+  }
+  &__code {
+    grid-area: code;
+  }
+  &__name {
+    font-size: 1.5em;
+  }
+
+  &__company {
+  }
+  &__country {
+  }
+  &__profile {
+  }
+  &__print-ticket {
+    grid-area: printTicket;
+  }
+}

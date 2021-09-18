@@ -48,13 +48,19 @@ block content
                 .me__email
                     h4  Email
                     p=`${user.email}`
+                .me__company
+                    h4  Company
+                    p=`${user.company}`
+                .me__profile
+                    h4  Profile
+                    p=`${user.profile}`
                 .me__nationality
                     h4  Nationality
                     p=`${user.nationality}`
                 .me__residenceCountry
                     h4  Residence Country
                     p=`${user.residenceCountry}`     
-                button.btn.btn--small.btn--green.print-ticket Print Ticket
+                button.btn.btn--small.btn--green.show-ticket Show Ticket
                 a(href="#profile" type="button").btn.btn--small.btn--green.update-profile Update Profile
                 a(href="#settings" type="button").button.btn.btn--small.btn--green.update-settings Update Settings               
                 .line &nbsp;

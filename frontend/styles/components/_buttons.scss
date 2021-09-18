@@ -1,8 +1,19 @@
-button {
+.btn {
   background-color: var(--secondary-color);
   // width:100px;
   // height:
-  padding: 0.7em;
+  width: fit-content;
+  padding: 1em 2em;
   border: none;
+  border-radius: 1em;
+  margin: auto;
+  text-decoration: none;
+  // font-size: 0.8em;
   //   margin-top: 1em;
+  cursor: pointer;
+  text-transform: uppercase;
+  &:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
 }

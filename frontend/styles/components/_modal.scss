@@ -19,17 +19,22 @@
     height: 3rem;
     right: 2%;
     top: 2%;
+    display: grid;
+    place-items: center;
     border-radius: 50%;
   }
 
   &__content {
     width: 80%;
     margin: auto;
-    display: flex;
-    flex-flow: column;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
+    display: grid;
+    place-items: center;
+    height: 100%;
+    // display: flex;
+    // flex-flow: column;
+    // justify-content: center;
+    // align-items: center;
+    // height: 400px;
   }
   &__headline {
     font-size: 2em;

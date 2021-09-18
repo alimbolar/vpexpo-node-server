@@ -1,6 +1,7 @@
 import { login, logout } from "./login";
 import { displayExhibitorData } from "./exhibitorList";
 import { showPopup, hidePopup } from "./alert";
+import { showTicket } from "./printTicket";
 
 const loginForm = document.querySelector(".form--login");
 
@@ -109,3 +110,11 @@ popupLinks.forEach((popupLink) => {
 
 btnClose.addEventListener("click", hidePopup);
 overlayClose.addEventListener("click", hidePopup);
+
+// PRINT TICKET
+
+const showTicketBtn = document.querySelector(".show-ticket");
+
+if (showTicketBtn) {
+  showTicketBtn.addEventListener("click", showTicket);
+}
