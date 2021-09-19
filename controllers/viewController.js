@@ -28,7 +28,7 @@ exports.getExhibitorList = async function(req, res, next) {
     page = -page;
   }
 
-  let limit = 10;
+  let limit = 7;
   let skip = (page - 1) * limit;
 
   // console.log("page = ", page, "limit = ", limit, "skip =", skip);
@@ -42,8 +42,8 @@ exports.getExhibitorList = async function(req, res, next) {
 
   exhibitors.page = page;
 
-  console.log(page);
-  console.log(exhibitors.length);
+  // console.log(page);
+  // console.log(exhibitors.length);
 
   res.status(200).render("exhibitor-list", {
     title: "Exhibitor List",
