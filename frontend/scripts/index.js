@@ -3,6 +3,12 @@ import { displayExhibitorData } from "./exhibitorList";
 import { showMessage, hidePopup } from "./alert";
 import { showTicket } from "./printTicket";
 import { printTicket } from "./printTicket";
+import {
+  listExhibitor,
+  listVisited,
+  listSorted,
+  listSearched,
+} from "./listExhibitor";
 
 const loginForm = document.querySelector(".form--login");
 
@@ -137,4 +143,26 @@ if (modalContent) {
     // alert("hello hell");
     // console.log(printTicketBtn);
   });
+}
+
+// FOOTER LINKS
+
+const listExhibitorBtn = document.querySelector(".list-exhibitor");
+const listVisitedBtn = document.querySelector(".list-visited");
+const listSortedBtn = document.querySelector(".list-sorted");
+const listSearchedBtn = document.querySelector(".list-searched");
+
+if (listExhibitorBtn) {
+  listExhibitorBtn.addEventListener("click", listExhibitor);
+}
+
+if (listVisitedBtn) {
+  listVisitedBtn.addEventListener("click", listVisited);
+}
+
+if (listSortedBtn) {
+  listSortedBtn.addEventListener("click", listSorted);
+}
+if (listSearchedBtn) {
+  listSearchedBtn.addEventListener("click", listSearched);
 }
