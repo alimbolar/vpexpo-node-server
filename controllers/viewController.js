@@ -15,27 +15,41 @@ exports.getLoginForm = function(req, res, next) {
   });
 };
 
-exports.getExhibitorList = catchAsync(async function(req, res, next) {
+exports.getExhibitorList = async function(req, res, next) {
   let page;
 
   if (!req.query.page) {
-    let page = 1;
+    page = 1;
+  } else {
+    page = req.query.page * 1;
   }
 
-  page = req.query.page * 1;
+  if (page < 0) {
+    page = -page;
+  }
+
   let limit = 10;
   let skip = (page - 1) * limit;
 
-  console.log("page = ", page, "limit = ", limit, "skip =", skip);
+  // console.log("page = ", page, "limit = ", limit, "skip =", skip);
   const exhibitors = await Exhibitor.find()
     .skip(skip)
     .limit(limit);
+
+  if (exhibitors.length < limit) {
+    page = 0;
+  }
+
+  exhibitors.page = page;
+
+  console.log(page);
+  console.log(exhibitors.length);
 
   res.status(200).render("exhibitor-list", {
     title: "Exhibitor List",
     exhibitors,
   });
-});
+};
 
 exports.displayExhibitor = catchAsync(async function(req, res, next) {
   const exhibitor = await Exhibitor.findOne({ slug: req.params.slug });

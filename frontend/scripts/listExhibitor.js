@@ -2,7 +2,8 @@ import { hidePopup, showMessage, showPopup } from "./alert";
 
 export const listExhibitor = function(e) {
   e.preventDefault();
-  showMessage("Exhibitor List", "Displaying list of all exhibitors");
+  // showMessage("Exhibitor List", "Displaying list of all exhibitors");
+  window.open("/exhibitors", "_self");
 };
 
 export const displayExhibitorDetail = function(e) {

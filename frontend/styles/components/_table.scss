@@ -1,12 +1,15 @@
 .table {
   width: 90%;
-  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  // margin: auto;
   font-size: 0.875rem;
-  position: absolute;
-  height: 50vh;
+  height: 100%;
+  // position: absolute;
+  // height: 50vh;
   overflow-y: scroll;
   // padding: 0 0.2rem;
-
+  // background-color: yellow;
   //   .number {
   //     width: 10%;
   //     text-align: left;
@@ -60,7 +63,7 @@
   // }
 
   &__header {
-    margin-top: 1rem;
+    // margin-top: 1rem;
     padding: 0.4rem 0;
     display: flex;
     justify-content: space-evenly;

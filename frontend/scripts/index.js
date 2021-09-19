@@ -149,17 +149,19 @@ if (modalContent) {
 // DISPLAY EXHIBITOR DETAILS
 
 const exhibitorRows = document.querySelector(".table");
-const knowMoreBtn = document.querySelector(".know-more");
+const knowMoreBtns = document.querySelectorAll(".know-more");
 
 if (exhibitorRows) {
   exhibitorRows.addEventListener("click", displayExhibitorDetail);
 }
 
-if (knowMoreBtn) {
-  knowMoreBtn.addEventListener("click", function() {
-    const url = knowMoreBtn.getAttribute("href");
-    window.open(url, "_self");
-    // location.href(url);
+if (knowMoreBtns) {
+  knowMoreBtns.forEach((knowMoreBtn) => {
+    knowMoreBtn.addEventListener("click", function() {
+      const url = knowMoreBtn.getAttribute("href");
+      window.open(url, "_self");
+      // location.href(url);
+    });
   });
 }
 

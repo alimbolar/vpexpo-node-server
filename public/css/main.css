@@ -34,6 +34,9 @@ ul {
   height: 100%;
   overflow: scroll; }
 
+.invisible {
+  visibility: hidden; }
+
 .heading {
   font-size: 2em;
   text-transform: uppercase;
@@ -241,10 +244,10 @@ header {
 
 .table {
   width: 90%;
-  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 20px;
   font-size: 0.875rem;
-  position: absolute;
-  height: 50vh;
+  height: 100%;
   overflow-y: scroll; }
   .table .name {
     width: 40%;
@@ -272,7 +275,6 @@ header {
     .table__row:hover {
       background-color: var(--secondary-color); }
   .table__header {
-    margin-top: 1rem;
     padding: 0.4rem 0;
     display: flex;
     justify-content: space-evenly;
@@ -472,12 +474,11 @@ header {
 
 .exhibitor {
   display: flex;
-  justify-content: center;
-  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: calc(100% - 100px);
   position: relative; }
-  .exhibitor__table {
-    width: 100%;
-    margin-top: 15px; }
   .exhibitor__detail {
     display: flex;
     padding: 0.5em;
@@ -490,9 +491,6 @@ header {
     flex-grow: 1; }
 
 .pagination {
-  position: absolute;
-  bottom: 90px;
-  left: 0;
   width: 100%; }
   .pagination__content {
     width: 90%;
