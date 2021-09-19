@@ -16,7 +16,21 @@ exports.getLoginForm = function(req, res, next) {
 };
 
 exports.getExhibitorList = catchAsync(async function(req, res, next) {
-  const exhibitors = await Exhibitor.find();
+  let page;
+
+  if (!req.query.page) {
+    let page = 1;
+  }
+
+  page = req.query.page * 1;
+  let limit = 10;
+  let skip = (page - 1) * limit;
+
+  console.log("page = ", page, "limit = ", limit, "skip =", skip);
+  const exhibitors = await Exhibitor.find()
+    .skip(skip)
+    .limit(limit);
+
   res.status(200).render("exhibitor-list", {
     title: "Exhibitor List",
     exhibitors,

@@ -8,6 +8,7 @@ import {
   listVisited,
   listSorted,
   listSearched,
+  displayExhibitorDetail,
 } from "./listExhibitor";
 
 const loginForm = document.querySelector(".form--login");
@@ -142,6 +143,23 @@ if (modalContent) {
 
     // alert("hello hell");
     // console.log(printTicketBtn);
+  });
+}
+
+// DISPLAY EXHIBITOR DETAILS
+
+const exhibitorRows = document.querySelector(".table");
+const knowMoreBtn = document.querySelector(".know-more");
+
+if (exhibitorRows) {
+  exhibitorRows.addEventListener("click", displayExhibitorDetail);
+}
+
+if (knowMoreBtn) {
+  knowMoreBtn.addEventListener("click", function() {
+    const url = knowMoreBtn.getAttribute("href");
+    window.open(url, "_self");
+    // location.href(url);
   });
 }
 

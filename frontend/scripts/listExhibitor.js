@@ -2,22 +2,21 @@ import { hidePopup, showMessage, showPopup } from "./alert";
 
 export const listExhibitor = function(e) {
   e.preventDefault();
-
   showMessage("Exhibitor List", "Displaying list of all exhibitors");
-
-  // const exhibitorInfo = e.target.closest(".exhibitor__info");
-  // const allExhibitorData = document.querySelectorAll(".exhibitor__data");
-
-  // if (exhibitorInfo) {
-  //   // Hide all open Exhibitor Data Rows
-  //   allExhibitorData.forEach((exhibitorData) =>
-  //     exhibitorData.classList.add("hidden")
-  //   );
-  //   // Display The Current Exhibitor's Data
-  //   exhibitorInfo.nextElementSibling.classList.toggle("hidden");
-  // }
 };
-// sfsdlk
+
+export const displayExhibitorDetail = function(e) {
+  e.preventDefault();
+
+  const exhibitorRow = e.target.closest(".exhibitor__summary");
+  const expandedAll = document.querySelectorAll(".expanded");
+
+  if (!exhibitorRow) return;
+  // Hide all open Exhibitor Data Rows
+  expandedAll.forEach((expanded) => expanded.classList.add("hidden"));
+  // Display The Current Exhibitor's Data
+  exhibitorRow.nextElementSibling.classList.toggle("hidden");
+};
 
 export const listVisited = function(e) {
   e.preventDefault();

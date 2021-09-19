@@ -1,36 +1,36 @@
 extends base
 
 block content
-    section.exhibitor-list
-        .all-exhibitors
-            ul.table.theader
-                li.trow
-                    //- .number #
-                    .name Exhibitor Name
-                    .location Location
-                    .shortlisted
-                        i.fas.fa-heart
-                    .visited
-                        i.fas.fa-handshake
+    section.exhibitor
+        //- .exhibitor__table.table
+        ul.table
+            li.table__header.theader
+                //- .number #
+                .name Exhibitor Name
+                .booth Booth
+                .visited
+                    i.fas.fa-handshake
+                .reviewed
+                    i.fas.fa-heart
             each exhibitor in exhibitors
-                ul.exhibitor.table.trows
-                    li.exhibitor__info.trow(data-id=`${exhibitor._id}`)
-                        //- .number 1
-                        .name= exhibitor.name
-                        .location= exhibitor.booth
-                        .shortlisted 
-                            i.far.fa-heart
-                        .visited 
-                            i.far.fa-handshake
+                //- ul.exhibitor.table.trows
+                li.table__row.trow.exhibitor__summary(data-id=`${exhibitor._id}`)
+                    //- .number 1
+                    .name= exhibitor.name
+                    .booth= exhibitor.booth
+                    .visited 
+                        i.far.fa-handshake
+                    .reviewed
+                        i.far.fa-heart
 
-                    li.exhibitor__data.hidden
-                        .exhibitor__data--flex
-                            .exhibitor__data--logo
-                                img(src="/images/vp-expo-logo.png" alt="")
-                            .exhibitor__data--info
-                                h4 About Exhibitor
-                                p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate odio aperiam enim distinctio beatae fugit delectus maxime cum ad officia aut recusandae ducimus unde cumque voluptatem soluta, neque a explicabo.
-                                a.know-more(href=`/exhibitor/${exhibitor.slug}`) Know More
+                li.expanded.hidden
+                    .exhibitor__detail
+                        .exhibitor__logo
+                            img(src="/images/vp-expo-logo.png" alt="")
+                        .exhibitor__profile
+                            h4 About Exhibitor
+                            p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate odio aperiam enim distinctio beatae fugit delectus maxime cum ad officia aut recusandae ducimus unde cumque voluptatem soluta, neque a explicabo.
+                            a.know-more(href=`/exhibitor/${exhibitor.slug}`) Know More
 
 
         .pagination 
@@ -41,9 +41,9 @@ block content
                 .next
                     i.fas.fa-arrow-alt-circle-right.fa-2x
 
-        .search.hidden
-            i.fas.fa-search.fa-2x
-            input#keyword.keyword(type="text", placeholder="Type keyword ...",name="keyword")
+        //- .search.hidden
+        //-     i.fas.fa-search.fa-2x
+        //-     input#keyword.keyword(type="text", placeholder="Type keyword ...",name="keyword")
 
 
 
