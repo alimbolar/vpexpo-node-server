@@ -1,0 +1,24 @@
+extends base
+
+block content
+    //- main.main
+    
+    section.my-account
+        nav.my-account__menu
+        .my-account__content          
+            #settings.my-account__settings
+                h2.heading-secondary.ma-bt-md My Settings
+                form.form.form-user-password
+                    .form__group
+                        label.form__label(for='password-current') Current password
+                        input#password-current.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                    .form__group
+                        label.form__label(for='password') New password
+                        input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                    .form__group.ma-bt-lg
+                        label.form__label(for='password-confirm') Confirm password
+                        input#password-confirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                    .form__group.right
+                        button.btn.update-password Save password
+
+

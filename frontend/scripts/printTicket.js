@@ -23,14 +23,25 @@ export const showTicket = async function() {
  </div>
    <div class="ticket__code" ><img src="https://qrtag.net/api/qr_6.svg?url=https://vp-expo-node-server.herokuapp.com/api/v1/users/${user.id}" alt="qrtag">
   </br> ${user._id}</div>
-  <button class="btn ticket__print-ticket" data-id=${user._id}> Print Ticket </button>
+
+  <button class="btn ticket__print-ticket" data-id=${user._id} data-barcode=${user.barcode}> Print Ticket </button>
   </div>
   `;
 
   showPopup(ticketMarkup);
 };
 
-export const printTicket = async function(id) {
+export const printTicket = async function(barcode) {
+  // const code = barcode;
+  if (!barcode) {
+    console.log("in");
+    showMessage(
+      "Ticket Not Ready",
+      "The ticket process requires approval from Dubai Tourism and should be completed soon. You will have a response soon. However you can show the QR Code at the Entrance and generate the ticket immediately"
+    );
+    return;
+  }
+
   const res = await axios({
     method: "GET",
     url: "/printme",

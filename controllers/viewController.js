@@ -67,6 +67,14 @@ exports.getAccount = catchAsync(async function(req, res, next) {
   });
 });
 
+exports.getSettings = async function(req, res, next) {
+  const user = await User.findById(req.user.id);
+  res.status(200).render("settings", {
+    title: "My Settings",
+    user,
+  });
+};
+
 exports.printMe = catchAsync(async function(req, res, next) {
   // console.log(req.params);
 

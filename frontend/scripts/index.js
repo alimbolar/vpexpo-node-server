@@ -135,8 +135,11 @@ if (modalContent) {
     if (e.target.closest(".ticket__print-ticket")) {
       const printTicketBtn = e.target;
       const id = printTicketBtn.dataset.id;
+      const barcode = printTicketBtn.dataset.barcode;
 
-      printTicket(id);
+      console.log(id, barcode);
+
+      printTicket(barcode);
     }
 
     // if(e.target)

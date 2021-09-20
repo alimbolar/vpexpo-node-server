@@ -60,68 +60,6 @@ block content
                 .me__residenceCountry
                     h4  Residence Country
                     p=`${user.residenceCountry}`     
-                button.btn.btn--small.btn--green.show-ticket Show Ticket
-                a(href="#profile" type="button").btn.btn--small.btn--green.update-profile Update Profile
-                a(href="#settings" type="button").button.btn.btn--small.btn--green.update-settings Update Settings               
-                .line &nbsp;
-
-            #profile.my-account__profile
-                h2.heading-secondary.ma-bt-md My Profile
-                form.form.form-user-organisation
-                    .form__group
-                        label.form__label(for='firstName') First Name
-                        input#firstName.form__input(type='text', value=`${user.firstName}`, required, name="firstName")
-                        label.form__label(for='lastName') Last Name
-                        input#lastName.form__input(type='text', value=`${user.lastName}`, required, name="lastName")
-                    .form__group
-                        label.form__label(for='profile') Designation
-                        input#profile.form__input(type='text', value=`${user.firstName}`, required, name="profile")
-                    .form__group
-                        label.form__label(for='name') Mobile
-                        input#mobile.form__input(type='text', value=`${user.mobile}`, required, name="mobile")
-                    .form__group.ma-bt-md
-                        label.form__label(for='email') Email address
-                        input#email.form__input(type='email', value=`${user.email}`, required,name="email")
-                    .form__group.form__photo-upload
-                        img.form__user-photo(src=`/images/users/${user.photo}` alt=`Photo of ${user.firstName}`)
-                        a.btn-text(href='') Choose new photo
-                    .form__group
-                        label.form__label(for='company') Company
-                        input#company.form__input(type='text', value=`${user.company}`, required, name="company")
-                    .form__group
-                        label.form__label(for='type') Profile
-                        input#profile.form__input(type='text', value=`${user.profile}`, required, name="profile")
-                    .form__group
-                        label.form__label(for='address') Address
-                        input#address.form__input(type='text', value=`${user.address}`, required, name="address")
-                    .form__group.ma-bt-md
-                        label.form__label(for='city') City
-                        input#city.form__input(type='text', value=`${user.city}`, required,name="city")
-                    .form__group.ma-bt-md
-                        label.form__label(for='country') Country
-                        input#country.form__input(type='text', value=`${user.country}`, required,name="country")
-                    .form__group.ma-bt-md
-                        label.form__label(for='nationality') Nationality
-                        input#nationality.form__input(type='text', value=`${user.nationality}`, required,name="nationality")
-                    .form__group.ma-bt-md
-                        label.form__label(for='residenceCountry') Residence Country
-                        input#residenceCountry.form__input(type='text', value=`${user.residenceCountry}`, required,name="residenceCountry")                            
-                    .form__group.right
-                        button.btn.btn--small.btn--green.update-data Save settings                
-
-            #settings.my-account__settings
-                h2.heading-secondary.ma-bt-md My Settings
-                form.form.form-user-password
-                    .form__group
-                        label.form__label(for='password-current') Current password
-                        input#password-current.form__input(type='password', placeholder='••••••••', required, minlength='8')
-                    .form__group
-                        label.form__label(for='password') New password
-                        input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
-                    .form__group.ma-bt-lg
-                        label.form__label(for='password-confirm') Confirm password
-                        input#password-confirm.form__input(type='password', placeholder='••••••••', required, minlength='8')
-                    .form__group.right
-                        button.btn.btn--small.btn--green.update-password Save password
+                button.btn.show-ticket Show Ticket
 
 
