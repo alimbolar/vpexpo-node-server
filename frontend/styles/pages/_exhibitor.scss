@@ -1,20 +1,10 @@
 .exhibitor {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  height: calc(100% - 150px);
   position: relative;
-  // background-color: red;
-
-  // background-color: red;
-
-  // &__table {
-  //   // display: block;
-  //   width: 100%;
-  //   margin-top: 15px;
-  //   //   background-color: yellow;
-  // }
+  height: 100%;
 
   &__detail {
     display: flex;
@@ -29,29 +19,21 @@
 
   &__profile {
     width: 70%;
-    // background-color: red;
     flex-grow: 1;
-    // padding: 1em;
   }
 }
 
 .pagination {
-  // position: absolute;
-  // bottom: 90px;
-  // left: 0;
   width: 100%;
-  // background-color: green;
 
   &__content {
     width: 90%;
-    //   margin: auto;
     padding: 1em;
     margin: auto;
     font-size: 0.875rem;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    //   background-color: var(--secondary-color);
     font-size: 1em;
   }
 

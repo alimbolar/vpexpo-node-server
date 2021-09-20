@@ -1,6 +1,7 @@
 .main {
   position: fixed;
   top: 75px;
+  bottom: 75px;
   z-index: -1;
   // left: 0;
 
@@ -8,16 +9,17 @@
   // margin-top: 75px;
   // margin-bottom: 75px;
   overflow: scroll;
-  height: calc(100vh - 75px);
+  // height: calc(100vh - 175px);
+  display: flex;
 
   // height: calc(100vh - 150px);
-  //   background-color: paleturquoise;
+  // background-color: red;
 }
 
 .content {
   width: 100%;
-  height: 100%;
-  //   background-color: purple;
+  // height: 100%;
+  // flex-grow: 1;
 
   .opening-page {
     width: 100%;
