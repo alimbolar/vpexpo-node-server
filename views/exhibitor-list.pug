@@ -41,13 +41,12 @@ block content
                 else
                     a(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${(exhibitors.page * 1) - 1}`).prev
                         i.fas.fa-arrow-alt-circle-left.fa-2x
-                if exhibitors.page !== 0
-                    .current= `Page ${exhibitors.page}`
-                else 
-                    .current= `Last Page`
-                    
 
-                if exhibitors.page === 0
+
+                .current= `Page ${exhibitors.page} of ${exhibitors.count}`
+                     
+
+                if exhibitors.page >= exhibitors.maxPages
                     a.invisible(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${exhibitors.page * 1 + 1}`).next
                         i.fas.fa-arrow-alt-circle-right.fa-2x
                 else 

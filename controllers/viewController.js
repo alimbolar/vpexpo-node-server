@@ -17,33 +17,30 @@ exports.getLoginForm = function(req, res, next) {
 
 exports.getExhibitorList = async function(req, res, next) {
   let page;
+  if (!req.query.page) req.query.page = 1;
+  page = req.query.page * 1;
 
-  if (!req.query.page) {
-    page = 1;
-  } else {
-    page = req.query.page * 1;
-  }
-
+  // CONVERTING NEGATIVE TO POSITIVE
   if (page < 0) {
     page = -page;
   }
 
-  let limit = 7;
-  let skip = (page - 1) * limit;
-
-  // console.log("page = ", page, "limit = ", limit, "skip =", skip);
+  const limit = 7;
+  const skip = (page - 1) * limit;
+  const totalExhibitors = await Exhibitor.count();
   const exhibitors = await Exhibitor.find()
     .skip(skip)
     .limit(limit);
 
-  if (exhibitors.length < limit) {
-    page = 0;
-  }
-
+  const maxPages = Math.ceil(totalExhibitors / limit);
   exhibitors.page = page;
+  exhibitors.count = totalExhibitors;
+  exhibitors.maxPages = maxPages;
 
   // console.log(page);
-  // console.log(exhibitors.length);
+  console.log("currentQuery", exhibitors.length);
+  console.log("totalRecords", totalExhibitors);
+  console.log("maxPages", maxPages);
 
   res.status(200).render("exhibitor-list", {
     title: "Exhibitor List",

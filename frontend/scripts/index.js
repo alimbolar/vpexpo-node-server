@@ -1,5 +1,5 @@
 import { login, logout } from "./login";
-import { displayExhibitorData } from "./exhibitorList";
+import { displayExhibitorData } from "./XXXexhibitorList";
 import { showMessage, hidePopup } from "./alert";
 import { showTicket } from "./printTicket";
 import { printTicket } from "./printTicket";
