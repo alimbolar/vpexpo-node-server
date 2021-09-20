@@ -37,11 +37,6 @@ exports.getExhibitorList = async function(req, res, next) {
   exhibitors.count = totalExhibitors;
   exhibitors.maxPages = maxPages;
 
-  // console.log(page);
-  console.log("currentQuery", exhibitors.length);
-  console.log("totalRecords", totalExhibitors);
-  console.log("maxPages", maxPages);
-
   res.status(200).render("exhibitor-list", {
     title: "Exhibitor List",
     exhibitors,
