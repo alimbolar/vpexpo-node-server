@@ -1,0 +1,63 @@
+extends base
+
+block content
+    section.exhibitor
+        //- .exhibitor__table.table
+        ul.table
+            li.table__header.theader
+                //- .number #
+                .name Exhibitor Name
+                .booth Booth
+                .visited
+                    i.fas.fa-handshake
+                .reviewed
+                    i.fas.fa-heart
+            each exhibitor in exhibitors
+                //- ul.exhibitor.table.trows
+                li.table__row.trow.exhibitor__summary(data-id=`${exhibitor._id}`)
+                    //- .number 1
+                    .name= exhibitor.name
+                    .booth= exhibitor.booth
+                    .visited 
+                        i.far.fa-handshake
+                    .reviewed
+                        i.far.fa-heart
+
+                li.expanded.hidden
+                    .exhibitor__detail
+                        .exhibitor__logo
+                            img(src="/images/vp-expo-logo.png" alt="")
+                        .exhibitor__profile
+                            h4 About Exhibitor
+                            p Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate odio aperiam enim distinctio beatae fugit delectus maxime cum ad officia aut recusandae ducimus unde cumque voluptatem soluta, neque a explicabo.
+                            a.know-more(href=`/exhibitor/${exhibitor.slug}`) Know More
+
+
+        .pagination 
+            .pagination__content
+                if exhibitors.page === 1
+                    a.invisible(data-page=`${exhibitors.page}` href="exhibitors/").prev
+                        i.fas.fa-arrow-alt-circle-left.fa-2x                    
+                else
+                    a(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${(exhibitors.page * 1) - 1}`).prev
+                        i.fas.fa-arrow-alt-circle-left.fa-2x
+
+
+                .current= `Page ${exhibitors.page} of ${exhibitors.count}`
+                     
+
+                if exhibitors.page >= exhibitors.maxPages
+                    a.invisible(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${exhibitors.page * 1 + 1}`).next
+                        i.fas.fa-arrow-alt-circle-right.fa-2x
+                else 
+                    a(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${exhibitors.page * 1 + 1}`).next
+                        i.fas.fa-arrow-alt-circle-right.fa-2x
+        //- .search.hidden
+        //-     i.fas.fa-search.fa-2x
+        //-     input#keyword.keyword(type="text", placeholder="Type keyword ...",name="keyword")
+
+
+
+//- block scripts 
+//-     script(src="/js/exhibitorList.js") 
+                            

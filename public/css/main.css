@@ -527,3 +527,42 @@ header {
   margin: auto; }
   .login h2 {
     margin-top: 2em; }
+
+.print-ticket {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  text-align: center; }
+  .print-ticket__border {
+    padding: 2em 1em;
+    background-color: white;
+    border: 1px dotted black;
+    width: 300px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: minmax(100px, auto);
+    grid-template-areas: ". logo logo logo  ." ". type type type ." ". barcode barcode barcode  ." "name name name name name" "company company company company company" "profile profile profile profile profile" "country country country country country"; }
+  .print-ticket__logo {
+    grid-area: logo; }
+  .print-ticket__type {
+    grid-area: type;
+    font-size: 2em;
+    text-transform: uppercase; }
+  .print-ticket__barcode {
+    grid-area: barcode; }
+  .print-ticket__name {
+    grid-area: name;
+    font-size: 1.2em;
+    text-transform: uppercase; }
+  .print-ticket__company {
+    grid-area: company;
+    font-size: 0.8em;
+    text-transform: uppercase; }
+  .print-ticket__profile {
+    grid-area: profile;
+    font-size: 0.8em;
+    text-transform: uppercase; }
+  .print-ticket__country {
+    grid-area: country;
+    font-size: 0.8em;
+    text-transform: uppercase; }

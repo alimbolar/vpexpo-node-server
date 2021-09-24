@@ -11,6 +11,11 @@ router
     authController.restrictTo("admin"),
     exhibitorController.createOneExhibitor
   );
+router.get(
+  "/visited",
+  authController.protect,
+  exhibitorController.getExhibitorsVisited
+);
 
 router
   .route("/:id")

@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const validator = require("validator");
 
 const userSchema = new mongoose.Schema({
+  creatorId: String,
   firstName: {
     type: String,
     required: [true, "First Name is required"],
@@ -33,13 +34,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: "default.jpg",
   },
-  favourites: [
-    // List of all booths that the user likes
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: "Exhibitor",
-    },
-  ],
+  // favourites: [
+  //   // List of all booths that the user likes
+  //   {
+  //     type: mongoose.Schema.ObjectId,
+  //     ref: "Exhibitor",
+  //   },
+  // ],
   password: {
     type: String,
     default: "4plus+++",
@@ -60,19 +61,18 @@ const userSchema = new mongoose.Schema({
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,
-  isActive: Boolean,
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
   preferredLanguage: String,
   profile: String,
   interestedIn: Array,
-  creatorID: String,
   ecommerceEnquiry: Array,
   nationality: String,
   residenceCountry: String,
   barcode: String,
-  active: {
-    type: Boolean,
-    default: true,
-  },
+  badgeIsPrinted: Boolean,
 });
 
 userSchema.pre("save", async function(next) {

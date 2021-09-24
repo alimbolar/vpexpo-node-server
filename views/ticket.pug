@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+        script(defer src="https://kit.fontawesome.com/48411cf139.js" crossorigin="anonymous")
+        link(rel="stylesheet", href="/css/main.css")
+        title #{title}        
+        title Document
+    body 
+
+    .print-ticket 
+        .print-ticket__border
+
+            .print-ticket__logo
+                img(src="/images/vp-expo-logo.png", alt="")
+            .print-ticket__type Visitor
+            .print-ticket__barcode
+                img(src="https://qrtag.net/api/qr_6.svg?url=https://vp-expo-node-server.herokuapp.com/api/v1/users/")
+            .print-ticket__name Alim Bolar
+            .print-ticket__company FourPlus
+            .print-ticket__country India
+            .print-ticket__profile Organiser
