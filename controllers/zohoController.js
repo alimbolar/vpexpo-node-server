@@ -60,7 +60,7 @@ const importExhibitors = catchAsync(async function(data) {
   await Exhibitor.create(exhibitors);
 });
 
-const getAccessToken = async () => {
+exports.getAccessToken = async () => {
   if (currentToken && currentToken.expirationDate > new Date()) {
     console.log("old currentToken : ", currentToken);
     return currentToken.token;
