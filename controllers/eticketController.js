@@ -24,16 +24,15 @@ exports.addOneExhibitorToCreator = catchAsync(async function(req, res, next) {
     body: data,
   };
 
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Zoho-oauthtoken " + token,
-    },
-    body: data,
-  });
-
-  //   const final = await response.json();
+  const response = await fetch(url, options);
+  // const response = await fetch(url, {
+  //   Method: "POST",
+  //   Headers: {
+  //     "Content-Type": "application/json",
+  //     Authorization: "Zoho-oauthtoken " + token,
+  //   },
+  //   body: data,
+  // });
 
   res.status(200).json({
     status: "success",
@@ -42,6 +41,5 @@ exports.addOneExhibitorToCreator = catchAsync(async function(req, res, next) {
     url,
     data,
     response,
-    // final,
   });
 });
