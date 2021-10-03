@@ -24,15 +24,7 @@ exports.addOneExhibitorToCreator = catchAsync(async function(req, res, next) {
     body: data,
   };
 
-  const response = await fetch(url, options);
-  // const response = await fetch(url, {
-  //   Method: "POST",
-  //   Headers: {
-  //     "Content-Type": "application/json",
-  //     Authorization: "Zoho-oauthtoken " + token,
-  //   },
-  //   body: data,
-  // });
+  // const response = await fetch(url, options);
 
   res.status(200).json({
     status: "success",
@@ -40,6 +32,6 @@ exports.addOneExhibitorToCreator = catchAsync(async function(req, res, next) {
     options,
     url,
     data,
-    response,
+    // response,
   });
 });
