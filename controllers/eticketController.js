@@ -85,5 +85,6 @@ exports.addOneExhibitorToCreatorResponse = catchAsync(async function(
     url,
     data,
     functionForResponse,
+    response,
   });
 });
