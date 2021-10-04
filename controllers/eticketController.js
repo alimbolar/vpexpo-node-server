@@ -13,7 +13,16 @@ exports.addOneExhibitorToCreator = catchAsync(async function(req, res, next) {
 
   const token = await getAccessToken();
   const url = process.env.ZOHO_CREATOR_FORM_URL + "/Add_Organisation";
-  const data = req.body;
+  // const data = req.body;
+  const data = {
+    data: {
+      isActive: true,
+      Organisation_Name: "Test With Alim",
+      Type: "Exhibitor",
+      Short_Name: "test",
+      Email: "test@fourplusmedia.com",
+    },
+  };
 
   const options = {
     Method: "POST",
@@ -21,8 +30,10 @@ exports.addOneExhibitorToCreator = catchAsync(async function(req, res, next) {
       "Content-Type": "application/json",
       Authorization: "Zoho-oauthtoken " + token,
     },
-    body: data,
+    body: JSON.stringify(data),
   };
+
+  const functionForResponse = "const response = await fetch(url, options);";
 
   // const response = await fetch(url, options);
 
@@ -32,6 +43,47 @@ exports.addOneExhibitorToCreator = catchAsync(async function(req, res, next) {
     options,
     url,
     data,
-    // response,
+    functionForResponse,
+  });
+});
+
+exports.addOneExhibitorToCreatorResponse = catchAsync(async function(
+  req,
+  res,
+  next
+) {
+  const token = await getAccessToken();
+  const url = process.env.ZOHO_CREATOR_FORM_URL + "/Add_Organisation";
+  // const data = req.body;
+  const data = {
+    data: {
+      isActive: true,
+      Organisation_Name: "Test With Alim",
+      Type: "Exhibitor",
+      Short_Name: "test",
+      Email: "test@fourplusmedia.com",
+    },
+  };
+
+  const options = {
+    Method: "POST",
+    Headers: {
+      "Content-Type": "application/json",
+      Authorization: "Zoho-oauthtoken " + token,
+    },
+    body: JSON.stringify(data),
+  };
+
+  const functionForResponse = "const response = await fetch(url, options);";
+
+  const response = await fetch(url, options);
+
+  res.status(200).json({
+    status: "success",
+    token,
+    options,
+    url,
+    data,
+    functionForResponse,
   });
 });

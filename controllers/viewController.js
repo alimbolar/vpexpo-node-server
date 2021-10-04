@@ -145,3 +145,20 @@ exports.getTicket = function(req, res, next) {
     title: "Ticket",
   });
 };
+
+exports.getAPI = async function(req, res, next) {
+  try {
+    data = await axios({
+      method: "POST",
+      url: "/api/v1/eticket/addOneExhibitor",
+    });
+
+    res.status(200).json({
+      status: "success",
+      data,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).render("error"); // not sure if it's the right way
+  }
+};
