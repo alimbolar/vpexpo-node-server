@@ -8,83 +8,92 @@ const ZOHO_CONSOLE = "vp-expo-main-console";
 
 const currentToken = {};
 
-exports.addOneExhibitorToCreator = catchAsync(async function(req, res, next) {
-  console.log("hello");
+exports.addOneExhibitorToCreator = async function(req, res, next) {
+  try {
+    const token = await getAccessToken();
+    const url = process.env.ZOHO_CREATOR_FORM_URL + "/Add_Organisation";
+    // const organisation = req.body;
+    const organisation = {
+      data: {
+        isActive: true,
+        Organisation_Name: "Test With Alim",
+        Type: "Exhibitor",
+        Short_Name: "test",
+        Email: "test@fourplusmedia.com",
+      },
+    };
 
-  const token = await getAccessToken();
-  const url = process.env.ZOHO_CREATOR_FORM_URL + "/Add_Organisation";
-  // const data = req.body;
-  const data = {
-    data: {
-      isActive: true,
-      Organisation_Name: "Test With Alim",
-      Type: "Exhibitor",
-      Short_Name: "test",
-      Email: "test@fourplusmedia.com",
-    },
-  };
+    const options = {
+      Method: "POST",
+      Headers: {
+        "Content-Type": "application/json",
+        Authorization: "Zoho-oauthtoken " + token,
+      },
+      body: JSON.stringify(organisation),
+    };
 
-  const options = {
-    Method: "POST",
-    Headers: {
-      "Content-Type": "application/json",
-      Authorization: "Zoho-oauthtoken " + token,
-    },
-    body: JSON.stringify(data),
-  };
+    const functionForResponse = "const response = await fetch(url, options);";
 
-  const functionForResponse = "const response = await fetch(url, options);";
+    // const response = await fetch(url, options);
+    // const data = await response.json();
 
-  // const response = await fetch(url, options);
+    res.status(200).json({
+      status: "success",
+      token,
+      options,
+      url,
+      organisation,
+      functionForResponse,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      err,
+    });
+  }
+};
 
-  res.status(200).json({
-    status: "success",
-    token,
-    options,
-    url,
-    data,
-    functionForResponse,
-  });
-});
+exports.addOneExhibitorToCreatorResponse = async function(req, res, next) {
+  try {
+    const token = await getAccessToken();
+    const url = process.env.ZOHO_CREATOR_FORM_URL + "/Add_Organisation";
+    // const organisation = req.body;
+    const organisation = {
+      data: {
+        isActive: true,
+        Organisation_Name: "Test With Alim",
+        Type: "Exhibitor",
+        Short_Name: "test",
+        Email: "test@fourplusmedia.com",
+      },
+    };
 
-exports.addOneExhibitorToCreatorResponse = catchAsync(async function(
-  req,
-  res,
-  next
-) {
-  const token = await getAccessToken();
-  const url = process.env.ZOHO_CREATOR_FORM_URL + "/Add_Organisation";
-  // const data = req.body;
-  const data = {
-    data: {
-      isActive: true,
-      Organisation_Name: "Test With Alim",
-      Type: "Exhibitor",
-      Short_Name: "test",
-      Email: "test@fourplusmedia.com",
-    },
-  };
+    const options = {
+      Method: "POST",
+      Headers: {
+        "Content-Type": "application/json",
+        Authorization: "Zoho-oauthtoken " + token,
+      },
+      body: JSON.stringify(organisation),
+    };
 
-  const options = {
-    Method: "POST",
-    Headers: {
-      "Content-Type": "application/json",
-      Authorization: "Zoho-oauthtoken " + token,
-    },
-    body: JSON.stringify(data),
-  };
+    // const functionForResponse = "const response = await fetch(url, options);";
 
-  const functionForResponse = "const response = await fetch(url, options);";
+    const response = await fetch(url, options);
+    const data = await response.json();
 
-  const response = await fetch(url, options);
-
-  res.status(200).json({
-    status: "success",
-    token,
-    options,
-    url,
-    data,
-    functionForResponse,
-    response,
-  });
-});
+    res.status(200).json({
+      status: "success",
+      token,
+      options,
+      url,
+      organisation,
+      response,
+      data,
+    });
+  } catch (err) {
+    res.status(500).json({
+      err,
+    });
+  }
+};
