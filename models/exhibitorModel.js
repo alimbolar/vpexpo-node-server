@@ -46,7 +46,7 @@ const exhibitorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  creatorId: { type: String, required: true },
+  exhibitorId: { type: String, required: true },
   website: String,
   isActive: {
     type: Boolean,

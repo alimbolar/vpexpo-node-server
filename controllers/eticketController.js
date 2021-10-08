@@ -24,8 +24,8 @@ exports.addOneExhibitorToCreator = async function(req, res, next) {
     };
 
     const options = {
-      Method: "POST",
-      Headers: {
+      method: "POST",
+      headers: {
         "Content-Type": "application/json",
         Authorization: "Zoho-oauthtoken " + token,
       },
@@ -69,8 +69,8 @@ exports.addOneExhibitorToCreatorResponse = async function(req, res, next) {
     };
 
     const options = {
-      Method: "POST",
-      Headers: {
+      method: "POST",
+      headers: {
         "Content-Type": "application/json",
         Authorization: "Zoho-oauthtoken " + token,
       },
@@ -92,6 +92,7 @@ exports.addOneExhibitorToCreatorResponse = async function(req, res, next) {
       data,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json({
       err,
     });
