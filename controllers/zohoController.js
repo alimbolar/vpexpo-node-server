@@ -24,11 +24,10 @@ const importVisitors = catchAsync(async function(data) {
     visitor.preferredLanguage = item.Preferred_Language;
     visitor.profile = item.Visitor_Profile;
     visitor.interestedIn = item.Exhibitor_Category;
-    visitor.creatorID = item.ID;
-    visitor.qrImage = item.QR_Image;
+    visitor.visitorId = item.ID;
     visitor.isActive = item.isActive;
-    // visitor.password = item.Mobile;
-    // visitor.passwordConfirm = item.Mobile;
+    visitor.password = item.Mobile;
+    visitor.passwordConfirm = item.Mobile;
     return visitor;
   });
 
@@ -36,9 +35,11 @@ const importVisitors = catchAsync(async function(data) {
 });
 
 const importExhibitors = catchAsync(async function(data) {
+  console.log(data);
+
   let exhibitors = data.map((item) => {
     let exhibitor = {};
-    exhibitor.name = item.Exhibitor_Name;
+    exhibitor.name = item.Organisation_Name;
     exhibitor.address = item.Address.display_value;
     exhibitor.city = item.Address.district_city;
     exhibitor.country = item.Address.country;
@@ -47,20 +48,22 @@ const importExhibitors = catchAsync(async function(data) {
     exhibitor.email = item.Email;
     exhibitor.phone = item.Phone;
     exhibitor.website = item.Website;
-    exhibitor.shortName = item.Short_Name;
+    exhibitor.slug = item.Short_Name;
     exhibitor.category = item.Exhibitor_Category;
-    exhibitor.booth = item.Exhibitor_Stall_Details;
-    exhibitor.creatorID = item.ID;
+    exhibitor.booth = item.Stall_Details;
+    exhibitor.profile = item.Exhibitor_Profile;
+    exhibitor.exhibitorId = item.ID;
     exhibitor.isActive = item.isActive;
     exhibitor.visits = item.Visits;
     exhibitor.orgEmployee = item.OrgEmployee;
     return exhibitor;
   });
 
+  // console.log(exhibitors);
   await Exhibitor.create(exhibitors);
 });
 
-exports.getAccessToken = async () => {
+getAccessToken = async () => {
   if (currentToken && currentToken.expirationDate > new Date()) {
     console.log("old currentToken : ", currentToken);
     return currentToken.token;
@@ -159,6 +162,8 @@ exports.getAllData = catchAsync(async (req, res) => {
   if (jsonResult.code === 3000) {
     let data = jsonResult.data;
 
+    // console.log(data);
+
     if (uri === "/All_Data") {
       // await User.deleteMany();
       console.log("Users Deleted");
@@ -177,4 +182,40 @@ exports.getAllData = catchAsync(async (req, res) => {
       data,
     });
   } else res.status(500).json(jsonResult);
+});
+
+/// TO ADD ENTRY INTO CREATOR USING ZOHO's ADD RECORD API
+
+exports.addOneExhibitorToCreator = catchAsync(async function(req, res, next) {
+  const token = await getAccessToken();
+  const url = process.env.ZOHO_CREATOR_FORM_URL + "/Add_Organisation";
+  const organisation = req.body;
+  // const organisation = {
+  //   data: {
+  //     isActive: true,
+  //     Organisation_Name: "Test With Alim",
+  //     Type: "Exhibitor",
+  //     Short_Name: "test",
+  //     Email: "test@fourplusmedia.com",
+  //   },
+  // };
+
+  console.log(organisation);
+
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Zoho-oauthtoken " + token,
+    },
+    body: JSON.stringify(organisation),
+  };
+
+  const response = await fetch(url, options);
+  const data = await response.json();
+
+  res.status(200).json({
+    status: "success",
+    data,
+  });
 });

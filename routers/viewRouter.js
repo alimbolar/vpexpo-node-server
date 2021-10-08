@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const viewController = require("./../controllers/viewController");
 const authController = require("./../controllers/authController");
-const eticketController = require("./../controllers/eticketController");
+const zohoController = require("./../controllers/zohoController");
 
 router.use(authController.isLoggedIn);
 
@@ -15,11 +15,5 @@ router.get("/me", authController.protect, viewController.getAccount);
 router.get("/me/settings", authController.protect, viewController.getSettings);
 router.get("/me/ticket", viewController.getTicket);
 router.get("/printme", authController.protect, viewController.printMe);
-// Eticket
-router.get("/eticket", eticketController.addOneExhibitorToCreator);
-router.get(
-  "/eticket/response",
-  eticketController.addOneExhibitorToCreatorResponse
-);
 
 module.exports = router;
