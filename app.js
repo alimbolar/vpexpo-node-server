@@ -17,6 +17,7 @@ const exhibitorRouter = require("./routers/exhibitorRouter");
 const zohoRouter = require("./routers/zohoRouter");
 const viewRouter = require("./routers/viewRouter");
 const eticketRouter = require("./routers/eticketRouter");
+const mongoRouter = require("./routers/mongoRouter");
 
 const app = express();
 
@@ -77,6 +78,7 @@ app.use("/api/v1/users", userRouter);
 // app.use("/api/v1/organisations", organisationRouter);
 app.use("/api/v1/exhibitors", exhibitorRouter);
 app.use("/api/v1/eticket", eticketRouter);
+app.use("/api/v1/mongo", mongoRouter);
 
 app.all("*", (req, res, next) => {
   const err = new AppError(`This route ${req.originalUrl} does not exist`, 404);

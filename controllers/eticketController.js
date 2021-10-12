@@ -3,4 +3,6 @@ const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/AppError");
 const { CONFIG } = require("./../src/config");
 
-exports.getBarcode = catchAsync(async function() {});
+exports.addVisitor = catchAsync(async function(req, res, next) {
+  console.log(req.body);
+});
