@@ -5,6 +5,11 @@ const validator = require("validator");
 
 const userSchema = new mongoose.Schema({
   visitorId: String,
+  role: {
+    type: String,
+    enum: ["admin", "user", "jury"],
+    default: "user",
+  },
   firstName: {
     type: String,
     required: [true, "First Name is required"],
@@ -20,36 +25,46 @@ const userSchema = new mongoose.Schema({
     // unique: true,
     lowercase: true,
   },
-  role: {
+  mobile: {
     type: String,
-    enum: ["admin", "exhibitor", "user", "jury"],
-    default: "user",
+    required: true,
   },
-  company: String,
+  type: {
+    type: String,
+    required: true,
+  },
+  company: {
+    type: String,
+    required: true,
+  },
+  profile: {
+    type: String,
+    required: true,
+  },
   address: String,
   city: String,
-  country: String,
-  mobile: String,
+  country: {
+    type: String,
+    required: true,
+  },
+  nationality: {
+    type: String,
+    required: true,
+  },
+
   photo: {
     type: String,
     default: "default.jpg",
   },
-  // favourites: [
-  //   // List of all booths that the user likes
-  //   {
-  //     type: mongoose.Schema.ObjectId,
-  //     ref: "Exhibitor",
-  //   },
-  // ],
   password: {
     type: String,
-    default: "4plus+++",
+    // default: "4plus+++",
     required: true,
     minlength: 8,
   },
   passwordConfirm: {
     type: String,
-    default: "4plus+++",
+    // default: "4plus+++",
     validate: {
       validator: function(el) {
         return el === this.password;
@@ -66,13 +81,12 @@ const userSchema = new mongoose.Schema({
     default: true,
   },
   preferredLanguage: String,
-  profile: String,
   interestedIn: Array,
-  ecommerceEnquiry: Array,
-  nationality: String,
-  residenceCountry: String,
   barcode: String,
-  badgeIsPrinted: Boolean,
+  badgeIsPrinted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 userSchema.pre("save", async function(next) {
