@@ -6,6 +6,16 @@ const userController = require("./../controllers/userController");
 const factory = require("./handlerController");
 // const fetch = require("node-fetch");
 
+const filterObj = function(obj, ...allowedFields) {
+  const newObj = {};
+
+  Object.keys(obj).forEach((el) => {
+    if (allowedFields.includes(el)) newObj[el] = obj[el];
+  });
+
+  return newObj;
+};
+
 exports.addOneVisitor = catchAsync(async function(req, res, next) {
   //   const data = req.body;
   const visitorId = req.body.visitorId;
@@ -24,7 +34,9 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
       },
     });
   } else {
-    const doc = await User.findOneAndUpdate({ visitorId }, req.body, {
+    const filteredBody = filterObj(req.body, "firstName", "lastName", "email");
+
+    const doc = await User.findOneAndUpdate({ visitorId }, filteredBody, {
       new: true,
       runValidators: true,
     });
