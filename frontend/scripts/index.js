@@ -3,6 +3,7 @@ import { displayExhibitorData } from "./XXXexhibitorList";
 import { showMessage, hidePopup } from "./alert";
 import { showTicket } from "./printTicket";
 import { printTicket } from "./printTicket";
+import { updateSettings, updateEvento } from "./updateSettings";
 import {
   listExhibitor,
   listVisited,
@@ -72,8 +73,46 @@ if (userDataBtn) {
     e.preventDefault();
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
+    const mobile = document.getElementById("email").value;
     const email = document.getElementById("email").value;
-    updateSettings({ firstName, lastName, email }, "data");
+    const company = document.getElementById("company").value;
+    const profile = document.getElementById("profile").value;
+    const address = document.getElementById("address").value;
+    const city = document.getElementById("city").value;
+    const country = document.getElementById("country").value;
+    const nationality = document.getElementById("nationality").value;
+    const type = document.getElementById("type").value;
+
+    updateEvento({
+      firstName,
+      lastName,
+      mobile,
+      email,
+      company,
+      profile,
+      address,
+      city,
+      country,
+      nationality,
+      type,
+    });
+
+    updateSettings(
+      {
+        firstName,
+        lastName,
+        mobile,
+        email,
+        company,
+        profile,
+        address,
+        city,
+        country,
+        nationality,
+        type,
+      },
+      "data"
+    );
   });
 }
 
@@ -126,6 +165,9 @@ const modalContent = document.querySelector(".modal__content");
 
 if (showTicketBtn) {
   showTicketBtn.addEventListener("click", showTicket);
+  // showTicketBtn.addEventListener("click", function() {
+  //   alert("hello hell");
+  // });
 }
 
 if (modalContent) {

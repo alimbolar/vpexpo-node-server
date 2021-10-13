@@ -1,5 +1,23 @@
 import axios from "axios";
 
+export const updateEvento = async function(data) {
+  try {
+    const url = "/api/v1/users/updateEvento";
+
+    const res = await axios({
+      method: "POST",
+      url,
+      data,
+    });
+
+    if (res.data.status === "success") {
+      alert(`${type.toUpperCase()} Updated`);
+    }
+  } catch (err) {
+    alert(err.response.data.message);
+  }
+};
+
 export const updateSettings = async function(data, type) {
   try {
     const url =
@@ -21,6 +39,30 @@ export const updateSettings = async function(data, type) {
   }
 };
 
+/////// FOR RECENT UPDATE
+
+// export const updateSettings = async function(data, type) {
+//   try {
+//     const url =
+//       type === "password"
+//         ? "/api/v1/users/updateMyPassword"
+//         : "/api/v1/users/updateMe";
+
+//     const res = await axios({
+//       method: "PATCH",
+//       url,
+//       data,
+//     });
+
+//     if (res.data.status === "success") {
+//       alert(`${type.toUpperCase()} Updated`);
+//     }
+//   } catch (err) {
+//     alert(err.response.data.message);
+//   }
+// };
+
+////// OLD
 // document.querySelector(".form-user-data").addEventListener("submit", (e) => {
 //   e.preventDefault();
 //   const firstName = document.getElementById("firstName").value;
