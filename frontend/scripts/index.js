@@ -176,11 +176,13 @@ if (modalContent) {
 
     if (e.target.closest(".ticket__print-ticket")) {
       const printTicketBtn = e.target;
-      const id = printTicketBtn.dataset.id;
-      const creatorId = printTicketBtn.dataset.creatorId;
-      const barcode = printTicketBtn.dataset.barcode;
+      const visitorId = printTicketBtn.dataset.visitorId;
 
-      printTicket(barcode, creatorId);
+      printTicket(visitorId);
+    }
+
+    if (e.target.closest(".ticket__update-data")) {
+      alert("let's edit my profile");
     }
 
     // if(e.target)

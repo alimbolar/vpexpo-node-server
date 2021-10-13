@@ -82,10 +82,9 @@ const userSchema = new mongoose.Schema({
   },
   preferredLanguage: String,
   interestedIn: Array,
-  barcode: String,
-  badgeIsPrinted: {
-    type: Boolean,
-    default: false,
+  eventId: {
+    type: String,
+    default: null,
   },
 });
 
