@@ -73,7 +73,7 @@ if (userDataBtn) {
     e.preventDefault();
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
-    const mobile = document.getElementById("email").value;
+    const mobile = document.getElementById("mobile").value;
     const email = document.getElementById("email").value;
     const company = document.getElementById("company").value;
     const profile = document.getElementById("profile").value;
@@ -82,20 +82,25 @@ if (userDataBtn) {
     const country = document.getElementById("country").value;
     const nationality = document.getElementById("nationality").value;
     const type = document.getElementById("type").value;
+    const visitorId = document.getElementById("visitorId").value;
 
-    updateEvento({
-      firstName,
-      lastName,
-      mobile,
-      email,
-      company,
-      profile,
-      address,
-      city,
-      country,
-      nationality,
-      type,
-    });
+    console.log(profile);
+
+    const visitorForEvento = {
+      VisitorNumber: visitorId,
+      FirstName: firstName,
+      LastName: lastName,
+      Mobile: mobile,
+      Email: email,
+      Company: company,
+      JobTitle: profile,
+      Country: country,
+      Nationality: nationality,
+      Category: type,
+    };
+
+    console.log("visitor", visitorForEvento);
+    updateEvento(visitorForEvento);
 
     updateSettings(
       {
@@ -181,8 +186,10 @@ if (modalContent) {
       printTicket(visitorId);
     }
 
-    if (e.target.closest(".ticket__update-data")) {
-      alert("let's edit my profile");
+    if (e.target.closest(".update-data")) {
+      // alert("let's edit my profile");
+
+      location.href = "/me/profile";
     }
 
     // if(e.target)

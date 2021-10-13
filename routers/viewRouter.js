@@ -13,7 +13,8 @@ router.get("/exhibitors/visited", viewController.getExhibitorsVisited);
 router.get("/exhibitor/:slug", viewController.displayExhibitor);
 router.get("/me", authController.protect, viewController.getAccount);
 router.get("/me/settings", authController.protect, viewController.getSettings);
-router.get("/me/ticket", viewController.getTicket);
-router.get("/printme", authController.protect, viewController.printMe);
+router.get("/me/profile", authController.protect, viewController.getProfile);
+// router.get("/me/ticket", viewController.getTicket);
+// router.get("/printme", authController.protect, viewController.printMe);
 
 module.exports = router;

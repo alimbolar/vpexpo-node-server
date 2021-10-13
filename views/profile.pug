@@ -16,9 +16,9 @@ block content
         nav.my-account__menu
         .my-account__content
            
-            #profile.my-account__profile
+            #my-profile.my-account__profile
                 h2.heading-secondary.ma-bt-md My Profile
-                form.form.form-user-organisation
+                form.form.form-user-data
                     .form__group
                         label.form__label(for='firstName') First Name
                         input#firstName.form__input(type='text', value=`${user.firstName}`, required, name="firstName")
@@ -28,7 +28,7 @@ block content
                     //-     label.form__label(for='profile') Designation
                     //-     input#profile.form__input(type='text', value=`${user.firstName}`, required, name="profile")
                     .form__group
-                        label.form__label(for='name') Mobile
+                        label.form__label(for='mobile') Mobile
                         input#mobile.form__input(type='text', value=`${user.mobile}`, required, name="mobile")
                     .form__group.ma-bt-md
                         label.form__label(for='email') Email
@@ -40,7 +40,7 @@ block content
                         label.form__label(for='company') Company
                         input#company.form__input(type='text', value=`${user.company}`, required, name="company")
                     .form__group
-                        label.form__label(for='type') Profile
+                        label.form__label(for='profile') Profile
                         input#profile.form__input(type='text', value=`${user.profile}`, required, name="profile")
                     .form__group
                         label.form__label(for='address') Address
@@ -57,6 +57,9 @@ block content
                     .form__group.ma-bt-md.hidden
                         label.form__label(for='type') Type
                         input#type.form__input(type='text', value=`${user.type}`, required,name="type")
+                    .form__group.ma-bt-md.hidden
+                        label.form__label(for='visitorId') Visitor Id
+                        input#visitorId.form__input(type='text', value=`${user.visitorId}`, required,name="visitorId")
                     //- .form__group.ma-bt-md
                     //-     label.form__label(for='residenceCountry') Residence Country
                     //-     input#residenceCountry.form__input(type='text', value=`${user.residenceCountry}`, required,name="residenceCountry")                            

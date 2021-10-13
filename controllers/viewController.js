@@ -95,6 +95,14 @@ exports.getSettings = async function(req, res, next) {
   });
 };
 
+exports.getProfile = async function(req, res, next) {
+  const user = await User.findById(req.user.id);
+  res.status(200).render("profile", {
+    title: "My Profile",
+    user,
+  });
+};
+
 exports.printMe = async function(req, res, next) {
   try {
     const root = process.env.PWD;

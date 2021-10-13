@@ -82,7 +82,7 @@ const userSchema = new mongoose.Schema({
   },
   preferredLanguage: String,
   interestedIn: Array,
-  eventId: {
+  eventoId: {
     type: String,
     default: null,
   },

@@ -2,13 +2,15 @@ import axios from "axios";
 
 export const updateEvento = async function(data) {
   try {
-    const url = "/api/v1/users/updateEvento";
+    const url = "/api/v1/eticket/visitor";
 
     const res = await axios({
       method: "POST",
       url,
       data,
     });
+
+    console.log(res);
 
     if (res.data.status === "success") {
       alert(`${type.toUpperCase()} Updated`);

@@ -1,60 +1,66 @@
 import axios from "axios";
-import { ContextExclusionPlugin } from "webpack";
+const fetch = require("node-fetch");
+
 import { showPopup, showMessage } from "./alert";
 
 // const showTicketBtn = document.querySelector(".show-ticket");
 // const printTicketBtn = document.querySelector(".print-ticket");
 
 export const showTicket = async function() {
-  const { data } = await axios({
-    method: "GET",
-    url: "/api/v1/users/me",
-  });
+  try {
+    // const { data } = await axios({
+    //   method: "GET",
+    //   url: "/api/v1/users/me",
+    // });
 
-  //
-  const user = data.data.data;
+    const response = await fetch("/api/v1/users/me");
+    const data = await response.json();
 
-  const visitor = {
-    VisitorNumber: user.visitorId,
-    FirstName: user.firstName,
-    LastName: user.lastName,
-    Company: user.company,
-    JobTitle: user.profile,
-    Email: user.email,
-    Mobile: user.mobile,
-    Nationality: user.nationality,
-    Country: user.country,
-    Category: user.type,
-  };
+    const user = data.data.data;
 
-  console.log(user);
-  console.log(visitor);
+    const visitor = {
+      VisitorNumber: user.visitorId,
+      FirstName: user.firstName,
+      LastName: user.lastName,
+      Company: user.company,
+      JobTitle: user.profile,
+      Email: user.email,
+      Mobile: user.mobile,
+      Nationality: user.nationality,
+      Country: user.country,
+      Category: user.type,
+    };
 
-  if (!user.eventId) {
-    const response = await axios({
+    const url = "/api/v1/eticket/visitor";
+    const options = {
       method: "POST",
-      url: "https://online.evsreg.com/VPEXPOAPI/API/Visitor/VisitorInsert",
+      header: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(visitor),
-    });
+    };
 
-    console.log(response);
+    if (!user.eventId) {
+      const response1 = await fetch(url, options);
+      const data1 = await response1.json();
+
+      const eventoResponse = data1.data.data;
+    }
+
+    const ticketMarkup = `<div class="ticket">
+      <div class="ticket__logo"> <img src="/images/vp-expo-logo.png"> </div>
+      <div class="ticket__data">
+      <p>Your ticket is ready to be printed</p>
+     </div>
+      <button class="btn ticket__print-ticket" data-visitor-id=${user.visitorId}> Print Ticket </button>
+      <button class="btn update-data"> Update Data </button>
+      </div>
+      `;
+
+    showPopup(ticketMarkup);
+  } catch (err) {
+    console.log(err);
   }
-
-  const ticketMarkup = `<div class="ticket">
-  <div class="ticket__logo"> <img src="/images/vp-expo-logo.png"> </div>
-  <div class="ticket__data">
-  
-  <p>Your ticket is ready to be printed</p>
-  
- </div>
-   
-  <button class="btn ticket__print-ticket" data-visitor-id=${user.visitorId}> Print Ticket </button>
-
-  <button class="btn update-data"> Update Data </button>
-  </div>
-  `;
-
-  showPopup(ticketMarkup);
 };
 
 export const printTicket = async function(visitorId) {
