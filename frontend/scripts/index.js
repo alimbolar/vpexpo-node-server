@@ -1,8 +1,7 @@
 import { login, logout } from "./login";
-import { displayExhibitorData } from "./XXXexhibitorList";
 import { showMessage, hidePopup } from "./alert";
-import { showTicket } from "./printTicket";
-import { printTicket } from "./printTicket";
+// import { showTicket } from "./printTicket";
+// import { printTicket } from "./printTicket";
 import { updateSettings, updateEvento } from "./updateSettings";
 import {
   listExhibitor,
@@ -66,10 +65,10 @@ const allExhibitors = document.querySelector(".exhibitor-list");
 // }
 
 // UPDATE SETTINGS
-const userDataBtn = document.querySelector(".form-user-data");
+const saveSettings = document.querySelector(".form-user-data");
 
-if (userDataBtn) {
-  userDataBtn.addEventListener("submit", (e) => {
+if (saveSettings) {
+  saveSettings.addEventListener("submit", async (e) => {
     e.preventDefault();
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
@@ -77,14 +76,12 @@ if (userDataBtn) {
     const email = document.getElementById("email").value;
     const company = document.getElementById("company").value;
     const profile = document.getElementById("profile").value;
-    const address = document.getElementById("address").value;
-    const city = document.getElementById("city").value;
+    // const address = document.getElementById("address").value;
+    // const city = document.getElementById("city").value;
     const country = document.getElementById("country").value;
     const nationality = document.getElementById("nationality").value;
     const type = document.getElementById("type").value;
     const visitorId = document.getElementById("visitorId").value;
-
-    console.log(profile);
 
     const visitorForEvento = {
       VisitorNumber: visitorId,
@@ -99,10 +96,13 @@ if (userDataBtn) {
       Category: type,
     };
 
-    console.log("visitor", visitorForEvento);
-    updateEvento(visitorForEvento);
+    // console.log(visitorForEvento);
 
-    updateSettings(
+    // UPDATE EVENTO DATABASE
+    // await updateEvento(visitorForEvento, "evento");
+
+    // UPDATE MONGODB
+    await updateSettings(
       {
         firstName,
         lastName,
@@ -110,8 +110,8 @@ if (userDataBtn) {
         email,
         company,
         profile,
-        address,
-        city,
+        // address,
+        // city,
         country,
         nationality,
         type,
@@ -120,36 +120,36 @@ if (userDataBtn) {
     );
   });
 }
+//// NOT FOR CURRENT RELEASE
+//////////////////////////////////////
+// const savePassword = document.querySelector(".form-user-password");
 
-const userPasswordBtn = document.querySelector(".form-user-password");
+// if (savePassword) {
+//   userPasswordBtn.addEventListener("submit", async (e) => {
+//     e.preventDefault();
 
-if (userPasswordBtn) {
-  userPasswordBtn.addEventListener("submit", async (e) => {
-    e.preventDefault();
+//     document.querySelector(".update-password").textContent = "Updating...";
 
-    document.querySelector(".update-password").textContent = "Updating...";
+//     const passwordCurrent = document.getElementById("password-current").value;
+//     const password = document.getElementById("password").value;
+//     const passwordConfirm = document.getElementById("password-confirm").value;
 
-    const passwordCurrent = document.getElementById("password-current").value;
-    const password = document.getElementById("password").value;
-    const passwordConfirm = document.getElementById("password-confirm").value;
+//     await updateSettings(
+//       { passwordCurrent, password, passwordConfirm },
+//       "password"
+//     );
 
-    await updateSettings(
-      { passwordCurrent, password, passwordConfirm },
-      "password"
-    );
-
-    document.querySelector(".update-password").textContent = "Save Password";
-    document.getElementById("password-current").value = "";
-    document.getElementById("password").value = "";
-    document.getElementById("password-confirm").value = "";
-  });
-}
+//     document.querySelector(".update-password").textContent = "Save Password";
+//     document.getElementById("password-current").value = "";
+//     document.getElementById("password").value = "";
+//     document.getElementById("password-confirm").value = "";
+//   });
+// }
 
 // MENU
-
 const popupLinks = document.querySelectorAll(".popup-link");
-const btnClose = document.querySelector(".close");
-const overlayClose = document.querySelector(".overlay");
+const closeButton = document.querySelector(".close");
+const closeOverlay = document.querySelector(".overlay");
 
 popupLinks.forEach((popupLink) => {
   popupLink.addEventListener("click", function() {
@@ -160,47 +160,50 @@ popupLinks.forEach((popupLink) => {
   });
 });
 
-btnClose.addEventListener("click", hidePopup);
-overlayClose.addEventListener("click", hidePopup);
+closeButton.addEventListener("click", hidePopup);
+closeOverlay.addEventListener("click", hidePopup);
 
 // PRINT TICKET
 
-const showTicketBtn = document.querySelector(".show-ticket");
-const modalContent = document.querySelector(".modal__content");
+// const showTicketStatus = document.querySelector(".show-ticket");
+// const showModal = document.querySelector(".modal__content");
+const updateData = document.querySelector(".update-data");
+const printBadge = document.querySelector(".print-badge");
 
-if (showTicketBtn) {
-  showTicketBtn.addEventListener("click", showTicket);
-  // showTicketBtn.addEventListener("click", function() {
-  //   alert("hello hell");
-  // });
+// if (showTicketStatus) {
+//   showTicketStatus.addEventListener("click", showTicket);
+// }
+
+// if (showModal) {
+//   showModal.addEventListener("click", function(e) {
+//     e.preventDefault();
+
+//     if (e.target.closest(".ticket__print-ticket")) {
+//       const printTicketBtn = e.target;
+//       const visitorId = printTicketBtn.dataset.visitorId;
+
+//       printTicket(visitorId);
+//     }
+//   });
+// }
+
+if (updateData) {
+  updateData.addEventListener("click", function() {
+    window.open("/me/profile", "_self");
+  });
 }
 
-if (modalContent) {
-  modalContent.addEventListener("click", function(e) {
-    e.preventDefault();
-
-    if (e.target.closest(".ticket__print-ticket")) {
-      const printTicketBtn = e.target;
-      const visitorId = printTicketBtn.dataset.visitorId;
-
-      printTicket(visitorId);
-    }
-
-    if (e.target.closest(".update-data")) {
-      // alert("let's edit my profile");
-
-      location.href = "/me/profile";
-    }
-
-    // if(e.target)
-
-    // alert("hello hell");
-    // console.log(printTicketBtn);
+if (printBadge) {
+  printBadge.addEventListener("click", function() {
+    const visitorId = printBadge.dataset.id;
+    window.open(
+      `https://visionplus.evsreg.com/badge.aspx?ID=${visitorId}`,
+      "_blank"
+    );
   });
 }
 
 // DISPLAY EXHIBITOR DETAILS
-
 const exhibitorRows = document.querySelector(".table");
 const knowMoreBtns = document.querySelectorAll(".know-more");
 

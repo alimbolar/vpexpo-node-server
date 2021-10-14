@@ -12,7 +12,6 @@ export const showAlert = function(type, message) {
   content.insertAdjacentHTML("afterbegin", markup);
   window.setTimeout(hideAlert, 10000);
 };
-// sdfsldkl
 
 const overlay = document.querySelector(".overlay");
 const modal = document.querySelector(".modal");
@@ -38,12 +37,3 @@ export const showMessage = function(headline, body) {
   showPopup(messageMarkup);
 };
 
-// export const showPopup = function(headline, body) {
-//   hidePopup();
-//   modal.classList.remove("hidden");
-//   overlay.classList.remove("hidden");
-//   const markup = `<div class="modal__headline">${headline} </div> <div class="modal__body">${body} </div>`;
-//   const modalContent = document.querySelector(".modal__content");
-//   modalContent.innerHTML = "";
-//   modalContent.insertAdjacentHTML("afterbegin", markup);
-// };

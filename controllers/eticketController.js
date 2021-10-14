@@ -1,14 +1,19 @@
 const fetch = require("node-fetch");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/AppError");
-const { CONFIG } = require("./../src/config");
-// const axios = require("axios");
 const User = require("./../models/userModel");
-const { findOneAndUpdate } = require("./../models/userModel");
 
-exports.addOneVisitor = async function(req, res, next) {
+exports.addOneVisitor = catchAsync(async function(req, res, next) {
   try {
     const visitor = req.body;
+
+    console.log(visitor);
+
+    //TO BE ENABLED IF WE PLAN TO ALLOW UPDATES AFTER EVENTOID HAS BEEN CREATED
+    ////////////////////////////////
+    // if (visitor.eventoId) {
+    //   return;
+    // }
 
     url = "https://online.evsreg.com/VPEXPOAPI/API/Visitor/VisitorInsert";
     options = {
@@ -24,21 +29,34 @@ exports.addOneVisitor = async function(req, res, next) {
     const response = await fetch(url, options);
     const data = await response.json();
 
-    console.log("response", data.EvID);
-    const eventoID = data.EvID;
+    console.log(data);
+
+    const eventoId = data.EvID;
     const visitorId = visitor.VisitorNumber;
 
-    console.log(visitorId);
-
-    if (eventoID) {
+    if (eventoId) {
       const user = await User.findOneAndUpdate({ visitorId }, { eventoId });
+
+      console.log("entoId updated", eventoId);
+      res.status(200).json({
+        status: "success",
+        data,
+      });
     }
 
-    res.status(200).json({
-      status: "success",
-      data,
-    });
+    if (!eventoId) {
+      console.log("Data not saved on evento");
+      res.status(200).json({
+        status: "fail",
+        data,
+      });
+    }
+
+    // res.status(200).json({
+    //   status: "success",
+    //   data,
+    // });
   } catch (err) {
     console.log(err);
   }
-};
+});

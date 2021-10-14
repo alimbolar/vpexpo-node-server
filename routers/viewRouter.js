@@ -6,11 +6,13 @@ const zohoController = require("./../controllers/zohoController");
 
 router.use(authController.isLoggedIn);
 
+//EXHIBITOR RELATED
 router.get("/", viewController.getOverview);
 router.get("/login", viewController.getLoginForm);
 router.get("/exhibitors", viewController.getExhibitorList);
 router.get("/exhibitors/visited", viewController.getExhibitorsVisited);
 router.get("/exhibitor/:slug", viewController.displayExhibitor);
+//VISITOR RELATED
 router.get("/me", authController.protect, viewController.getAccount);
 router.get("/me/settings", authController.protect, viewController.getSettings);
 router.get("/me/profile", authController.protect, viewController.getProfile);

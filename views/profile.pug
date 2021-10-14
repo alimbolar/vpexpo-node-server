@@ -30,7 +30,7 @@ block content
                     .form__group
                         label.form__label(for='mobile') Mobile
                         input#mobile.form__input(type='text', value=`${user.mobile}`, required, name="mobile")
-                    .form__group.ma-bt-md
+                    .form__group
                         label.form__label(for='email') Email
                         input#email.form__input(type='email', value=`${user.email}`, required,name="email")
                     //- .form__group.form__photo-upload
@@ -42,280 +42,37 @@ block content
                     .form__group
                         label.form__label(for='profile') Profile
                         input#profile.form__input(type='text', value=`${user.profile}`, required, name="profile")
-                    .form__group
-                        label.form__label(for='address') Address
-                        input#address.form__input(type='text', value=`${user.address}`, required, name="address")
-                    .form__group.ma-bt-md
-                        label.form__label(for='city') City
-                        input#city.form__input(type='text', value=`${user.city}`, required,name="city")
-                    .form__group.ma-bt-md
-                        label.form__label(for='country') Country Of Residence
-                        input#country.form__input(type='text', value=`${user.country}`, required,name="country")
-                    .form__group.ma-bt-md
-                        label.form__label(for='nationality') Nationality
-                        input#nationality.form__input(type='text', value=`${user.nationality}`, required,name="nationality")
-                    .form__group.ma-bt-md.hidden
-                        label.form__label(for='type') Type
-                        input#type.form__input(type='text', value=`${user.type}`, required,name="type")
-                    .form__group.ma-bt-md.hidden
-                        label.form__label(for='visitorId') Visitor Id
-                        input#visitorId.form__input(type='text', value=`${user.visitorId}`, required,name="visitorId")
+                    //- .form__group
+                    //-     label.form__label(for='address') Address
+                    //-     input#address.form__input(type='text', value=`${user.address}`, required, name="address")
+                    //- .form__group
+                    //-     label.form__label(for='city') City
+                    //-     input#city.form__input(type='text', value=`${user.city}`, required,name="city")
+                    //- .form__group
+                    //-     label.form__label(for='country1') Country Of Residence
+                    //-     input#country1.form__input(type='text', value=`${user.country}`,required,name="country1")
+                    .form__group 
+                        label.form__label(for="country") Country Of Residence
+                        select#country.form__input(name="country" value=`${user.country}`)
+                            include _countries
+                    .form__group 
+                        label.form__label(for="nationality") Nationality
+                        select#nationality.form__input(name="nationality" value=`${user.nationality}`)
+                            include _countries                        
                     //- .form__group.ma-bt-md
-                    //-     label.form__label(for='residenceCountry') Residence Country
-                    //-     input#residenceCountry.form__input(type='text', value=`${user.residenceCountry}`, required,name="residenceCountry")                            
+                    //-     label.form__label(for='nationality') Nationality
+                    //-     input#nationality.form__input(type='text', value=`${user.nationality}`, required,name="nationality")
+                    .hidden
+                        .form__group
+                            label.form__label(for='type') Type
+                            input#type.form__input(type='text', value=`${user.type}`, required,name="type")
+                        .form__group
+                            label.form__label(for='visitorId') Visitor Id
+                            input#visitorId.form__input(type='text', value=`${user.visitorId}`, required,name="visitorId")
+                        //- .form__group.ma-bt-md
+                        //-     label.form__label(for='residenceCountry') Residence Country
+                        //-     input#residenceCountry.form__input(type='text', value=`${user.residenceCountry}`, required,name="residenceCountry")                            
                     .form__group.right
                         button.btn.btn--small.btn--green.update-data Save settings                
 
          
-
-
-//- <option value="United Arab Emirates">United Arab Emirates</option>
-//- <option value="Bahrain">Bahrain</option>
-//- <option value="Kuwait">Kuwait</option>
-//- <option value="Oman">Oman</option>
-//- <option value="Qatar"
-//- <option value="Saudi Arabia"
-//- <option value="Afghanistan"
-//- <option value="Aland Islands"
-//- <option value="Albania"
-//- <option value="Algeria"
-//- <option value="American Samoa"
-//- <option value="Andorra"
-//- <option value="Angola"
-//- <option value="Anguilla"
-//- <option value="Antigua & Barbuda"
-//- <option value="Argentina"
-//- <option value="Armenia"
-//- <option value="Aruba"
-//- <option value="Australia"
-//- <option value="Austria"
-//- <option value="Azerbaijan"
-//- <option value="Bahamas"
-//- <option value="Bangladesh"
-//- <option value="Barbados"
-//- <option value="Belarus"
-//- <option value="Belgium"
-//- <option value="Belize"
-//- <option value="Benin"
-//- <option value="Bermuda"
-//- <option value="Bhutan"
-//- <option value="Bolivia"
-//- <option value="Bosnia and Herzegovina"
-//- <option value="Botswana"
-//- <option value="Bouvet Island"
-//- <option value="Brazil"
-//- <option value="British Indian Ocean Territory"
-//- <option value="Brunei"
-//- <option value="Bulgaria"
-//- <option value="Burkina Faso"
-//- <option value="Burundi"
-//- <option value="Cambodia"
-//- <option value="Cameroon"
-//- <option value="Canada"
-//- <option value="Cape Verde"
-//- <option value="Caribbean Netherlands"
-//- <option value="Cayman Islands"
-//- <option value="Central African Republic"
-//- <option value="Chad"
-//- <option value="Chagos Islands"
-//- <option value="Chile"
-//- <option value="China"
-//- <option value="Christmas Island"
-//- <option value="Cocos (Keeling) Islands"
-//- <option value="Colombia"
-//- <option value="Comoros"
-//- <option value="Congo, Democratic Republic Of The"
-//- <option value="Congo, Republic of the"
-//- <option value="Cook Islands"
-//- <option value="Costa Rica"
-//- <option value="Cote d'Ivoire (Ivory Coast)""
-//- <option value="Croatia"
-//- <option value="Cuba"
-//- <option value="Curacao"
-//- <option value="Cyprus"
-//- <option value="Czech Republic"
-//- <option value="Denmark"
-//- <option value="Djibouti"
-//- <option value="Dominica
-//- <option value="Dominican Republic"
-//- <option value="Ecuador"
-//- <option value="Egypt"
-//- <option value="El Salvador"
-//- <option value="Equatorial Guinea"
-//- <option value="Eritrea"
-//- <option value="Estonia"
-//- <option value="Ethiopia"
-//- <option value="Falkland Islands"
-//- <option value="Faroe Islands"
-//- <option value="Fiji"
-//- <option value="Finland"
-//- <option value="France"
-//- <option value="French Guiana"
-//- <option value="French Polynesia"
-//- <option value="French Southern Territories"
-//- <option value="Gabon"
-//- <option value="Gambia"
-//- <option value="Georgia"
-//- <option value="Germany"
-//- <option value="Ghana"
-//- <option value="Gibraltar"
-//- <option value="Greece"
-//- <option value="Greenland"
-//- <option value="Grenada"
-//- <option value="Guadeloupe"
-//- <option value="Guam"
-//- <option value="Guatemala"
-//- <option value="Guernsey"
-//- <option value="Guinea"
-//- <option value="Guinea-Bissau"
-//- <option value="Guyana"
-//- <option value="Haiti"
-//- <option value="Heard and McDonald Islands"
-//- <option value="Honduras"
-//- <option value="Hong Kong Special Administrative Zone"
-//- <option value="Hungary"
-//- <option value="Iceland"
-//- <option value="India"
-//- <option value="Indonesia"
-//- <option value="Iran"
-//- <option value="Iraq"
-//- <option value="Ireland, Republic of"
-//- <option value="Isle of Man"
-//- <option value="Israel"
-//- <option value="Italy"
-//- <option value="Jamaica"
-//- <option value="Japan"
-//- <option value="Jersey"
-//- <option value="Jordan"
-//- <option value="Kazakhstan"
-//- <option value="Kenya"
-//- <option value="Kiribati"
-//- <option value="Korea, Democratic People's Republic of"
-//- <option value="Korea, Republic Of"
-//- <option value="Kosovo"
-//- <option value="Kyrgyzstan"
-//- <option value="Laos"
-//- <option value="Latvia"
-//- <option value="Lebanon"
-//- <option value="Lesotho"
-//- <option value="Liberia"
-//- <option value="Libya"
-//- <option value="Liechtenstein"
-//- <option value="Lithuania"
-//- <option value="Luxembourg"
-//- <option value="Macau Special Administrative Zone"
-//- <option value="Madagascar"
-//- <option value="Malawi"
-//- <option value="Malaysia"
-//- <option value="Maldives"
-//- <option value="Mali"
-//- <option value="Malta"
-//- <option value="Marshall Islands"
-//- <option value="Martinique"
-//- <option value="Mauritania"
-//- <option value="Mauritius"
-//- <option value="Mayotte"
-//- <option value="Mexico"
-//- <option value="Micronesia"
-//- <option value="Moldova"
-//- <option value="Monaco"
-//- <option value="Mongolia"
-//- <option value="Montenegro"
-//- <option value="Montserrat"
-//- <option value="Morocco"
-//- <option value="Mozambique"
-//- <option value="Myanmar"
-//- <option value="Namibia"
-//- <option value="Nauru"
-//- <option value="Nepal"
-//- <option value="Netherlands"
-//- <option value="Netherlands Antilles"
-//- <option value="New Caledonia"
-//- <option value="New Zealand"
-//- <option value="Nicaragua"
-//- <option value="Niger"
-//- <option value="Nigeria"
-//- <option value="Niue"
-//- <option value="Norfolk Island"
-//- <option value="North Macedonia"
-//- <option value="Northern Mariana Islands"
-//- <option value="Norway"
-//- <option value="Pakistan"
-//- <option value="Palau"
-//- <option value="Palestine"
-//- <option value="Panama"
-//- <option value="Papua New Guinea"
-//- <option value="Paraguay"
-//- <option value="Peru"
-//- <option value="Philippines"
-//- <option value="Pitcairn Islands"
-//- <option value="Poland"
-//- <option value="Portugal"
-//- <option value="Puerto Rico"
-//- <option value="Reunion"
-//- <option value="Romania"
-//- <option value="Russian Federation"
-//- <option value="Rwanda"
-//- <option value="Saint Barthélemy"
-//- <option value="Saint Helena"
-//- <option value="Saint Kitts & Nevis"
-//- <option value="Saint Lucia"
-//- <option value="Saint Martin (France)"
-//- <option value="Saint Martin (Netherlands)"
-//- <option value="Saint Pierre & Miquelon"
-//- <option value="Saint Vincent and Grenadines"
-//- <option value="Samoa"
-//- <option value="San Marino"
-//- <option value="Sao Tome and Príncipe"
-//- <option value="Senegal"
-//- <option value="Serbia"
-//- <option value="Seychelles"
-//- <option value="Sierra Leone"
-//- <option value="Singapore"
-//- <option value="Slovakia"
-//- <option value="Slovenia"
-//- <option value="Solomon Islands"
-//- <option value="Somalia"
-//- <option value="South Africa"
-//- <option value="South Georgia and the South Sandwich Islands"
-//- <option value="South Sudan"
-//- <option value="Spain"
-//- <option value="Sri Lanka"
-//- <option value="Sudan"
-//- <option value="Suriname"
-//- <option value="Svalbard and Jan Mayen Islands"
-//- <option value="Swaziland"
-//- <option value="Sweden"
-//- <option value="Switzerland"
-//- <option value="Syria"
-//- <option value="Taiwan Province of China"
-//- <option value="Tajikistan"
-//- <option value="Tanzania"
-//- <option value="Thailand"
-//- <option value="Timor-Leste"
-//- <option value="Togo"
-//- <option value="Tokelau"
-//- <option value="Tonga"
-//- <option value="Trinidad & Tobago"
-//- <option value="Tunisia"
-//- <option value="Turkey"
-//- <option value="Turkmenistan"
-//- <option value="Turks and Caicos Islands"
-//- <option value="Tuvalu"
-//- <option value="Uganda"
-//- <option value="Ukraine"
-//- <option value="United Kingdom"
-//- <option value="United States Minor Outlying Islands"
-//- <option value="United States of America"
-//- <option value="Uruguay"
-//- <option value="Uzbekistan"
-//- <option value="Vanuatu"
-//- <option value="Vatican City"
-//- <option value="Venezuela"
-//- <option value="Vietnam"
-//- <option value="Virgin Islands (British)"
-//- <option value="Virgin Islands (U.S.)"
-//- <option value="Wallis & Futuna"
-//- <option value="Yemen"
-//- <option value="Zambia"
-//- <option value="Zimbabwe"

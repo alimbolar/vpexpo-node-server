@@ -35,13 +35,25 @@ exports.updateMe = catchAsync(async function(req, res, next) {
 
   // **Filter out unwanted fields to ensure only needed fields and its data exist**
 
-  const filteredBody = filterObj(req.body, "firstName", "lastName", "email");
+  const filteredBody = filterObj(
+    req.body,
+    "firstName",
+    "lastName",
+    "company",
+    "profile",
+    "email",
+    "mobile",
+    "country",
+    "nationality",
+    "type"
+  );
 
   // **Update Data**
   const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, {
     new: true,
     runValidators: true,
   });
+  console.log(updatedUser);
   res.status(200).json({
     status: "success",
     data: {

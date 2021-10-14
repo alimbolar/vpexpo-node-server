@@ -37,6 +37,9 @@ ul {
 .invisible {
   visibility: hidden; }
 
+.missing {
+  color: red; }
+
 .heading {
   font-size: 2em;
   text-transform: uppercase;

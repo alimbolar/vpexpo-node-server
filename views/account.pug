@@ -38,30 +38,34 @@ block content
                 //- h2.heading-secondary.ma-bt-md Your account settings
                 //- form.form.form-user-data(action="/submit-user-data" method="POST")
                 .me__photo 
-                    img(src="/images/users/default.jpg", alt="")
+                    img(src=`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${user.visitorId}`, alt="")
+                    p=`${user.visitorId}`
                 .me__name
                     h4 Name 
-                    p=`${user.firstName} ${user.lastName}`
-                .me__mobile
+                    p= user.firstName + " " +user.lastName
+                .me__mobile(class= !user.mobile ? "missing" : undefined)
                     h4  Mobile
-                    p=`${user.mobile}`
-                .me__email
+                    p= user.mobile ? user.mobile : "Missing Data"
+                .me__email(class= !user.email ? "missing" : undefined)
                     h4  Email
-                    p=`${user.email}`
-                .me__company
+                    p= user.email ? user.email : "Missing Data"
+                .me__company(class= !user.company ? "missing" : undefined)
                     h4  Company
-                    p=`${user.company}`
-                .me__profile
+                    p= user.company ? user.company : "Missing Data"
+                .me__profile(class= !user.profile ? "missing" : undefined)
                     h4  Profile
-                    p=`${user.profile}`
-                .me__nationality
+                    p= user.profile ? user.profile : "Missing Data"
+                .me__nationality(class= !user.nationality ? "missing" : undefined)
                     h4  Nationality
-                    p=`${user.nationality}`
-                .me__residenceCountry
+                    p= user.nationality ? user.nationality : "Missing Data"
+                .me__residenceCountry(class= !user.country ? "missing" : undefined)
                     h4  Country Of Residence
                     p=`${user.country}`     
-                button.btn.show-ticket Print Entrance Ticket/Badge
-                //- button.btn.print-ticket Print Entrance Ticket/Badge
+
+                if user.authorized
+                    button.btn.print-badge(data-id=`${user.visitorId}`) Print Entrance Badge
+                else 
+                    button.btn.update-data Update Missing Data
 
 
 
