@@ -34,7 +34,20 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
       },
     });
   } else {
-    const filteredBody = filterObj(req.body, "firstName", "lastName", "email");
+    const filteredBody = filterObj(
+      req.body,
+      "eventoId",
+      "visitorId",
+      "firstName",
+      "lastName",
+      "email",
+      "mobile",
+      "company",
+      "profile",
+      "country",
+      "nationality",
+      "type"
+    );
 
     const doc = await User.findOneAndUpdate({ visitorId }, filteredBody, {
       new: true,
