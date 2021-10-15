@@ -69,9 +69,10 @@ const allExhibitors = document.querySelector(".exhibitor-list");
 // }
 
 // UPDATE SETTINGS
-const saveSettings = document.querySelector(".form-user-data");
+const saveSettings = document.querySelector("#user-data");
 
 if (saveSettings) {
+  // window.addEventListener("load", displayCountries);
   saveSettings.addEventListener(
     "submit",
     async (event) => {
@@ -102,7 +103,7 @@ if (saveSettings) {
       };
 
       // UPDATE EVENTO DATABASE
-      // await updateEvento(visitorForEvento, "evento");
+      await updateEvento(visitorForEvento, "evento");
 
       // UPDATE MONGODB
       await updateSettings(
