@@ -91,7 +91,7 @@ exports.getAccount = catchAsync(async function(req, res, next) {
   // user.nationality &&
   // user.visitorId &&
   // user.type
-  // user.eventoId > 0 ? (user.authorized = true) : (user.authorized = false);
+  user.eventoId > 0 ? (user.authorized = true) : (user.authorized = false);
 
   console.log("user", user);
   // console.log(user.authorized);
