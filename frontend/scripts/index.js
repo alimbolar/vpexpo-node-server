@@ -10,6 +10,9 @@ import {
   listSearched,
   displayExhibitorDetail,
 } from "./listExhibitor";
+import { displayCountries } from "./form";
+
+window.addEventListener("load", displayCountries);
 
 const loginForm = document.querySelector(".form--login");
 
