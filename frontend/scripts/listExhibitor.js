@@ -2,8 +2,11 @@ import { hidePopup, showMessage, showPopup } from "./alert";
 
 export const listExhibitor = function(e) {
   e.preventDefault();
-  // showMessage("Exhibitor List", "Displaying list of all exhibitors");
-  window.open("/exhibitors", "_self");
+  showMessage(
+    "Exhibitor List",
+    "This is being updated regularly and will be displayed during the event. We look forward to seeing you at the event."
+  );
+  // window.open("/exhibitors", "_self");
 };
 
 export const displayExhibitorDetail = function(e) {
@@ -25,6 +28,15 @@ export const listVisited = function(e) {
   showMessage(
     "Visted Exhibitor List",
     "Displaying a list of all exhibitors that you've allready visited"
+  );
+};
+
+export const showMap = function(e) {
+  e.preventDefault();
+
+  showMessage(
+    "Exhibition Floor Layout",
+    "This is being finalised and will be displayed during the event. We look forward to seeing you at the event"
   );
 };
 

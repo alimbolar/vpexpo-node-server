@@ -1,4 +1,4 @@
-import { showAlert } from "./alert.js";
+import { showAlert, showMessage } from "./alert.js";
 import axios from "axios";
 
 export const login = async function(email, password) {
@@ -13,8 +13,9 @@ export const login = async function(email, password) {
     });
 
     if (res.data.status === "success") {
-      showAlert("success", "Logged In");
-      window.setTimeout(() => location.assign("/exhibitors"), 1500);
+      // showAlert("success", "Logged In");
+      showMessage("Logging In", "Redirecting you to your profile view");
+      window.setTimeout(() => location.assign("/me"), 2000);
     }
   } catch (err) {
     // console.log(err.response.data.message);
@@ -33,15 +34,19 @@ export const logout = async function() {
 
     console.log("inside logout");
     if (res.data.status === "success") {
-      // showAlert("success", "Logged Out");
-      alert("logged out");
-      window.setTimeout(() => {
-        location.reload();
-      }, 3000);
+      showMessage("Logging Out", "Redirecting you to home page");
+      // alert("logged out");
+
+      window.setTimeout(() => location.assign("/"), 2000);
+
+      // window.setTimeout(() => {
+      //   location.reload();
+      //   // window.open("/", "_self");
+      // }, 3000);
     }
   } catch (err) {
     console.log(err);
-    showAlert("error", "Error Loggin Out. Try again!");
+    showMessage("error", "Error Loggin Out. Try again!");
   }
 };
 

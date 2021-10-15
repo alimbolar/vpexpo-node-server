@@ -53,6 +53,8 @@ block content
                     //-     input#country1.form__input(type='text', value=`${user.country}`,required,name="country1")
                     .form__group 
                         label.form__label(for="country") Country Of Residence
+                        //- surround the select box with a "custom-select" DIV element. Remember to set the width:
+                        //- .custom-select(style="width:200px;")
                         select#country.form__input(name="country" value=`${user.country}`)
                             include _countries
                     .form__group 
