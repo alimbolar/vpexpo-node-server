@@ -7,7 +7,7 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
   try {
     const visitor = req.body;
 
-    console.log(visitor);
+    // console.log("visitor", visitor);
 
     //TO BE ENABLED IF WE PLAN TO ALLOW UPDATES AFTER EVENTOID HAS BEEN CREATED
     ////////////////////////////////
@@ -29,7 +29,7 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
     const response = await fetch(url, options);
     const data = await response.json();
 
-    console.log(data);
+    // console.log("data", data);
 
     const eventoId = data.EvID;
     const visitorId = visitor.VisitorNumber;
@@ -37,7 +37,8 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
     if (eventoId) {
       const user = await User.findOneAndUpdate({ visitorId }, { eventoId });
 
-      console.log("entoId updated", eventoId);
+      console.log("eventoId updated", eventoId);
+
       res.status(200).json({
         status: "success",
         data,
@@ -46,6 +47,7 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
 
     if (!eventoId) {
       console.log("Data not saved on evento");
+
       res.status(200).json({
         status: "fail",
         data,

@@ -37,7 +37,7 @@ export const logout = async function() {
       showMessage("Logging Out", "Redirecting you to home page");
       // alert("logged out");
 
-      window.setTimeout(() => location.assign("/"), 2000);
+      window.setTimeout(() => location.assign("/"), 3000);
 
       // window.setTimeout(() => {
       //   location.reload();

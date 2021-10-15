@@ -3,14 +3,7 @@ import axios from "axios";
 
 export const updateEvento = async function(data, type) {
   try {
-    // console.log("data", data);
     const url = "/api/v1/eticket/visitor";
-
-    // const res = await axios({
-    //   method: "POST",
-    //   url,
-    //   data,
-    // });
 
     const response = await fetch(url, {
       method: "POST",
@@ -21,11 +14,8 @@ export const updateEvento = async function(data, type) {
     });
     const res = await response.json();
 
-    // console.log("res status", res.status);
-
     if (res.status === "success") {
       console.log(`${type.toUpperCase()} Updated`);
-      // alert(`Evento Updated`);
     }
   } catch (err) {
     alert(err.response.data.message);
@@ -45,21 +35,10 @@ export const updateSettings = async function(data, type) {
       data,
     });
 
-    // const response = fetch(url, {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(data),
-    // });
-
-    // const res = response.json();
-
-    console.log(res.data.status);
-    // console.log(res);
+    console.log(res);
 
     if (res.data.status === "success") {
       console.log(`${type.toUpperCase()} Updated`);
-
-      // window.location.href = "/me";
     }
   } catch (err) {
     alert(err.response.data.message);

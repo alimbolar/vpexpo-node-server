@@ -72,57 +72,64 @@ const allExhibitors = document.querySelector(".exhibitor-list");
 const saveSettings = document.querySelector(".form-user-data");
 
 if (saveSettings) {
-  saveSettings.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const firstName = document.getElementById("firstName").value;
-    const lastName = document.getElementById("lastName").value;
-    const mobile = document.getElementById("mobile").value;
-    const email = document.getElementById("email").value;
-    const company = document.getElementById("company").value;
-    const profile = document.getElementById("profile").value;
-    // const address = document.getElementById("address").value;
-    // const city = document.getElementById("city").value;
-    const country = document.getElementById("country").value;
-    const nationality = document.getElementById("nationality").value;
-    const type = document.getElementById("type").value;
-    const visitorId = document.getElementById("visitorId").value;
+  saveSettings.addEventListener(
+    "submit",
+    async (event) => {
+      event.preventDefault();
 
-    const visitorForEvento = {
-      VisitorNumber: visitorId,
-      FirstName: firstName,
-      LastName: lastName,
-      Mobile: mobile,
-      Email: email,
-      Company: company,
-      JobTitle: profile,
-      Country: country,
-      Nationality: nationality,
-      Category: type,
-    };
+      const firstName = document.getElementById("firstName").value;
+      const lastName = document.getElementById("lastName").value;
+      const mobile = document.getElementById("mobile").value;
+      const email = document.getElementById("email").value;
+      const company = document.getElementById("company").value;
+      const profile = document.getElementById("profile").value;
+      const country = document.getElementById("country").value;
+      const nationality = document.getElementById("nationality").value;
+      const type = document.getElementById("type").value;
+      const visitorId = document.getElementById("visitorId").value;
 
-    // console.log(visitorForEvento);
+      const visitorForEvento = {
+        VisitorNumber: visitorId,
+        FirstName: firstName,
+        LastName: lastName,
+        Mobile: mobile,
+        Email: email,
+        Company: company,
+        JobTitle: profile,
+        Country: country,
+        Nationality: nationality,
+        Category: type,
+      };
 
-    // UPDATE EVENTO DATABASE
-    await updateEvento(visitorForEvento, "evento");
+      // UPDATE EVENTO DATABASE
+      // await updateEvento(visitorForEvento, "evento");
 
-    // UPDATE MONGODB
-    await updateSettings(
-      {
-        firstName,
-        lastName,
-        mobile,
-        email,
-        company,
-        profile,
-        // address,
-        // city,
-        country,
-        nationality,
-        type,
-      },
-      "data"
-    );
-  });
+      // UPDATE MONGODB
+      await updateSettings(
+        {
+          firstName,
+          lastName,
+          mobile,
+          email,
+          company,
+          profile,
+          // address,
+          // city,
+          country,
+          nationality,
+          type,
+        },
+        "data"
+      );
+
+      showMessage(
+        "Message",
+        "This function should halt here and pause and then redirect to another view"
+      );
+      window.setTimeout(() => location.assign("/me"), 2000);
+    },
+    false
+  );
 }
 //// NOT FOR CURRENT RELEASE
 //////////////////////////////////////
