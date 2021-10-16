@@ -22,6 +22,8 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
 
   const visitor = await User.findOne({ visitorId });
 
+  console.log("mongo-visitor", visitor);
+
   if (!visitor) {
     // userController.createOneUser();
 
@@ -54,6 +56,8 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
       runValidators: true,
     });
 
+    console.log("mongo-updated-visitor", doc);
+
     res.status(200).json({
       status: "success",
       result: doc.length,
@@ -63,6 +67,5 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
     });
   }
 
-  //   res.send(visitor);
   //   next();
 });

@@ -7,7 +7,7 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
   try {
     const visitor = req.body;
 
-    // console.log("visitor", visitor);
+    console.log("eticket-visitor", visitor);
 
     //TO BE ENABLED IF WE PLAN TO ALLOW UPDATES AFTER EVENTOID HAS BEEN CREATED
     ////////////////////////////////
@@ -29,7 +29,7 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
     const response = await fetch(url, options);
     const data = await response.json();
 
-    // console.log("data", data);
+    console.log("eticket-data", data);
 
     const eventoId = data.EvID;
     const visitorId = visitor.VisitorNumber;
