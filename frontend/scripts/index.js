@@ -10,10 +10,17 @@ import {
   listSorted,
   listSearched,
   displayExhibitorDetail,
+  goToLogin,
 } from "./listExhibitor";
 import { displayCountries } from "./form";
 
-window.addEventListener("load", displayCountries);
+window.addEventListener("load", function() {
+  const userdataForm = document.querySelector(".user-data");
+
+  if (userdataForm) {
+    displayCountries();
+  }
+});
 
 const loginForm = document.querySelector(".form--login");
 
@@ -33,7 +40,7 @@ const navigation = document.querySelector(".navigation");
 
 export const toggleMenu = function() {
   navigation.classList.toggle("hidden");
-  console.log("in");
+  // console.log("in");
 };
 
 // EVENTLISTENER FOR MENU
@@ -108,31 +115,28 @@ if (saveSettings) {
       // console.log("status", status);
 
       // UPDATE MONGODB
-      // await updateSettings(
-      //   {
-      //     firstName,
-      //     lastName,
-      //     mobile,
-      //     email,
-      //     company,
-      //     profile,
-      //     // address,
-      //     // city,
-      //     country,
-      //     nationality,
-      //     type,
-      //   },
-      //   "data"
-      // );
+      await updateSettings(
+        {
+          firstName,
+          lastName,
+          mobile,
+          email,
+          company,
+          profile,
+          // address,
+          // city,
+          country,
+          nationality,
+          type,
+        },
+        "data"
+      );
 
-      // showMessage(
-      //   "Message",
-      //   "This function should halt here and pause and then redirect to another view"
-      // );
-      ///////////
+      showMessage("Data Updated", "Moving you to your profile view");
+      /////////
+      window.setTimeout(() => location.assign("/me"), 2000);
       // window.setTimeout(() => window.open("/me", "_self"), 3000);
-
-      window.open("/me", "_self");
+      // window.open("/me", "_self");
     },
     false
   );
@@ -184,7 +188,7 @@ closeOverlay.addEventListener("click", hidePopup);
 
 // const showTicketStatus = document.querySelector(".show-ticket");
 // const showModal = document.querySelector(".modal__content");
-const updateData = document.querySelector(".update-data");
+// const updateData = document.querySelector(".update-data");
 const printBadge = document.querySelector(".print-badge");
 
 // if (showTicketStatus) {
@@ -204,11 +208,11 @@ const printBadge = document.querySelector(".print-badge");
 //   });
 // }
 
-if (updateData) {
-  updateData.addEventListener("click", function() {
-    window.open("/me/profile", "_self");
-  });
-}
+// if (updateData) {
+//   updateData.addEventListener("click", function() {
+//     window.open("/me/profile", "_self");
+//   });
+// }
 
 if (printBadge) {
   printBadge.addEventListener("click", function() {
@@ -246,6 +250,15 @@ const displayMap = document.querySelector(".show-map");
 
 const listSortedBtn = document.querySelector(".list-sorted");
 const listSearchedBtn = document.querySelector(".list-searched");
+const loginLinks = document.querySelectorAll(".go-to-login");
+
+// console.log(loginLinks);
+
+if (loginLinks) {
+  loginLinks.forEach((loginLink) => {
+    loginLink.addEventListener("click", goToLogin);
+  });
+}
 
 if (listExhibitorBtn) {
   listExhibitorBtn.addEventListener("click", listExhibitor);

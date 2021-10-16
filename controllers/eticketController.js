@@ -35,7 +35,23 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
     const visitorId = visitor.VisitorNumber;
 
     if (eventoId) {
+      const user = await User.findOneAndUpdate(
+        { visitorId },
+        { eventoId },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+
+      console.log("user from eticket", user);
+
       console.log("eventoId updated", eventoId);
+
+      res.status(200).json({
+        status: "success",
+        data,
+      });
     }
 
     if (!eventoId) {
@@ -46,29 +62,29 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
       });
     }
 
-    const visitorForMongo = {
-      firstName: visitor.FirstName,
-      lastName: visitor.LastName,
-      mobile: visitor.Mobile,
-      email: visitor.Email,
-      company: visitor.Company,
-      profile: visitor.JobTitle,
-      country: visitor.Country,
-      nationality: visitor.Nationality,
-      type: visitor.Category,
-      eventoId,
-    };
-    const user = await User.findOneAndUpdate({ visitorId }, visitorForMongo, {
-      new: true,
-      runValidators: true,
-    });
+    // const visitorForMongo = {
+    //   firstName: visitor.FirstName,
+    //   lastName: visitor.LastName,
+    //   mobile: visitor.Mobile,
+    //   email: visitor.Email,
+    //   company: visitor.Company,
+    //   profile: visitor.JobTitle,
+    //   country: visitor.Country,
+    //   nationality: visitor.Nationality,
+    //   type: visitor.Category,
+    //   eventoId,
+    // };
+    // const user = await User.findOneAndUpdate({ visitorId }, visitorForMongo, {
+    //   new: true,
+    //   runValidators: true,
+    // });
 
-    console.log("testing mongo within eticket", user);
+    // console.log("testing mongo within eticket", user);
 
-    res.status(200).json({
-      status: "success",
-      data,
-    });
+    // res.status(200).json({
+    //   status: "success",
+    //   data,
+    // });
   } catch (err) {
     console.log(err);
   }
