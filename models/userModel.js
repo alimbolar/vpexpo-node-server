@@ -45,10 +45,12 @@ const userSchema = new mongoose.Schema({
   city: String,
   country: {
     type: String,
+    default: "null",
     required: true,
   },
   nationality: {
     type: String,
+    default: "null",
     required: true,
   },
 

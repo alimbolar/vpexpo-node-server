@@ -17,11 +17,14 @@ const displayCountry = function() {
   //   console.log(option[1]);
 };
 
-const displayNationality = function() {
-  Object.entries(nationality.children)
-    .find((option) => option[1].value === nationality.getAttribute("value"))[1]
-    .setAttribute("selected", true);
-};
+// const displayNationality = function() {
+
+//   const nameOfCountry = nationality.getAttribute("value") = "" ? null : nationality.getAttribute("value");
+
+//   Object.entries(nationality.children)
+//     .find((option) => option[1].value === nameOfCountry)[1]
+//     .setAttribute("selected", true);
+// };
 
 export const displayCountries = function() {
   displayCountry();
@@ -29,7 +32,9 @@ export const displayCountries = function() {
 };
 
 export const displaySelected = function(field) {
+  const nameOfCountry = field.getAttribute("value");
+
   Object.entries(field.children)
-    .find((option) => option[1].value === field.getAttribute("value"))[1]
+    .find((option) => option[1].value === nameOfCountry)[1]
     .setAttribute("selected", true);
 };
