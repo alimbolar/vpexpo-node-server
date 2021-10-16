@@ -178,6 +178,8 @@ closeOverlay.addEventListener("click", hidePopup);
 
 // PRINT BADGE
 
+const printBadge = document.querySelector(".print-badge");
+
 if (printBadge) {
   printBadge.addEventListener("click", function() {
     const visitorId = printBadge.dataset.id;
