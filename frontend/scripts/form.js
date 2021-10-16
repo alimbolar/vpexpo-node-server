@@ -27,3 +27,9 @@ export const displayCountries = function() {
   displayCountry();
   displayNationality();
 };
+
+export const displaySelected = function(field) {
+  Object.entries(field.children)
+    .find((option) => option[1].value === field.getAttribute("value"))[1]
+    .setAttribute("selected", true);
+};

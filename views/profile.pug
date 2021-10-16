@@ -55,10 +55,10 @@ block content
                         label.form__label(for="country") Country Of Residence
                         //- surround the select box with a "custom-select" DIV element. Remember to set the width:
                         //- .custom-select(style="width:200px;")
-                        select#country.form__input(name="country" value=`${user.country}`)
+                        select#country.form__input.form__select(name="country" value=`${user.country}`)
                             include _countries
                     .form__group 
-                        label.form__label(for="nationality") Nationality
+                        label.form__label.form__select(for="nationality") Nationality
                         select#nationality.form__input(name="nationality" value=`${user.nationality}`)
                             include _countries                        
                     //- .form__group.ma-bt-md
@@ -75,6 +75,6 @@ block content
                         //-     label.form__label(for='residenceCountry') Residence Country
                         //-     input#residenceCountry.form__input(type='text', value=`${user.residenceCountry}`, required,name="residenceCountry")                            
                     .form__group.right
-                        button.btn.btn--small.btn--green.update-data(type="submit") Submit                 
+                        button.btn.btn--small.btn--green.submit-visitor-data(type="submit") Submit                 
 
          

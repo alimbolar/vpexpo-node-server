@@ -10,15 +10,18 @@ import {
   displayExhibitorDetail,
   goToLogin,
 } from "./listExhibitor";
-import { displayCountries } from "./form";
+import { displayCountries, displaySelected } from "./form";
 
-window.addEventListener("load", function() {
-  const userdataForm = document.querySelector(".user-data");
+const selectCountry = document.querySelector("#country");
+const selectNationality = document.querySelector("#nationality");
 
-  if (userdataForm) {
-    displayCountries();
-  }
-});
+if (selectCountry) {
+  displaySelected(country);
+}
+
+if (selectNationality) {
+  displaySelected(nationality);
+}
 
 const loginForm = document.querySelector(".form--login");
 
@@ -133,6 +136,15 @@ if (saveSettings) {
     false
   );
 }
+
+const updateData = document.querySelector(".update-data");
+
+if (updateData) {
+  updateData.addEventListener("click", function() {
+    window.open("/me/profile", "_self");
+  });
+}
+
 //// NOT FOR CURRENT RELEASE
 //////////////////////////////////////
 // const savePassword = document.querySelector(".form-user-password");
