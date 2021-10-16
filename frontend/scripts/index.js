@@ -102,9 +102,6 @@ if (saveSettings) {
         Category: type,
       };
 
-      // UPDATE EVENTO DATABASE
-      await updateEvento(visitorForEvento, "evento");
-
       // UPDATE MONGODB
       await updateSettings(
         {
@@ -122,6 +119,9 @@ if (saveSettings) {
         },
         "data"
       );
+
+      // UPDATE EVENTO DATABASE
+      await updateEvento(visitorForEvento, "evento");
 
       showMessage(
         "Message",
