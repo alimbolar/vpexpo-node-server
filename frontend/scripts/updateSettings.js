@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 import axios from "axios";
+import { showMessage } from "./alert";
 
 export const updateEvento = async function(data, type) {
   try {
@@ -14,9 +15,19 @@ export const updateEvento = async function(data, type) {
     });
     const res = await response.json();
 
+    // console.log(res);
+
     if (res.status === "success") {
       console.log(`${type.toUpperCase()} Updated`);
+
+      // return status;
     }
+
+    if (res.status === "fail") {
+      console.log("Evento Could Not Be Updated");
+    }
+
+    // return ""
   } catch (err) {
     alert(err.response.data.message);
   }

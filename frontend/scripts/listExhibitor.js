@@ -2,11 +2,13 @@ import { hidePopup, showMessage, showPopup } from "./alert";
 
 export const listExhibitor = function(e) {
   e.preventDefault();
-  showMessage(
-    "Exhibitor List",
-    "This is being updated regularly and will be displayed during the event. We look forward to seeing you at the event."
-  );
-  // window.open("/exhibitors", "_self");
+
+  window.open("/login", "_self");
+
+  // showMessage(
+  //   "Exhibitor List",
+  //   "This is being updated regularly and will be displayed during the event. We look forward to seeing you at the event."
+  // );
 };
 
 export const displayExhibitorDetail = function(e) {
@@ -25,51 +27,56 @@ export const displayExhibitorDetail = function(e) {
 export const listVisited = function(e) {
   e.preventDefault();
 
-  showMessage(
-    "Visted Exhibitor List",
-    "Displaying a list of all exhibitors that you've allready visited"
-  );
+  // showMessage(
+  //   "Visted Exhibitor List",
+  //   "Displaying a list of all exhibitors that you've allready visited"
+  // );
+
+  window.open("/login", "_self");
 };
 
 export const showMap = function(e) {
   e.preventDefault();
 
-  showMessage(
-    "Exhibition Floor Layout",
-    "This is being finalised and will be displayed during the event. We look forward to seeing you at the event"
-  );
+  // showMessage(
+  //   "Exhibition Floor Layout",
+  //   "This is being finalised and will be displayed during the event. We look forward to seeing you at the event"
+  // );
+
+  window.open("/login", "_self");
 };
 
 export const listSorted = function(e) {
   e.preventDefault();
 
-  const sortedMarkup = `
-  
-  <div class="sort-box">
-  <div class="sort-box__heading">Sort By</div>
-  <div class="sort-box__button"> <a href="/exhibitors" class="btn"> Exhibitors</a> </div>
+  //   const sortedMarkup = `
 
-  <div class="sort-box__button"> <a href="/exhibitors" class="btn">Booth Number</a> </div>
-  </div>
+  // <div class="sort-box">
+  // <div class="sort-box__heading">Sort By</div>
+  // <div class="sort-box__button"> <a href="/exhibitors" class="btn"> Exhibitors</a> </div>
 
-  `;
+  // <div class="sort-box__button"> <a href="/exhibitors" class="btn">Booth Number</a> </div>
+  // </div>
 
-  showPopup(sortedMarkup);
+  // `;
+
+  //   showPopup(sortedMarkup);
+
+  window.open("/login", "_self");
 };
 
 export const listSearched = function(e) {
   e.preventDefault();
 
-  const searchedMarkup = `
-  
-  <div class="search-box">
-  <input id="search-box__input" class="search-box__input" type="text" name="search-box__input" value="" placeholder="Type here to search">
-  <div class="search-box__button"> <a href="/exhibitors" class="btn"> Search</a> </div>
+  //   const searchedMarkup = `
 
+  // <div class="search-box">
+  // <input id="search-box__input" class="search-box__input" type="text" name="search-box__input" value="" placeholder="Type here to search">
+  // <div class="search-box__button"> <a href="/exhibitors" class="btn"> Search</a> </div>
 
-  </div>
+  // </div>
+  // `;
+  //   showPopup(searchedMarkup);
 
-  `;
-
-  showPopup(searchedMarkup);
+  window.open("/login", "_self");
 };

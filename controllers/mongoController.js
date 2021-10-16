@@ -28,6 +28,9 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
     // userController.createOneUser();
 
     const doc = await User.create(req.body);
+
+    console.log("visitor created in mongo");
+
     res.status(201).json({
       status: "success",
       result: doc.length,
@@ -57,6 +60,7 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
     });
 
     console.log("mongo-updated-visitor", doc);
+    console.log("visitor updated in mongo");
 
     res.status(200).json({
       status: "success",

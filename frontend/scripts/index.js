@@ -105,29 +105,34 @@ if (saveSettings) {
       // UPDATE EVENTO DATABASE
       await updateEvento(visitorForEvento, "evento");
 
-      // UPDATE MONGODB
-      await updateSettings(
-        {
-          firstName,
-          lastName,
-          mobile,
-          email,
-          company,
-          profile,
-          // address,
-          // city,
-          country,
-          nationality,
-          type,
-        },
-        "data"
-      );
+      // console.log("status", status);
 
-      showMessage(
-        "Message",
-        "This function should halt here and pause and then redirect to another view"
-      );
-      window.setTimeout(() => location.assign("/me"), 2000);
+      // UPDATE MONGODB
+      // await updateSettings(
+      //   {
+      //     firstName,
+      //     lastName,
+      //     mobile,
+      //     email,
+      //     company,
+      //     profile,
+      //     // address,
+      //     // city,
+      //     country,
+      //     nationality,
+      //     type,
+      //   },
+      //   "data"
+      // );
+
+      // showMessage(
+      //   "Message",
+      //   "This function should halt here and pause and then redirect to another view"
+      // );
+      ///////////
+      // window.setTimeout(() => window.open("/me", "_self"), 3000);
+
+      window.open("/me", "_self");
     },
     false
   );

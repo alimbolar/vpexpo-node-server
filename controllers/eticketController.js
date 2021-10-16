@@ -9,7 +9,7 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
 
     console.log("eticket-visitor", visitor);
 
-    //TO BE ENABLED IF WE PLAN TO ALLOW UPDATES AFTER EVENTOID HAS BEEN CREATED
+    //TO BE ENABLED IF WE PLAN TO DISALLOW UPDATES AFTER EVENTOID HAS BEEN CREATED
     ////////////////////////////////
     // if (visitor.eventoId) {
     //   return;
@@ -35,29 +35,40 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
     const visitorId = visitor.VisitorNumber;
 
     if (eventoId) {
-      const user = await User.findOneAndUpdate({ visitorId }, { eventoId });
-
       console.log("eventoId updated", eventoId);
-
-      res.status(200).json({
-        status: "success",
-        data,
-      });
     }
 
     if (!eventoId) {
       console.log("Data not saved on evento");
-
       res.status(200).json({
         status: "fail",
         data,
       });
     }
 
-    // res.status(200).json({
-    //   status: "success",
-    //   data,
-    // });
+    const visitorForMongo = {
+      firstName: visitor.FirstName,
+      lastName: visitor.LastName,
+      mobile: visitor.Mobile,
+      email: visitor.Email,
+      company: visitor.Company,
+      profile: visitor.JobTitle,
+      country: visitor.Country,
+      nationality: visitor.Nationality,
+      type: visitor.Category,
+      eventoId,
+    };
+    const user = await User.findOneAndUpdate({ visitorId }, visitorForMongo, {
+      new: true,
+      runValidators: true,
+    });
+
+    console.log("testing mongo within eticket", user);
+
+    res.status(200).json({
+      status: "success",
+      data,
+    });
   } catch (err) {
     console.log(err);
   }
