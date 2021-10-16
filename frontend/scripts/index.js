@@ -1,7 +1,5 @@
 import { login, logout } from "./login";
 import { showMessage, hidePopup } from "./alert";
-// import { showTicket } from "./printTicket";
-// import { printTicket } from "./printTicket";
 import { updateSettings, updateEvento } from "./updateSettings";
 import {
   listExhibitor,
@@ -40,7 +38,6 @@ const navigation = document.querySelector(".navigation");
 
 export const toggleMenu = function() {
   navigation.classList.toggle("hidden");
-  // console.log("in");
 };
 
 // EVENTLISTENER FOR MENU
@@ -79,7 +76,6 @@ const allExhibitors = document.querySelector(".exhibitor-list");
 const saveSettings = document.querySelector("#user-data");
 
 if (saveSettings) {
-  // window.addEventListener("load", displayCountries);
   saveSettings.addEventListener(
     "submit",
     async (event) => {
@@ -112,8 +108,6 @@ if (saveSettings) {
       // UPDATE EVENTO DATABASE
       await updateEvento(visitorForEvento, "evento");
 
-      // console.log("status", status);
-
       // UPDATE MONGODB
       await updateSettings(
         {
@@ -133,10 +127,8 @@ if (saveSettings) {
       );
 
       showMessage("Data Updated", "Moving you to your profile view");
-      /////////
+
       window.setTimeout(() => location.assign("/me"), 2000);
-      // window.setTimeout(() => window.open("/me", "_self"), 3000);
-      // window.open("/me", "_self");
     },
     false
   );
@@ -184,35 +176,7 @@ popupLinks.forEach((popupLink) => {
 closeButton.addEventListener("click", hidePopup);
 closeOverlay.addEventListener("click", hidePopup);
 
-// PRINT TICKET
-
-// const showTicketStatus = document.querySelector(".show-ticket");
-// const showModal = document.querySelector(".modal__content");
-// const updateData = document.querySelector(".update-data");
-const printBadge = document.querySelector(".print-badge");
-
-// if (showTicketStatus) {
-//   showTicketStatus.addEventListener("click", showTicket);
-// }
-
-// if (showModal) {
-//   showModal.addEventListener("click", function(e) {
-//     e.preventDefault();
-
-//     if (e.target.closest(".ticket__print-ticket")) {
-//       const printTicketBtn = e.target;
-//       const visitorId = printTicketBtn.dataset.visitorId;
-
-//       printTicket(visitorId);
-//     }
-//   });
-// }
-
-// if (updateData) {
-//   updateData.addEventListener("click", function() {
-//     window.open("/me/profile", "_self");
-//   });
-// }
+// PRINT BADGE
 
 if (printBadge) {
   printBadge.addEventListener("click", function() {
@@ -252,8 +216,6 @@ const listSortedBtn = document.querySelector(".list-sorted");
 const listSearchedBtn = document.querySelector(".list-searched");
 const loginLinks = document.querySelectorAll(".go-to-login");
 
-// console.log(loginLinks);
-
 if (loginLinks) {
   loginLinks.forEach((loginLink) => {
     loginLink.addEventListener("click", goToLogin);
@@ -278,92 +240,3 @@ if (listSortedBtn) {
 if (listSearchedBtn) {
   listSearchedBtn.addEventListener("click", listSearched);
 }
-
-// /// COUNTRY SELECT
-// // https://www.w3schools.com/howto/tryit.asp?filename=tryhow_custom_select
-
-// var x, i, j, l, ll, selElmnt, a, b, c;
-// /*look for any elements with the class "custom-select":*/
-// x = document.getElementsByClassName("custom-select");
-// l = x.length;
-// for (i = 0; i < l; i++) {
-//   selElmnt = x[i].getElementsByTagName("select")[0];
-//   ll = selElmnt.length;
-//   /*for each element, create a new DIV that will act as the selected item:*/
-//   a = document.createElement("DIV");
-//   a.setAttribute("class", "select-selected");
-//   a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-//   x[i].appendChild(a);
-//   /*for each element, create a new DIV that will contain the option list:*/
-//   b = document.createElement("DIV");
-//   b.setAttribute("class", "select-items select-hide");
-//   for (j = 1; j < ll; j++) {
-//     /*for each option in the original select element,
-//     create a new DIV that will act as an option item:*/
-//     c = document.createElement("DIV");
-//     c.innerHTML = selElmnt.options[j].innerHTML;
-//     c.addEventListener("click", function(e) {
-//       /*when an item is clicked, update the original select box,
-//         and the selected item:*/
-//       var y, i, k, s, h, sl, yl;
-//       s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-//       sl = s.length;
-//       h = this.parentNode.previousSibling;
-//       for (i = 0; i < sl; i++) {
-//         if (s.options[i].innerHTML == this.innerHTML) {
-//           s.selectedIndex = i;
-//           h.innerHTML = this.innerHTML;
-//           y = this.parentNode.getElementsByClassName("same-as-selected");
-//           yl = y.length;
-//           for (k = 0; k < yl; k++) {
-//             y[k].removeAttribute("class");
-//           }
-//           this.setAttribute("class", "same-as-selected");
-//           break;
-//         }
-//       }
-//       h.click();
-//     });
-//     b.appendChild(c);
-//   }
-//   x[i].appendChild(b);
-//   a.addEventListener("click", function(e) {
-//     /*when the select box is clicked, close any other select boxes,
-//       and open/close the current select box:*/
-//     e.stopPropagation();
-//     closeAllSelect(this);
-//     this.nextSibling.classList.toggle("select-hide");
-//     this.classList.toggle("select-arrow-active");
-//   });
-// }
-
-// function closeAllSelect(elmnt) {
-//   /*a function that will close all select boxes in the document,
-//   except the current select box:*/
-//   var x,
-//     y,
-//     i,
-//     xl,
-//     yl,
-//     arrNo = [];
-//   x = document.getElementsByClassName("select-items");
-//   y = document.getElementsByClassName("select-selected");
-//   xl = x.length;
-//   yl = y.length;
-//   for (i = 0; i < yl; i++) {
-//     if (elmnt == y[i]) {
-//       arrNo.push(i);
-//     } else {
-//       y[i].classList.remove("select-arrow-active");
-//     }
-//     x;
-//   }
-//   for (i = 0; i < xl; i++) {
-//     if (arrNo.indexOf(i)) {
-//       x[i].classList.add("select-hide");
-//     }
-//   }
-// }
-// /*if the user clicks anywhere outside the select box,
-// then close all select boxes:*/
-// document.addEventListener("click", closeAllSelect);
