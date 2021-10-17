@@ -32,7 +32,8 @@ export const displayCountries = function() {
 };
 
 export const displaySelected = function(field) {
-  const nameOfCountry = field.getAttribute("value");
+  const nameOfCountry =
+    field.getAttribute("value") !== "" ? field.getAttribute("value") : "null";
 
   Object.entries(field.children)
     .find((option) => option[1].value === nameOfCountry)[1]

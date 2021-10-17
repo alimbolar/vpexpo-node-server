@@ -3,6 +3,11 @@ const slugify = require("slugify");
 // const Organisation = require("./organisationModel");
 
 const exhibitorSchema = new mongoose.Schema({
+  exhibitorId: { type: String, required: true },
+  isActive: {
+    type: Boolean,
+    default: true,
+  },
   name: {
     type: String,
     required: [true, "Organisation Name is required"],
@@ -31,6 +36,7 @@ const exhibitorSchema = new mongoose.Schema({
   email: {
     type: String,
   },
+  website: String,
   logo: {
     type: String,
     default: "logo.jpg",
@@ -46,12 +52,6 @@ const exhibitorSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  exhibitorId: { type: String, required: true },
-  website: String,
-  isActive: {
-    type: Boolean,
-    default: true,
-  },
   potential: Array,
   orgEmployee: Array,
 });
@@ -59,7 +59,8 @@ const exhibitorSchema = new mongoose.Schema({
 exhibitorSchema.index({ category: 1 });
 // exhibitorSchema.index({ name: 1 });
 exhibitorSchema.index({ slug: 1 });
-exhibitorSchema.index({ creatorId: 1 });
+exhibitorSchema.index({ visitorId: 1 });
+exhibitorSchema.index({ potential: 1 });
 
 // boothSchema.pre("save", async function(next) {
 //   const organisationPromises = await this.organisation.map(
