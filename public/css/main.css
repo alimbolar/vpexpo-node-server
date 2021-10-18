@@ -253,14 +253,17 @@ header {
   height: 100%;
   overflow-y: scroll;
   border-bottom: 1px solid var(--secondary-color); }
-  .table .name {
-    width: 40%;
-    text-align: left;
+  .table .exhibitor__logo {
+    width: 25%;
+    height: auto; }
+  .table .exhibitor__name {
+    width: 50%;
+    text-align: center;
     height: auto;
     max-height: 50px;
     overflow: scroll; }
-  .table .booth {
-    width: 20%;
+  .table .exhibitor__booth {
+    width: 25%;
     text-align: center;
     height: auto;
     max-height: 50px;
@@ -274,6 +277,7 @@ header {
   .table__row {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     padding: 0.5rem 0;
     border-bottom: 1px solid var(--grey); }
     .table__row:hover {

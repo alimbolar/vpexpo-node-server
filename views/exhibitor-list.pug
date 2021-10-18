@@ -6,22 +6,27 @@ block content
         ul.table
             li.table__header.theader
                 //- .number #
-                .name Exhibitor Name
-                .booth Booth
-                .visited
-                    i.fas.fa-handshake
-                .reviewed
-                    i.fas.fa-heart
+                .exhibitor__logo
+                .exhibitor__name Exhibitor Name
+                .exhibitor__booth Booth
+                //- .visited
+                //- .exhibitor__link View More
+                //-     i.fas.fa-handshake
+                //- .reviewed
+                //-     i.fas.fa-heart
             each exhibitor in exhibitors
                 //- ul.exhibitor.table.trows
                 li.table__row.trow.exhibitor__summary(data-id=`${exhibitor._id}`)
                     //- .number 1
-                    .name= exhibitor.name
-                    .booth= exhibitor.booth
-                    .visited 
-                        i.far.fa-handshake
-                    .reviewed
-                        i.far.fa-heart
+                    .exhibitor__logo
+                        img(src="https://source.unsplash.com/random/100x100")
+                    .exhibitor__name= exhibitor.name
+                    .exhibitor__booth= exhibitor.booth
+                    //- .visited 
+                    //-     i.far.fa-handshake
+                    //- .reviewed
+                    //-     i.far.fa-heart
+                    //- .exhibitor__link Icon
 
                 li.expanded.hidden
                     .exhibitor__detail
@@ -33,25 +38,25 @@ block content
                             a.know-more(href=`/exhibitor/${exhibitor.slug}`) Know More
 
 
-        .pagination 
-            .pagination__content
-                if exhibitors.page === 1
-                    a.invisible(data-page=`${exhibitors.page}` href="exhibitors/").prev
-                        i.fas.fa-arrow-alt-circle-left.fa-2x                    
-                else
-                    a(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${(exhibitors.page * 1) - 1}`).prev
-                        i.fas.fa-arrow-alt-circle-left.fa-2x
+        //- .pagination 
+        //-     .pagination__content
+        //-         if exhibitors.page === 1
+        //-             a.invisible(data-page=`${exhibitors.page}` href="exhibitors/").prev
+        //-                 i.fas.fa-arrow-alt-circle-left.fa-2x                    
+        //-         else
+        //-             a(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${(exhibitors.page * 1) - 1}`).prev
+        //-                 i.fas.fa-arrow-alt-circle-left.fa-2x
 
 
-                .current= `Page ${exhibitors.page} of ${exhibitors.count}`
+        //-         .current= `Page ${exhibitors.page} of ${exhibitors.count}`
                      
 
-                if exhibitors.page >= exhibitors.maxPages
-                    a.invisible(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${exhibitors.page * 1 + 1}`).next
-                        i.fas.fa-arrow-alt-circle-right.fa-2x
-                else 
-                    a(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${exhibitors.page * 1 + 1}`).next
-                        i.fas.fa-arrow-alt-circle-right.fa-2x
+        //-         if exhibitors.page >= exhibitors.maxPages
+        //-             a.invisible(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${exhibitors.page * 1 + 1}`).next
+        //-                 i.fas.fa-arrow-alt-circle-right.fa-2x
+        //-         else 
+        //-             a(data-page=`${exhibitors.page}` href=`/exhibitors/?page=${exhibitors.page * 1 + 1}`).next
+        //-                 i.fas.fa-arrow-alt-circle-right.fa-2x
         //- .search.hidden
         //-     i.fas.fa-search.fa-2x
         //-     input#keyword.keyword(type="text", placeholder="Type keyword ...",name="keyword")

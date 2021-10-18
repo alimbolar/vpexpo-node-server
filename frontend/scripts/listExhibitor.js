@@ -6,11 +6,7 @@ export const goToLogin = function(e) {
 };
 
 export const listExhibitor = function(e) {
-  e.preventDefault();
-  showMessage(
-    "Exhibitor List",
-    "This is being updated regularly and will be displayed during the event. We look forward to seeing you at the event."
-  );
+  window.open("/exhibitors", "_self");
 };
 
 export const displayExhibitorDetail = function(e) {

@@ -55,12 +55,16 @@ block content
                 .me__profile(class= !user.profile ? "missing" : undefined)
                     h4  Profile
                     p= user.profile ? user.profile : "Missing Data"
-                .me__nationality(class= !user.nationality ? "missing" : undefined)
-                    h4  Nationality
-                    p= user.nationality ? user.nationality : "Missing Data"
-                .me__residenceCountry(class= !user.country ? "missing" : undefined)
+
+                .me__residenceCountry(class= !user.country || user.country==="null" ? "missing" : undefined)
                     h4  Country Of Residence
-                    p=`${user.country}`     
+                    p= !user.country || "null" ? "Missing Data" : user.country
+
+                .me__nationality(class= !user.nationality || user.nationality==="null" ? "missing" : undefined)
+                    h4  Nationality
+                    p= !user.nationality || "null" ? "Missing Data" : user.nationality
+
+
 
                 if user.authorized
                     button.btn.print-badge(data-id=`${user.visitorId}`) Print Entrance Badge

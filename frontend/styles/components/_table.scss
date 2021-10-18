@@ -7,21 +7,28 @@
   overflow-y: scroll;
   border-bottom: 1px solid var(--secondary-color);
 
-  .name {
-    width: 40%;
-    text-align: left;
+  .exhibitor__logo {
+    width: 25%;
     height: auto;
-    max-height: 50px;
-    overflow: scroll;
+    // max-height: 75px;
   }
 
-  .booth {
-    width: 20%;
+  .exhibitor__name {
+    width: 50%;
     text-align: center;
     height: auto;
     max-height: 50px;
     overflow: scroll;
   }
+
+  .exhibitor__booth {
+    width: 25%;
+    text-align: center;
+    height: auto;
+    max-height: 50px;
+    overflow: scroll;
+  }
+
   .reviewed {
     width: 15%;
     text-align: center;
@@ -34,6 +41,7 @@
   &__row {
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     padding: 0.5rem 0;
     // margin-top: 0.5rem;
     // margin-bottom: 0.5rem;

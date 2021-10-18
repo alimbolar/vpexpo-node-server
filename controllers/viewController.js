@@ -18,6 +18,17 @@ exports.getLoginForm = function(req, res, next) {
   });
 };
 
+exports.getAllExhibitors = async function(req, res, next) {
+  // const totalExhibitors = await Exhibitor.count();
+
+  const exhibitors = await Exhibitor.find();
+
+  res.status(200).render("exhibitor-list", {
+    title: "Exhibitor List",
+    exhibitors,
+  });
+};
+
 exports.getExhibitorList = async function(req, res, next) {
   let page;
   if (!req.query.page) req.query.page = 1;
@@ -31,6 +42,7 @@ exports.getExhibitorList = async function(req, res, next) {
   const limit = 7;
   const skip = (page - 1) * limit;
   const totalExhibitors = await Exhibitor.count();
+
   const exhibitors = await Exhibitor.find()
     .skip(skip)
     .limit(limit);
