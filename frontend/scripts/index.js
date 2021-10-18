@@ -203,7 +203,20 @@ if (printBadge) {
 }
 
 // // DISPLAY EXHIBITOR DETAILS
-// const exhibitorRows = document.querySelector(".table");
+const exhibitorRows = document.querySelectorAll(".exhibitor__row");
+
+console.log(exhibitorRows);
+
+if (exhibitorRows) {
+  exhibitorRows.forEach((exhibitor) => {
+    const url = `/exhibitor/${exhibitor.getAttribute("data-slug")}`;
+
+    exhibitor.addEventListener("click", function() {
+      window.open(url, "_self");
+    });
+  });
+}
+
 // const knowMoreBtns = document.querySelectorAll(".know-more");
 
 // if (exhibitorRows) {

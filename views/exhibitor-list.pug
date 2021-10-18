@@ -16,7 +16,7 @@ block content
                 //-     i.fas.fa-heart
             each exhibitor in exhibitors
                 //- ul.exhibitor.table.trows
-                li.table__row.trow.exhibitor__summary(data-id=`${exhibitor._id}`)
+                li.table__row.trow.exhibitor__summary.exhibitor__row(data-id=`${exhibitor._id}` data-slug=`${exhibitor.slug}`)
                     //- .number 1
                     .exhibitor__logo
                         img(src="https://source.unsplash.com/random/100x100")

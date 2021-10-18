@@ -9,35 +9,21 @@ export const listExhibitor = function(e) {
   window.open("/exhibitors", "_self");
 };
 
-export const displayExhibitorDetail = function(e) {
-  e.preventDefault();
+// export const displayExhibitorDetail = function(e) {
+//   e.preventDefault();
 
-  const exhibitorRow = e.target.closest(".exhibitor__summary");
-  const expandedAll = document.querySelectorAll(".expanded");
+//   const exhibitorRow = e.target.closest(".exhibitor__summary");
+//   const expandedAll = document.querySelectorAll(".expanded");
 
-  if (!exhibitorRow) return;
-  // Hide all open Exhibitor Data Rows
-  expandedAll.forEach((expanded) => expanded.classList.add("hidden"));
-  // Display The Current Exhibitor's Data
-  exhibitorRow.nextElementSibling.classList.toggle("hidden");
-};
-
-export const listVisited = function(e) {
-  e.preventDefault();
-
-  showMessage(
-    "Visted Exhibitor List",
-    "Displaying a list of all exhibitors that you've allready visited"
-  );
-};
+//   if (!exhibitorRow) return;
+//   // Hide all open Exhibitor Data Rows
+//   expandedAll.forEach((expanded) => expanded.classList.add("hidden"));
+//   // Display The Current Exhibitor's Data
+//   exhibitorRow.nextElementSibling.classList.toggle("hidden");
+// };
 
 export const showMap = function(e) {
-  e.preventDefault();
-
-  showMessage(
-    "Exhibition Floor Layout",
-    "This is being finalised and will be displayed during the event. We look forward to seeing you at the event"
-  );
+  window.open("/exhibitors-layout", "_self");
 };
 
 export const listSorted = function(e) {
@@ -69,4 +55,9 @@ export const listSearched = function(e) {
   </div>
   `;
   showPopup(searchedMarkup);
+};
+
+export const listVisited = function(e) {
+  // e.preventDefault();
+  window.open("/exhibitors-visited", "_self");
 };
