@@ -118,7 +118,8 @@ exports.addOneExhibitor = catchAsync(async function(req, res, next) {
       "profile",
       "category",
       "booth",
-      "orgEmployee"
+      "orgEmployee",
+      "logoUrl"
     );
 
     const doc = await Exhibitor.findOneAndUpdate(
