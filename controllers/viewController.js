@@ -84,6 +84,8 @@ exports.displayExhibitor = catchAsync(async function(req, res, next) {
     );
   }
 
+  console.log(exhibitor);
+
   res.status(200).render("exhibitor", {
     title: `${exhibitor.name}`,
     exhibitor,

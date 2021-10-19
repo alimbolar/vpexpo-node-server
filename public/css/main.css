@@ -40,6 +40,9 @@ ul {
 .missing {
   color: red; }
 
+.highlight {
+  font-weight: bold; }
+
 .heading {
   font-size: 2em;
   text-transform: uppercase;
@@ -542,20 +545,20 @@ header {
 .exhibitor {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
-  position: relative;
-  height: 100%; }
-  .exhibitor__detail {
-    display: flex;
-    padding: 0.5em;
-    gap: 1em; }
+  text-align: center; }
+  .exhibitor > * {
+    margin-bottom: 2em; }
   .exhibitor__logo {
     width: 30%;
     max-width: 150px; }
   .exhibitor__profile {
-    width: 70%;
-    flex-grow: 1; }
+    width: 70%; }
+  .exhibitor__contact > * {
+    margin-bottom: 1em; }
+  .exhibitor .headline {
+    text-transform: uppercase;
+    font-weight: bold; }
 
 .pagination {
   width: 100%; }

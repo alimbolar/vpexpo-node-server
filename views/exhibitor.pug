@@ -2,7 +2,24 @@ extends base
 
 block content 
     section.exhibitor 
-        .logo  
-            img(src="/images/vp-expo-logo.png", alt=`Logo of ${exhibitor.name}`)
-        .name= exhibitor.name 
-        .description= exhibitor.address
+        .exhibitor__logo  
+            img(src=`${exhibitor.logoUrl}`, alt=`Logo of ${exhibitor.name}`)
+        .exhibitor__profile
+            .headline= `About ${exhibitor.name}`
+            .exhibitor-profile
+                | !{exhibitor.profile}
+        .exhibitor__location
+            .headline Our location
+            .address= exhibitor.address +", "+ exhibitor.city
+            .country= exhibitor.country 
+        .exhibitor__contact
+            .headline Contact Us
+
+            each contact in exhibitor.orgEmployee
+                .details
+                    p.highlight= contact.fullName 
+                    p= contact.designation
+                    p= contact.email 
+                    p= contact.mobile
+
+

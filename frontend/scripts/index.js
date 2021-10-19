@@ -233,6 +233,14 @@ if (exhibitorRows) {
 //   });
 // }
 
+// DISPLAY EXHIBITOR PROFILE
+
+const exhibitorProfie = document.querySelector(".exhibitor-profile");
+
+if (exhibitorProfile) {
+  console.log(exhibitorProfile.innerText);
+}
+
 // FOOTER LINKS
 
 const listExhibitorBtn = document.querySelector(".list-exhibitor");
