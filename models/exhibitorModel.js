@@ -43,9 +43,9 @@ const exhibitorSchema = new mongoose.Schema({
   },
   logoUrl: {
     type: String,
-    default: function() {
-      return `/images/organisations/${this.slug}/logo.jpg`;
-    },
+    // default: function() {
+    //   return `/images/organisations/${this.slug}/logo.jpg`;
+    // },
   },
   profile: {
     type: String,
