@@ -1,14 +1,15 @@
 extends base
 
 block content
-    section.exhibitor
+    section.exhibitor__list
         //- .exhibitor__table.table
-        ul.table
-            li.table__header.theader
-                //- .number #
-                .exhibitor__logo
-                .exhibitor__name Exhibitor Name
-                .exhibitor__booth Booth
+        ul.exhibitor__table
+            .exhibitor__table--header Exhibitor List
+            //- li.table__header.theader
+            //-     //- .number #
+            //-     .exhibitor__logo
+            //-     .exhibitor__name Exhibitor Name
+            //-     .exhibitor__booth Booth
                 //- .visited
                 //- .exhibitor__link View More
                 //-     i.fas.fa-handshake
@@ -16,12 +17,21 @@ block content
                 //-     i.fas.fa-heart
             each exhibitor in exhibitors
                 //- ul.exhibitor.table.trows
-                li.table__row.trow.exhibitor__summary.exhibitor__row(data-id=`${exhibitor._id}` data-slug=`${exhibitor.slug}`)
+                li.exhibitor__row(data-id=`${exhibitor._id}` data-slug=`${exhibitor.slug}`)
                     //- .number 1
+                    .exhibitor__name !{exhibitor.name}
+                    .exhibitor__booth Booth 
+                        p #!{exhibitor.booth}
+                    .exhibitor__category Category
+                        each category in exhibitor.category
+                            p !{category} 
+                
                     .exhibitor__logo
                         img(src=`${exhibitor.logoUrl}`)
-                    .exhibitor__name= exhibitor.name
-                    .exhibitor__booth= exhibitor.booth
+                    each brand in exhibitor.brands
+                        .exhibitor__logo 
+                            img(src= `${brand.logoUrl}`)
+
                     //- .visited 
                     //-     i.far.fa-handshake
                     //- .reviewed

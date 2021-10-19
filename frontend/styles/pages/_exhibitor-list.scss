@@ -1,0 +1,56 @@
+.exhibitor__table {
+  width: 90%;
+  margin: 10px auto;
+  //   margin-bottom: 20px;
+
+  font-size: 0.875rem;
+  height: 100%;
+  overflow-y: scroll;
+  border-bottom: 1px solid var(--secondary-color);
+  text-align: center;
+
+  &--header {
+    background-color: darkslategray;
+    padding: 0.5em;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+
+  .exhibitor__row {
+    border-bottom: 1px solid var(--secondary-color);
+    margin-bottom: 1em;
+    > * {
+      margin-bottom: 1em;
+    }
+  }
+
+  .exhibitor__logo {
+    margin: auto;
+    border: 1px solid var(--primary-color);
+    margin-bottom: 1em;
+    width: 200px;
+    img {
+      width: 90%;
+    }
+  }
+
+  .exhibitor__name {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    color: var(--primary-color);
+  }
+
+  .exhibitor__booth,
+  .exhibitor__category {
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    font-size: 1em;
+
+    p {
+      color: var(--primary-color);
+      font-size: 1.2em;
+    }
+  }
+}
