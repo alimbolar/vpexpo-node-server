@@ -58,11 +58,11 @@ block content
 
                 .me__residenceCountry(class= !user.country || user.country==="null" ? "missing" : undefined)
                     h4  Country Of Residence
-                    p= !user.country || "null" ? "Missing Data" : user.country
+                    p= !user.country || user.country==="null" ? "Missing Data" : user.country
 
                 .me__nationality(class= !user.nationality || user.nationality==="null" ? "missing" : undefined)
                     h4  Nationality
-                    p= !user.nationality || "null" ? "Missing Data" : user.nationality
+                    p= !user.nationality || user.nationality==="null" ? "Missing Data" : user.nationality
 
 
 
