@@ -172,18 +172,18 @@ if (updateData) {
 // }
 
 // MENU
-const popupLinks = document.querySelectorAll(".popup-link");
+// const popupLinks = document.querySelectorAll(".popup-link");
 const closeButton = document.querySelector(".close");
 const closeOverlay = document.querySelector(".overlay");
 
-popupLinks.forEach((popupLink) => {
-  popupLink.addEventListener("click", function() {
-    showMessage(
-      "Coming Soon",
-      "See you at VP Expo. We are as excited as you are!"
-    );
-  });
-});
+// popupLinks.forEach((popupLink) => {
+//   popupLink.addEventListener("click", function() {
+//     showMessage(
+//       "Coming Soon",
+//       "See you at VP Expo. We are as excited as you are!"
+//     );
+//   });
+// });
 
 closeButton.addEventListener("click", hidePopup);
 closeOverlay.addEventListener("click", hidePopup);
@@ -210,6 +210,18 @@ const exhibitorProfileBtns = document.querySelectorAll(
 if (exhibitorProfileBtns) {
   exhibitorProfileBtns.forEach((button) => {
     const url = `/exhibitor/${button.getAttribute("data-slug")}`;
+
+    button.addEventListener("click", function() {
+      window.open(url, "_self");
+    });
+  });
+}
+
+const goToLoginBtns = document.querySelectorAll(".go-to-login");
+
+if (goToLoginBtns) {
+  goToLoginBtns.forEach((button) => {
+    const url = "/login";
 
     button.addEventListener("click", function() {
       window.open(url, "_self");
