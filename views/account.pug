@@ -39,7 +39,7 @@ block content
                 //- form.form.form-user-data(action="/submit-user-data" method="POST")
                 .me__photo 
                     img(src=`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${user.visitorId}`, alt="")
-                    p=`${user.visitorId}`
+                p=`${user.visitorId}`
                 .me__name
                     h4 Name 
                     p= user.firstName + " " +user.lastName

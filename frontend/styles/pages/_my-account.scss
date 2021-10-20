@@ -56,9 +56,17 @@
   flex-direction: column;
   gap: 1em;
 
+  h4 {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: normal;
+  }
+
   &__photo {
     width: 50%;
-    border-radius: 100%;
+    // border-radius: 100%;
+    padding: 1em;
     margin: 0 auto;
+    border: 2px solid var(--secondary-color);
   }
 }

@@ -485,10 +485,15 @@ header {
   display: flex;
   flex-direction: column;
   gap: 1em; }
+  .me h4 {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    font-weight: normal; }
   .me__photo {
     width: 50%;
-    border-radius: 100%;
-    margin: 0 auto; }
+    padding: 1em;
+    margin: 0 auto;
+    border: 2px solid var(--secondary-color); }
 
 .about {
   width: 100%;
