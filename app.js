@@ -18,6 +18,7 @@ const zohoRouter = require("./routers/zohoRouter");
 const viewRouter = require("./routers/viewRouter");
 const eticketRouter = require("./routers/eticketRouter");
 const mongoRouter = require("./routers/mongoRouter");
+// dotenv.config({ path: "./config.env" });
 
 const app = express();
 

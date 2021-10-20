@@ -25,7 +25,15 @@ exports.getLoginForm = function(req, res, next) {
 exports.getAllExhibitors = async function(req, res, next) {
   // const totalExhibitors = await Exhibitor.count();
 
-  const exhibitors = await Exhibitor.find();
+  // const exhibitors = await Exhibitor.find();
+
+  let query = Exhibitor.find();
+
+  if (req.query.sort) {
+    const sortBy = req.query.sort.split(",").join(" ");
+    query = query.sort(sortBy);
+  }
+  const exhibitors = await query;
 
   res.status(200).render("exhibitor-list", {
     title: "Exhibitor List",
