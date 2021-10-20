@@ -22,8 +22,8 @@ export const listExhibitor = function(e) {
 //   exhibitorRow.nextElementSibling.classList.toggle("hidden");
 // };
 
-export const showMap = function(e) {
-  window.open("/exhibitors-layout", "_self");
+export const showExhibitorsLayout = function(e) {
+  window.open("/exhibitors/layout", "_self");
 };
 
 export const listSorted = function(e) {
@@ -33,9 +33,9 @@ export const listSorted = function(e) {
 
   <div class="sort-box">
   <div class="sort-box__heading">Sort By</div>
-  <div class="sort-box__button"> <a href="/exhibitors" class="btn"> Exhibitors</a> </div>
+  <div class="sort-box__button"> <a href="/exhibitors?sort=name" class="btn"> Exhibitors</a> </div>
 
-  <div class="sort-box__button"> <a href="/exhibitors" class="btn">Booth Number</a> </div>
+  <div class="sort-box__button"> <a href="/exhibitors?sort=booth" class="btn">Booth Number</a> </div>
   </div>
 
   `;

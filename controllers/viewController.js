@@ -1,4 +1,5 @@
 const fs = require("fs");
+const fetch = require("node-fetch");
 const path = require("path");
 const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/AppError");
@@ -29,6 +30,14 @@ exports.getAllExhibitors = async function(req, res, next) {
   res.status(200).render("exhibitor-list", {
     title: "Exhibitor List",
     exhibitors,
+  });
+};
+
+exports.getExhibitorsLayout = async function(req, res, next) {
+  // const totalExhibitors = await Exhibitor.count();
+
+  res.status(200).render("exhibitors-layout", {
+    title: "Exhibitors Layout",
   });
 };
 

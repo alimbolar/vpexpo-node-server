@@ -8,6 +8,7 @@ import {
   listSorted,
   listSearched,
   displayExhibitorDetail,
+  showExhibitorsLayout,
   goToLogin,
 } from "./listExhibitor";
 import { displayCountries, displaySelected } from "./form";
@@ -249,7 +250,7 @@ if (goToLoginBtns) {
 
 const listExhibitorBtn = document.querySelector(".list-exhibitor");
 const listVisitedBtn = document.querySelector(".list-visited");
-const displayMap = document.querySelector(".show-map");
+const exhibitorsLayout = document.querySelector(".exhibitors-layout");
 
 const listSortedBtn = document.querySelector(".list-sorted");
 const listSearchedBtn = document.querySelector(".list-searched");
@@ -269,8 +270,8 @@ if (listVisitedBtn) {
   listVisitedBtn.addEventListener("click", listVisited);
 }
 
-if (displayMap) {
-  displayMap.addEventListener("click", showMap);
+if (exhibitorsLayout) {
+  exhibitorsLayout.addEventListener("click", showExhibitorsLayout);
 }
 
 if (listSortedBtn) {
