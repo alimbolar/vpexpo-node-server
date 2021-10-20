@@ -203,15 +203,15 @@ if (printBadge) {
 }
 
 // // DISPLAY EXHIBITOR DETAILS
-const exhibitorRows = document.querySelectorAll(".exhibitor__row");
+const exhibitorProfileBtns = document.querySelectorAll(
+  ".view-exhibitor-profile"
+);
 
-console.log(exhibitorRows);
+if (exhibitorProfileBtns) {
+  exhibitorProfileBtns.forEach((button) => {
+    const url = `/exhibitor/${button.getAttribute("data-slug")}`;
 
-if (exhibitorRows) {
-  exhibitorRows.forEach((exhibitor) => {
-    const url = `/exhibitor/${exhibitor.getAttribute("data-slug")}`;
-
-    exhibitor.addEventListener("click", function() {
+    button.addEventListener("click", function() {
       window.open(url, "_self");
     });
   });

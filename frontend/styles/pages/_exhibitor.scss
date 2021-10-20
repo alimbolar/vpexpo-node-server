@@ -17,9 +17,19 @@
     margin-bottom: 2em;
   }
 
+  // &__logo {
+  //   width: 30%;
+  //   max-width: 150px;
+  // }
+
   &__logo {
-    width: 30%;
-    max-width: 150px;
+    margin: auto;
+    border: 1px solid var(--primary-color);
+    margin-bottom: 1em;
+    width: 200px;
+    img {
+      width: 90%;
+    }
   }
 
   &__profile {

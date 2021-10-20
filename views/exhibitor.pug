@@ -8,10 +8,15 @@ block content
             .headline= `About ${exhibitor.name}`
             .exhibitor-profile
                 | !{exhibitor.profile}
+        .exhibitor__brands
+        each brand in exhibitor.brands 
+            .exhibitor__logo  
+                img(src=`${brand.logoUrl}`, alt=`Logo of ${brand.name}`)
         .exhibitor__location
             .headline Our location
             .address= exhibitor.address +", "+ exhibitor.city
             .country= exhibitor.country 
+
         .exhibitor__contact
             .headline Contact Us
 

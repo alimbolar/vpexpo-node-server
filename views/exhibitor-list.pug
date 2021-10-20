@@ -17,7 +17,7 @@ block content
                 //-     i.fas.fa-heart
             each exhibitor in exhibitors
                 //- ul.exhibitor.table.trows
-                li.exhibitor__row(data-id=`${exhibitor._id}` data-slug=`${exhibitor.slug}`)
+                li.exhibitor__row
                     //- .number 1
                     .exhibitor__name !{exhibitor.name}
                     .exhibitor__booth Booth 
@@ -28,6 +28,9 @@ block content
                 
                     .exhibitor__logo
                         img(src=`${exhibitor.logoUrl}`)
+                    
+                    button.btn.btn--green.view-exhibitor-profile(data-id=`${exhibitor._id}` data-slug=`${exhibitor.slug}`) View Exhibitor Profile
+
                     each brand in exhibitor.brands
                         .exhibitor__logo 
                             img(src= `${brand.logoUrl}`)
