@@ -500,7 +500,8 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center; }
+  text-align: center;
+  padding-top: 2em; }
   .exhibitor > * {
     margin-bottom: 2em; }
   .exhibitor__logo {
@@ -516,7 +517,8 @@ header {
     margin-bottom: 1em; }
   .exhibitor .headline {
     text-transform: uppercase;
-    font-weight: bold; }
+    font-weight: bold;
+    color: var(--primary-color); }
 
 .pagination {
   width: 100%; }
