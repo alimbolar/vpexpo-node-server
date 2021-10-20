@@ -13,6 +13,9 @@ exports.getOverview = function(req, res) {
 };
 
 exports.getLoginForm = function(req, res, next) {
+  // console.log("viewController.getLoginForm", req.cookies.jwt);
+  // console.log(req.user);
+
   res.status(200).render("login", {
     title: "Login Form",
   });

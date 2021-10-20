@@ -9,6 +9,7 @@ router.use(authController.isLoggedIn);
 //EXHIBITOR RELATED
 router.get("/", viewController.getOverview);
 router.get("/login", viewController.getLoginForm);
+
 router.get("/exhibitors", viewController.getAllExhibitors);
 router.get("/exhibitors/visited", viewController.getExhibitorsVisited);
 router.get("/exhibitor/:slug", viewController.displayExhibitor);

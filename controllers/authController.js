@@ -64,7 +64,10 @@ exports.login = catchAsync(async function(req, res, next) {
 
   if (!user || !(await user.correctPassword(password, user.password))) {
     return next(
-      new AppError("User or Password does not match. Please try again", 401)
+      new AppError(
+        "User or Password does not match. Please try again. If issue persists please whatsapp +97155-9668922",
+        401
+      )
     );
   }
 
@@ -133,6 +136,11 @@ exports.protect = catchAsync(async function(req, res, next) {
   }
 
   if (!token) return next(new AppError("Token does not exist", 401));
+
+  // // UPDATED BY ALIM  TO RECIRECT TO LOGIN INSTEAD OF THROWING ERROR
+  // if (!token) {
+  //   res.redirect("/login");
+  // }
 
   const decoded = await promisify(jwt.verify)(
     token,
