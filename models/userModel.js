@@ -4,7 +4,10 @@ const bcrypt = require("bcryptjs");
 const validator = require("validator");
 
 const userSchema = new mongoose.Schema({
-  visitorId: String,
+  visitorId: {
+    type: String,
+    required: true,
+  },
   role: {
     type: String,
     enum: ["admin", "user", "jury"],
@@ -44,6 +47,7 @@ const userSchema = new mongoose.Schema({
   address: String,
   city: String,
   companyCountry: String,
+
   country: {
     type: String,
     default: "null",
@@ -52,7 +56,7 @@ const userSchema = new mongoose.Schema({
   nationality: {
     type: String,
     default: "null",
-    required: true,
+    // required: true,
   },
 
   photo: {

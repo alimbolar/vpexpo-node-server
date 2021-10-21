@@ -112,6 +112,22 @@ if (saveSettings) {
       // UPDATE EVENTO DATABASE
       await updateEvento(visitorForEvento, "evento");
 
+      const visitorForZoho = {
+        // Name.first_name : firstName,
+        // Name.last_name : lastName,
+        // Mobile : mobile,
+        // Email : email,
+        // Company : company,
+        // Visitor_Profile : profile,
+        // address,
+        // city,
+        Visitor_Country: country,
+        Visitor_Nationality: nationality,
+        // Type : type,
+      };
+
+      await updateZoho(visitorForZoho, "zoho", visitorId);
+
       // UPDATE MONGODB
       await updateSettings(
         {

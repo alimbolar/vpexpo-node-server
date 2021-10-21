@@ -27,6 +27,32 @@ export const updateEvento = async function(data, type) {
   }
 };
 
+export const updateZoho = async function(data, type, id) {
+  try {
+    const url = "/api/v1/zoho/visitor/" + id;
+
+    const response = await fetch(url, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    const res = await response.json();
+
+    console.log(res);
+    if (res.status === "success") {
+      console.log(`${type.toUpperCase()} Updated`);
+    }
+
+    if (res.status === "fail") {
+      console.log("Zoho Could Not Be Updated");
+    }
+  } catch (err) {
+    alert(err.response.data.message);
+  }
+};
+
 export const updateSettings = async function(data, type) {
   try {
     const url =

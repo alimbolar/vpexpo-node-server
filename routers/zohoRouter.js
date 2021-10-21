@@ -4,6 +4,7 @@ const zohoController = require("./../controllers/zohoController");
 
 // ADD TO ZOHO
 router.route("/exhibitor").post(zohoController.addOneExhibitorToCreator);
+router.route("/visitor/:id").patch(zohoController.updateOneVisitor);
 
 router.route("/*").get(zohoController.getAllData);
 

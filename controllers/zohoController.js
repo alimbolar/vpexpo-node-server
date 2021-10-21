@@ -219,3 +219,38 @@ exports.addOneExhibitorToCreator = catchAsync(async function(req, res, next) {
     data,
   });
 });
+
+exports.updateOneVisitor = catchAsync(async function(req, res, next) {
+  const token = await getAccessToken();
+
+  console.log(token);
+
+  const url =
+    process.env.ZOHO_CREATOR_REPORT_URL + "/All_Visitors/" + req.params.id;
+
+  const visitor = req.body;
+  // const visitor = {
+  //   data: {
+  //     Visitor_Country: req.body.country,
+  //   },
+  // };
+
+  console.log(visitor);
+
+  const options = {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Zoho-oauthtoken " + token,
+    },
+    body: JSON.stringify(visitor),
+  };
+
+  const response = await fetch(url, options);
+  const data = await response.json();
+
+  res.status(200).json({
+    status: "success",
+    data,
+  });
+});
