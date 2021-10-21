@@ -1,6 +1,6 @@
 import { login, logout } from "./login";
 import { showMessage, hidePopup } from "./alert";
-import { updateSettings, updateEvento } from "./updateSettings";
+import { updateSettings, updateEvento, updateZoho } from "./updateSettings";
 import {
   listExhibitor,
   listVisited,
@@ -96,56 +96,59 @@ if (saveSettings) {
       const type = document.getElementById("type").value;
       const visitorId = document.getElementById("visitorId").value;
 
-      const visitorForEvento = {
-        VisitorNumber: visitorId,
-        FirstName: firstName,
-        LastName: lastName,
-        Mobile: mobile,
-        Email: email,
-        Company: company,
-        JobTitle: profile,
-        Country: country,
-        Nationality: nationality,
-        Category: type,
-      };
+      // const visitorForEvento = {
+      //   VisitorNumber: visitorId,
+      //   FirstName: firstName,
+      //   LastName: lastName,
+      //   Mobile: mobile,
+      //   Email: email,
+      //   Company: company,
+      //   JobTitle: profile,
+      //   Country: country,
+      //   Nationality: nationality,
+      //   Category: type,
+      // };
 
-      // UPDATE EVENTO DATABASE
-      await updateEvento(visitorForEvento, "evento");
+      // // UPDATE EVENTO DATABASE
+      // await updateEvento(visitorForEvento, "evento");
 
       const visitorForZoho = {
-        // Name.first_name : firstName,
-        // Name.last_name : lastName,
-        // Mobile : mobile,
-        // Email : email,
-        // Company : company,
-        // Visitor_Profile : profile,
-        // address,
-        // city,
-        Visitor_Country: country,
-        Visitor_Nationality: nationality,
-        // Type : type,
-      };
-
-      await updateZoho(visitorForZoho, "zoho", visitorId);
-
-      // UPDATE MONGODB
-      await updateSettings(
-        {
-          firstName,
-          lastName,
-          mobile,
-          email,
-          company,
-          profile,
+        data: {
+          // Name.first_name : firstName,
+          // Name.last_name : lastName,
+          // Mobile : mobile,
+          // Email : email,
+          // Company : company,
+          // Visitor_Profile : profile,
           // address,
           // city,
-          country,
-          nationality,
-          type,
+          Visitor_Country: country,
+          Visitor_Nationality: nationality,
+          // Type : type,
         },
-        "data"
-      );
+      };
 
+      const response = await updateZoho(visitorForZoho, "zoho", visitorId);
+
+      // // UPDATE MONGODB
+      // await updateSettings(
+      //   {
+      //     firstName,
+      //     lastName,
+      //     mobile,
+      //     email,
+      //     company,
+      //     profile,
+      //     // address,
+      //     // city,
+      //     country,
+      //     nationality,
+      //     type,
+      //   },
+      //   "data"
+      // );
+
+      console.log(response);
       showMessage("Data Updated", "Moving you to your profile view");
 
       window.setTimeout(() => location.assign("/me"), 2000);

@@ -246,8 +246,12 @@ exports.updateOneVisitor = catchAsync(async function(req, res, next) {
     body: JSON.stringify(visitor),
   };
 
+  console.log(url);
+
   const response = await fetch(url, options);
   const data = await response.json();
+
+  console.log(data);
 
   res.status(200).json({
     status: "success",
