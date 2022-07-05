@@ -46,8 +46,7 @@ const userSchema = new mongoose.Schema({
   },
   address: String,
   city: String,
-  companyCountry: String,
-
+  // companyCountry: String,
   country: {
     type: String,
     default: "null",
