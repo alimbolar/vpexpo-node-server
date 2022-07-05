@@ -12,13 +12,10 @@ const app = require("./app");
 
 dotenv.config({ path: `${__dirname}/config.env` });
 
-// const DB = process.env.DATABASE.replace(
-//   "{%PASSWORD%}",
-//   process.env.DATABASE_PASSWORD
-// );
-
-const DB =
-  "mongodb+srv://alimbolar:alimbolar@vpexpo2022.pa92ikr.mongodb.net/vpexpodb";
+const DB = process.env.DATABASE.replace(
+  "{%PASSWORD%}",
+  process.env.DATABASE_PASSWORD
+);
 
 mongoose
   .connect(DB, {
