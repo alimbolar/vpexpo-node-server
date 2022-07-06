@@ -28,6 +28,8 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
   if (!visitor) {
     // userController.createOneUser();
 
+    console.log("Id does not exist... creating visitor...");
+
     const doc = await User.create(req.body);
 
     console.log("visitor created in mongo");
