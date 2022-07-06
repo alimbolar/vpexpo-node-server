@@ -44,15 +44,18 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  address: String,
+  addressStreet: String,
+  addressArea: String,
+  state: String,
+  postalCode: String,
   city: String,
-  companyCountry: String,
-
+  // companyCountry: String,
   country: {
     type: String,
     default: "null",
     required: true,
   },
+  website: String,
   nationality: {
     type: String,
     default: "null",
@@ -89,6 +92,7 @@ const userSchema = new mongoose.Schema({
   },
   preferredLanguage: String,
   interestedIn: Array,
+  leadSource: String,
   eventoId: {
     type: String,
     default: null,
