@@ -6,7 +6,7 @@ const validator = require("validator");
 const userSchema = new mongoose.Schema({
   visitorId: {
     type: String,
-    required: true,
+    // required: true,
   },
   role: {
     type: String,
