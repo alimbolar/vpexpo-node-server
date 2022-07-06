@@ -15,34 +15,34 @@ const userSchema = new mongoose.Schema({
   },
   firstName: {
     type: String,
-    required: [true, "First Name is required"],
+    // required: [true, "First Name is required"],
   },
   lastName: {
     type: String,
-    required: [true, "Last Name is Required"],
+    // required: [true, "Last Name is Required"],
   },
   email: {
     type: String,
-    required: true,
+    // required: true,
     validate: [validator.isEmail, "Email is not valid"],
     // unique: true,
     lowercase: true,
   },
   mobile: {
     type: String,
-    required: true,
+    // required: true,
   },
   type: {
     type: String,
-    required: true,
+    // required: true,
   },
   company: {
     type: String,
-    required: true,
+    // required: true,
   },
   profile: {
     type: String,
-    required: true,
+    // required: true,
   },
   addressStreet: String,
   addressArea: String,
@@ -69,8 +69,8 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     // default: "4plus+++",
-    required: true,
-    minlength: 8,
+    // required: true,
+    // minlength: 8,
   },
   passwordConfirm: {
     type: String,
