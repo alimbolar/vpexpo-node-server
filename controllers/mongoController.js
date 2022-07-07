@@ -20,11 +20,11 @@ const filterObj = function(obj, ...allowedFields) {
 exports.addOneVisitor = catchAsync(async function(req, res, next) {
   //   const data = req.body;
 
-  console.log(req.body);
-  console.log(req.body.data);
-  console.log(req.body.data.visitorId);
+  // console.log(req.body);
+  // console.log(req.body.data);
+  console.log(req.body.data.visitorId.toString());
 
-  const visitorId = req.body.visitorId;
+  const visitorId = req.body.data.visitorId.toString();
 
   const visitor = await User.findOne({ visitorId });
 
