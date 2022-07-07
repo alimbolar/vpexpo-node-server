@@ -4,7 +4,6 @@
   "description": "VP Expo Dubai",
   "main": "app.js",
   "scripts": {
-    "start": "node server",
     "dev": "NODE_ENV=development nodemon server",
     "prod": "NODE_ENV=production nodemon server",
     "watch:css": "node-sass --watch ./frontend/styles/main.scss --output ./public/css/",
