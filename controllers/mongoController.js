@@ -50,10 +50,18 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
       "email",
       "mobile",
       "company",
-      "profile",
+      "addressStreet",
+      "addressArea",
+      "state",
+      "postalCode",
+      "city",
       "country",
+      "website",
+      "type",
+      "profile",
       "nationality",
-      "type"
+      "preferredLanguage",
+      "interestedIn"
     );
 
     const doc = await User.findOneAndUpdate({ visitorId }, filteredBody, {
