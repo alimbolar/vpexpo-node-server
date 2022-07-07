@@ -33,7 +33,7 @@ exports.addOneVisitor = catchAsync(async function(req, res, next) {
   if (!visitor) {
     // userController.createOneUser();
 
-    const doc = await User.create(req.body);
+    const doc = await User.create(req.body.data);
 
     console.log("visitor", doc);
     console.log("visitor created in mongo");
